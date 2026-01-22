@@ -1,0 +1,74 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+
+:root {
+  /* Definimos los colores del diseño para usarlos en todo el proyecto */
+  --color-cyan-glow: #00ffff;
+  --color-purple-glow: #6f00ff5d;
+  --color-pink-glow: #7c1d7c44;
+  --color-bg-dark: #020205;
+  --background-dark: var(--color-bg-dark);
+}
+
+body {
+  background-color: var(--background-dark);
+  color: white;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* --- ANIMACIONES --- */
+
+@keyframes heroReveal {
+  from { 
+    filter: blur(20px); 
+    opacity: 0; 
+    transform: scale(1.1);
+  }
+  to { 
+    filter: blur(0); 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+@keyframes shine {
+  from { background-position: 0% center; }
+  to { background-position: 200% center; }
+}
+
+/* --- CLASES DE UTILIDAD PERSONALIZADAS --- */
+
+.hero-container {
+  animation: heroReveal 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Corregimos el gradiente para evitar errores de @apply */
+.text-gradient {
+  background-image: linear-gradient(
+    to right, 
+    var(--color-cyan-glow), 
+    var(--color-purple-glow), 
+    var(--color-pink-glow),
+    var(--color-cyan-glow) /* Repetimos para que el loop sea fluido */
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 5s linear infinite;
+}
+
+/* Corregimos el radial gradient eliminando variables internas de TW v3 */
+.bg-radial-at-c {
+  background: radial-gradient(
+    circle at center,
+    var(--color-purple-glow) 0%,
+    rgba(2, 2, 5, 0) 70%
+  );
+}
+
+/* Evita saltos visuales en el scroll */
+html {
+  scroll-behavior: smooth;
+}

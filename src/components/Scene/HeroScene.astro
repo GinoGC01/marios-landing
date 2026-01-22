@@ -1,0 +1,90 @@
+---
+---
+<div id="star-container" class="absolute inset-0 z-0 bg-[#020205] overflow-hidden">
+  <canvas id="star-canvas" class="w-full h-full opacity-0 transition-opacity duration-1000"></canvas>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#020205] pointer-events-none"></div>
+</div>
+
+<script>
+  function initStars() {
+    // Solo ejecutamos en móviles/tablets para no duplicar con el de React en Desktop
+    if (window.innerWidth >= 1024) return;
+
+    const canvas = document.getElementById('star-canvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width: number, height: number;
+    let stars: Star[] = [];
+    const starCount = 100; // Podemos poner más porque el Canvas 2D es muy liviano
+
+    class Star {
+      x: number = 0; y: number = 0; z: number = 0; px: number = 0; py: number = 0;
+      
+      constructor() {
+        this.init();
+      }
+
+      init() {
+        this.x = (Math.random() - 0.5) * width;
+        this.y = (Math.random() - 0.5) * height;
+        this.z = Math.random() * width;
+        this.px = 0;
+        this.py = 0;
+      }
+
+      update() {
+        this.z -= 1.5; // Velocidad de acercamiento
+        if (this.z <= 0) this.init();
+
+        // Proyección 3D a 2D simple
+        const scale = 300 / this.z;
+        this.px = width / 2 + this.x * scale;
+        this.py = height / 2 + this.y * scale;
+      }
+
+      draw() {
+        const opacity = Math.min(1, (width - this.z) / width);
+        ctx!.fillStyle = `rgba(0, 255, 255, ${opacity * 0.6})`; // Color Cian
+        
+        // Dibujamos la estrella
+        const size = (1 - this.z / width) * 2.5;
+        ctx!.beginPath();
+        ctx!.arc(this.px, this.py, size, 0, Math.PI * 2);
+        ctx!.fill();
+      }
+    }
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      
+      stars = [];
+      for (let i = 0; i < starCount; i++) stars.push(new Star());
+    }
+
+    function animate() {
+      ctx!.fillStyle = '#020205'; // Limpiamos el fondo
+      ctx!.fillRect(0, 0, width, height);
+
+      stars.forEach(star => {
+        star.update();
+        star.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
+    
+    // Fade in suave una vez que empieza la animación
+    canvas.classList.remove('opacity-0');
+  }
+
+  // Ejecutamos al cargar la página
+  window.addEventListener('load', initStars);
+</script>

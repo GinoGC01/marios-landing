@@ -1,0 +1,234 @@
+---
+const navItems = [
+  { name: 'Inicio', href: '#', active: true },
+  { name: 'Servicios', href: '#servicios' },
+  { name: 'Planes', href: '#planes' },
+  { name: 'Tecnología', href: '#tech' },
+  { name: 'Contacto', href: '#contacto' },
+];
+---
+
+<header id="main-header" class="fixed top-0 left-0 w-full z-[999] transition-all duration-700">
+  <div class="container mx-auto px-4 md:px-6 py-4 md:py-6 relative z-[1001]">
+    <div id="header-container" class="relative w-full flex justify-between items-center px-4 md:px-8 py-3 md:py-4 rounded-2xl md:rounded-full transition-all duration-500 bg-black/40 backdrop-blur-sm border border-white/5">
+
+
+      <!-- Logo con efecto glow -->
+      <div class="flex items-center gap-3 z-[1001] group cursor-pointer">
+        <div class="relative w-10 h-10 md:w-12 md:h-12">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff] via-[#3b82f6] to-[#a855f7] rounded-xl md:rounded-2xl blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="relative w-full h-full bg-gradient-to-br from-[#0099ff] via-[#3b82f6] to-[#a855f7] rounded-xl md:rounded-2xl flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
+            <span class="text-white font-black text-xl md:text-2xl">M</span>
+          </div>
+        </div>
+        <div class="flex gap-1 items-center font-bold text-base md:text-lg tracking-tight">
+          <span class="text-white">Mario's</span>
+          <span class="bg-gradient-to-r from-[#0099ff] to-[#a855f7] bg-clip-text text-transparent">Agency</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:block">
+        <ul class="flex gap-8 lg:gap-10 items-center">
+          {navItems.map((item, i) => (
+            <li class="nav-item" style={`animation-delay: ${i * 50}ms`}>
+              <a href={item.href} class:list={[
+                "relative text-sm font-medium transition-all duration-300 py-2 group",
+                item.active ? "text-white" : "text-gray-400 hover:text-white"
+              ]}>
+                {item.name}
+                {item.active ? (
+                  <span class="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-[#00ffff] to-[#a855f7] shadow-[0_0_10px_#00ffff] rounded-full"></span>
+                ) : (
+                  <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#00ffff] to-[#a855f7] group-hover:w-full transition-all duration-300 rounded-full"></span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- CTA Button Desktop -->
+      <div class="hidden md:block">
+        <button class="relative px-6 lg:px-8 py-2.5 lg:py-3 text-white text-xs lg:text-sm font-bold rounded-full overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0099ff] via-[#00d4ff] to-[#a855f7] opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-[#a855f7] via-[#00d4ff] to-[#0099ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="relative z-10 flex items-center gap-2">
+            Iniciar Proyecto
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
+          <div class="absolute inset-0 rounded-full blur-xl bg-gradient-to-r from-[#0099ff] to-[#a855f7] opacity-50 group-hover:opacity-75 transition-opacity duration-300 -z-10"></div>
+        </button>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button id="mobile-toggle" class="md:hidden relative w-10 h-10 z-[1001] flex items-center justify-center group">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff]/20 to-[#a855f7]/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="flex flex-col gap-1.5 items-end relative">
+          <span id="line-1" class="w-6 h-0.5 bg-gradient-to-r from-[#00ffff] to-white rounded-full transition-all duration-300"></span>
+          <span id="line-2" class="w-4 h-0.5 bg-gradient-to-r from-[#a855f7] to-white rounded-full transition-all duration-300"></span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu Mejorado -->
+  <div id="mobile-menu" class="fixed inset-0 bg-gradient-to-br from-[#020205] via-[#0a0a0f] to-[#020205] flex flex-col items-center justify-center transition-all duration-700 ease-out opacity-0 pointer-events-none scale-95 z-[998]">
+    
+    <!-- Efectos de fondo -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+      <div class="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 1s"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px] animate-pulse-slow" style="animation-delay: 0.5s"></div>
+    </div>
+
+    <!-- Grid animado de fondo -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0" style="background-image: linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+    </div>
+
+    <!-- Contenido del menú -->
+    <nav class="relative flex flex-col items-center gap-6 px-8">
+      {navItems.map((item, i) => (
+        <a 
+          href={item.href} 
+          class="mobile-link relative text-4xl sm:text-5xl font-black text-white uppercase tracking-tight opacity-0 translate-y-8 transition-all duration-700 group overflow-hidden"
+          style={`transition-delay: ${i * 80}ms`}
+        >
+          <span class="relative z-10 inline-block transform group-hover:scale-110 transition-transform duration-300">
+            {item.name}
+          </span>
+          <span class="absolute inset-0 bg-gradient-to-r from-[#00ffff] via-[#0099ff] to-[#a855f7] bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {item.name}
+          </span>
+          <div class="absolute -bottom-2 left-0 w-0 h-1 bg-gradient-to-r from-[#00ffff] to-[#a855f7] group-hover:w-full transition-all duration-500 rounded-full shadow-[0_0_20px_rgba(0,255,255,0.5)]"></div>
+        </a>
+      ))}
+      
+      <button class="mobile-link mt-8 relative px-10 py-4 bg-gradient-to-r from-[#0099ff] to-[#a855f7] text-white text-lg font-bold rounded-full opacity-0 translate-y-10 transition-all duration-700 overflow-hidden group" style="transition-delay: 400ms">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#a855f7] to-[#0099ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <span class="relative z-10 flex items-center gap-2">
+          Iniciar Proyecto
+          <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </span>
+        <div class="absolute inset-0 rounded-full blur-2xl bg-gradient-to-r from-[#0099ff] to-[#a855f7] opacity-50 group-hover:opacity-75 transition-opacity duration-300 -z-10"></div>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.05); }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+
+
+
+  .nav-item {
+    animation: fade-in-up 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .menu-open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: scale(1) !important;
+  }
+
+  .menu-open .mobile-link {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .icon-active #line-1 {
+    transform: translateY(5px) rotate(45deg);
+    width: 24px;
+    background: linear-gradient(to right, #00ffff, #a855f7);
+  }
+  
+  .icon-active #line-2 {
+    transform: translateY(-3px) rotate(-45deg);
+    width: 24px;
+    background: linear-gradient(to right, #a855f7, #00ffff);
+  }
+
+  .is-scrolled {
+    background: rgba(2, 2, 5, 0.85) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(0, 229, 255, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                0 0 0 1px rgba(0, 229, 255, 0.1) inset !important;
+  }
+
+  @media (max-width: 768px) {
+    .is-scrolled {
+      padding: 0.75rem 1rem !important;
+    }
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const container = document.getElementById('header-container');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  let isOpen = false;
+
+  function toggle() {
+    isOpen = !isOpen;
+    mobileMenu?.classList.toggle('menu-open', isOpen);
+    mobileToggle?.classList.toggle('icon-active', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  mobileToggle?.addEventListener('click', toggle);
+  mobileLinks.forEach(link => link.addEventListener('click', toggle));
+
+  // Scroll logic con animación suave
+  let lastScroll = 0;
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    lastScroll = window.scrollY;
+    
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (lastScroll > 50) {
+          container?.classList.add('is-scrolled');
+        } else {
+          container?.classList.remove('is-scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+</script>
