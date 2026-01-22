@@ -14,7 +14,6 @@ export const FloatingCube = ({ mousePosition }: { mousePosition: { x: number, y:
   const isMobile = viewport.width < 5;
 
   const geometries = useMemo(() => {
-    // El cubo base es de 1x1x1
     const roundedBoxGeometry = new THREE.BoxGeometry(1, 1, 1, 32, 32, 32);
     const positionAttribute = roundedBoxGeometry.attributes.position;
     const vertex = new THREE.Vector3();
@@ -48,34 +47,71 @@ export const FloatingCube = ({ mousePosition }: { mousePosition: { x: number, y:
     return { roundedBox: roundedBoxGeometry };
   }, []);
 
+  // --- ANIMACIÓN ORIGINAL DE ENTRADA (Cálculo de progreso) ---
   useEffect(() => {
     let startTime = Date.now();
     const animate = () => {
       const elapsed = Date.now() - startTime - 400;
       const progress = Math.min(Math.max(elapsed / 1800, 0), 1);
+      // Easing function para suavidad
       setAnimProgress(progress < 0.5 ? 4 * progress ** 3 : 1 - Math.pow(-2 * progress + 2, 3) / 2);
       if (progress < 1) requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
   }, []);
 
+  // --- ANIMACIÓN ORIGINAL DE OPACIDAD (Inyección en materiales) ---
+  useEffect(() => {
+    if (groupRef.current) {
+      groupRef.current.traverse((child) => {
+        if (child instanceof THREE.Mesh && child.material) {
+          const mat = child.material as any;
+          if (mat.transparent !== undefined) {
+            // Mantiene el balance de opacidad original de cada material
+            mat.opacity = (mat.opacity || 1) * animProgress;
+          }
+        }
+      });
+    }
+  }, [animProgress]);
+
   useFrame((state) => {
     const t = state.clock.elapsedTime;
+    
     if (groupRef.current) {
+      // Escala de entrada original
       groupRef.current.scale.setScalar(0.3 + animProgress * 0.7);
+      
+      // Rotación de entrada (giro sobre eje Y mientras aparece)
+      if (animProgress < 1) {
+        groupRef.current.rotation.y = (1 - animProgress) * Math.PI * 2;
+      }
     }
+
     if (meshRef.current) {
-      meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, mousePosition.y * 0.3 * animProgress + Math.sin(t * 0.2) * 0.1, 0.05);
-      meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, mousePosition.x * 0.3 * animProgress + t * 0.12, 0.05);
+      // Movimiento suave con mouse lerp
+      meshRef.current.rotation.x = THREE.MathUtils.lerp(
+        meshRef.current.rotation.x, 
+        mousePosition.y * 0.3 * animProgress + Math.sin(t * 0.2) * 0.1, 
+        0.05
+      );
+      meshRef.current.rotation.y = THREE.MathUtils.lerp(
+        meshRef.current.rotation.y, 
+        mousePosition.x * 0.3 * animProgress + t * 0.12, 
+        0.05
+      );
     }
+
     if (innerMeshRef.current) {
       const speed = 0.3 + animProgress * 0.7;
       innerMeshRef.current.rotation.x = t * 0.7 * speed;
       innerMeshRef.current.rotation.y = t * 0.5 * speed;
     }
+
     if (glowRef.current) {
       const pulse = Math.sin(t * 2) * 0.1 + 1.2;
-      glowRef.current.scale.setScalar(pulse * (animProgress < 1 ? 1 + (1 - animProgress) * 0.5 : 1));
+      const entrancePulse = animProgress < 1 ? 1 + (1 - animProgress) * 0.5 : 1;
+      glowRef.current.scale.setScalar(pulse * entrancePulse);
     }
   });
 
@@ -84,27 +120,39 @@ export const FloatingCube = ({ mousePosition }: { mousePosition: { x: number, y:
   return (
     <Float speed={1.5} rotationIntensity={0.8 * animProgress} floatIntensity={1.5 * animProgress}>
       <group ref={groupRef}>
-        {/* BRILLO (Glow): Reducido un 20% (antes 2.8 -> ahora 2.24) */}
+        {/* BRILLO */}
         <mesh ref={glowRef} scale={isMobile ? 1.2 : 2.24}>
           <sphereGeometry args={[1, 32, 32]} />
-          <meshBasicMaterial color="#00ffff" transparent opacity={0.05 * baseOpacity} blending={THREE.AdditiveBlending} side={THREE.BackSide} />
+          <meshBasicMaterial 
+            color="#00ffff" 
+            transparent 
+            opacity={0.05 * baseOpacity} 
+            blending={THREE.AdditiveBlending} 
+            side={THREE.BackSide} 
+          />
         </mesh>
 
-        {/* CUBO PRINCIPAL: Reducido un 20% (antes 2.2 -> ahora 1.76) */}
-        <mesh ref={meshRef} scale={isMobile ? 0.88 : 1.76}>
+        {/* CUBO PRINCIPAL */}
+        <mesh ref={meshRef} scale={isMobile ? 0.88 : 2.85}>
           <primitive object={geometries.roundedBox} />
           <MeshTransmissionMaterial
             backside samples={10} resolution={512} transmission={0.98} roughness={0.05} 
             thickness={1.2} ior={1.8} chromaticAberration={1.5} anisotropy={1} distortion={0.5} color="#ffffff"
           />
+          {/* Núcleo interno */}
           <mesh ref={innerMeshRef} scale={0.4}>
             <icosahedronGeometry args={[1, 1]} />
-            <meshPhysicalMaterial color="#6000ff" emissive="#00e5ff" emissiveIntensity={2 * animProgress} metalness={1} roughness={0} iridescence={1} iridescenceIOR={2.8} />
+            <meshPhysicalMaterial 
+               color="#6000ff" 
+               emissive="#00e5ff" 
+               emissiveIntensity={2 * animProgress} 
+               metalness={1} 
+               roughness={0} 
+            />
           </mesh>
         </mesh>
 
-        {/* --- SISTEMA DE PARTÍCULAS --- */}
-        {/* Destellos Rainbow: Escala reducida a 0.11 (10% menos de 0.12 aproximado) */}
+        {/* --- PARTÍCULAS --- */}
         {Array.from({ length: 12 }).map((_, i) => (
           <mesh 
             key={`flare-${i}`}
@@ -123,7 +171,6 @@ export const FloatingCube = ({ mousePosition }: { mousePosition: { x: number, y:
           </mesh>
         ))}
 
-        {/* Partículas orbitantes: Escala inicial de 0.1 reducida a 0.09 (10% menos) */}
         {Array.from({ length: 8 }).map((_, i) => {
           const pProgress = Math.max(0, Math.min(1, (animProgress - (i * 0.05)) / (1 - (i * 0.05))));
           return (

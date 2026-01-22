@@ -72,3 +72,21 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* global.css */
+canvas {
+  /* Evita que el navegador intente capturar gestos de scroll sobre el canvas */
+  touch-action: pan-y; 
+  pointer-events: none;
+}
+
+body {
+  /* Mejora la fluidez del scroll en iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+#hero-3d-container {
+  /* Evita recalculado de layout durante el scroll */
+  will-change: transform;
+  contain: strict;
+}

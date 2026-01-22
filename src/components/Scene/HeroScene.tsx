@@ -84,7 +84,7 @@ export const HeroSceneDesk = () => {
       <Canvas 
         // Configuración optimizada solo para Desktop
         camera={{ 
-          position: [-2, 0, 5], 
+          position: [-2, -5, 5], 
           fov: 45 
         }} 
         gl={{ 
@@ -97,7 +97,7 @@ export const HeroSceneDesk = () => {
         <Suspense fallback={null}>
           <StarField />
           
-          <group position={[-1, 1, 0]}> 
+          <group position={[-2, -1, 0]}> 
             <FloatingCube mousePosition={mousePosition} />
           </group>
           

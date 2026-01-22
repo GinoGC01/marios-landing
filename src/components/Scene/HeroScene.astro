@@ -1,13 +1,12 @@
 ---
 ---
-<div id="star-container" class="absolute inset-0 z-0 bg-[#020205] overflow-hidden">
+<div id="star-container" class="absolute inset-0 z-0 bg-[#020205] overflow-hidden pointer-events-none">
   <canvas id="star-canvas" class="w-full h-full opacity-0 transition-opacity duration-1000"></canvas>
   <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#020205] pointer-events-none"></div>
 </div>
 
 <script>
   function initStars() {
-    // Solo ejecutamos en móviles/tablets para no duplicar con el de React en Desktop
     if (window.innerWidth >= 1024) return;
 
     const canvas = document.getElementById('star-canvas') as HTMLCanvasElement;

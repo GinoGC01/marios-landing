@@ -18,21 +18,30 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="relative bg-[#020205] text-white selection:bg-[#00ffff]/30 overflow-x-hidden">
+  <body class="bg-[#020205] text-white overflow-x-hidden antialiased relative">
 
-    <HeroSceneMob />
-    <HeroSceneDesk client:idle />
+    <div class="absolute w-full h-full bg-[#000000]/30 backdrop-blur-[2px] z-100"></div>
+    
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      
+      <div class="hidden lg:block h-full w-full">
+        <HeroSceneDesk client:only="react" />
+      </div>
+
+      <div class="block lg:hidden h-full w-full">
+        <HeroSceneMob />
+      </div>
+    </div>
 
     <Header />
     
       <slot />
+
   </body>
 </html>
