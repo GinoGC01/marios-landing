@@ -43,6 +43,10 @@ body {
   animation: heroReveal 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
+.bg-background{
+  background: linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(0 0% 2%) 100%);
+}
+
 /* Corregimos el gradiente para evitar errores de @apply */
 .text-gradient {
   background-image: linear-gradient(
@@ -57,6 +61,10 @@ body {
   background-clip: text;
   color: transparent;
   animation: shine 5s linear infinite;
+}
+
+.font-icons{
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
 }
 
 /* Corregimos el radial gradient eliminando variables internas de TW v3 */

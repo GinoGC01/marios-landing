@@ -47,7 +47,7 @@ export const FloatingCube = ({ mousePosition }: { mousePosition: { x: number, y:
     return { roundedBox: roundedBoxGeometry };
   }, []);
 
-  // --- ANIMACIÓN ORIGINAL DE ENTRADA (Cálculo de progreso) ---
+  // --- ANIMACIÓN DE ENTRADA---
   useEffect(() => {
     let startTime = Date.now();
     const animate = () => {
@@ -60,14 +60,13 @@ export const FloatingCube = ({ mousePosition }: { mousePosition: { x: number, y:
     requestAnimationFrame(animate);
   }, []);
 
-  // --- ANIMACIÓN ORIGINAL DE OPACIDAD (Inyección en materiales) ---
+  // --- ANIMACIÓN DE OPACIDAD---
   useEffect(() => {
     if (groupRef.current) {
       groupRef.current.traverse((child) => {
         if (child instanceof THREE.Mesh && child.material) {
           const mat = child.material as any;
           if (mat.transparent !== undefined) {
-            // Mantiene el balance de opacidad original de cada material
             mat.opacity = (mat.opacity || 1) * animProgress;
           }
         }

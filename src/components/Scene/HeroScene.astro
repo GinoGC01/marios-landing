@@ -15,7 +15,7 @@
 
     let width: number, height: number;
     let stars: Star[] = [];
-    const starCount = 100; // Podemos poner más porque el Canvas 2D es muy liviano
+    const starCount = 100;
 
     class Star {
       x: number = 0; y: number = 0; z: number = 0; px: number = 0; py: number = 0;
@@ -46,7 +46,6 @@
         const opacity = Math.min(1, (width - this.z) / width);
         ctx!.fillStyle = `rgba(0, 255, 255, ${opacity * 0.6})`; // Color Cian
         
-        // Dibujamos la estrella
         const size = (1 - this.z / width) * 2.5;
         ctx!.beginPath();
         ctx!.arc(this.px, this.py, size, 0, Math.PI * 2);
@@ -65,7 +64,7 @@
     }
 
     function animate() {
-      ctx!.fillStyle = '#020205'; // Limpiamos el fondo
+      ctx!.fillStyle = '#020205'; 
       ctx!.fillRect(0, 0, width, height);
 
       stars.forEach(star => {
@@ -80,10 +79,8 @@
     resize();
     animate();
     
-    // Fade in suave una vez que empieza la animación
     canvas.classList.remove('opacity-0');
   }
 
-  // Ejecutamos al cargar la página
   window.addEventListener('load', initStars);
 </script>

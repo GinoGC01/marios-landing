@@ -70,7 +70,6 @@ export const HeroContent = () => {
         <Sparkles className="w-3.5 h-3.5 text-[#00E5FF] group-hover:rotate-12 transition-transform" />
       </motion.div>
 
-      {/* Título principal con efectos */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -85,7 +84,6 @@ export const HeroContent = () => {
             <span className="relative inline-block bg-gradient-to-r from-[#00E5FF] via-[#0099ff] to-[#a855f7] bg-clip-text text-transparent animate-gradient">
               Es tu Máquina de Ventas.
             </span>
-            {/* Efecto de brillo debajo del texto */}
             <motion.div
               className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00E5FF]/50 to-transparent blur-sm"
               animate={{
@@ -101,7 +99,6 @@ export const HeroContent = () => {
         </h1>
       </motion.div>
 
-      {/* Subtítulo mejorado */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -112,14 +109,12 @@ export const HeroContent = () => {
         <span className="text-[#00E5FF]">SEO técnico</span>, <span className="text-[#a855f7]">IA integrada</span> y velocidad de carga perfecta.
       </motion.p>
 
-      {/* CTAs con efectos avanzados */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 sm:mb-20 px-4"
       >
-        {/* CTA Principal */}
         <motion.a
           href="/contacto"
           className="group relative px-8 py-4 bg-gradient-to-r from-[#0099ff] to-[#a855f7] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,153,255,0.6)] w-full sm:w-auto"
@@ -142,7 +137,6 @@ export const HeroContent = () => {
           </span>
         </motion.a>
 
-        {/* CTA Secundario */}
         <motion.a
           href="/demo"
           className="group px-8 py-4 border-2 border-[#00E5FF]/30 text-white font-semibold rounded-full hover:bg-[#00E5FF]/10 hover:border-[#00E5FF] transition-all duration-300 w-full sm:w-auto"
@@ -156,7 +150,6 @@ export const HeroContent = () => {
         </motion.a>
       </motion.div>
 
-      {/* Stats con diseño mejorado */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -172,36 +165,29 @@ export const HeroContent = () => {
             whileHover={{ y: -5, scale: 1.05 }}
             className="relative group"
           >
-            {/* Fondo con efecto glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-[#0099ff]/10 to-[#a855f7]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
-            {/* Contenido */}
             <div className="relative bg-gradient-to-br from-white/5 to-white/[0.02] rounded-2xl p-6 border border-white/10 group-hover:border-[#00E5FF]/50 transition-all duration-300">
-              {/* Icono */}
               <div className="mb-3 flex justify-center">
                 <div className="p-2 bg-gradient-to-br from-[#0099ff]/20 to-[#a855f7]/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
                   <stat.icon className="w-5 h-5 text-[#00E5FF]" />
                 </div>
               </div>
               
-              {/* Número animado */}
               <div className="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </div>
               
-              {/* Label */}
               <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-medium">
                 {stat.label}
               </div>
 
-              {/* Línea decorativa */}
               <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00E5FF]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Indicador de scroll */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

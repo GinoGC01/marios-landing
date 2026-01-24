@@ -1,0 +1,90 @@
+---
+// Footer.astro
+---
+
+<footer class="relative border-t border-white/5 bg-black/50 backdrop-blur-xl z-500">
+  <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30"></div>
+
+  <div class="container relative z-10 mx-auto px-6 py-16">
+    <div class="grid gap-12 md:grid-cols-4">
+      
+      <div class="md:col-span-2">
+        <a href="/" class="inline-flex items-center gap-3 mb-6 group">
+          <div class="h-10 w-10 rounded-xl bg-[var(--color-cyan-glow)] flex items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.3)] transition-transform group-hover:scale-110">
+            <span class="font-icons text-xl font-bold text-[#020205]">M</span>
+          </div>
+          <span class="font-icons text-xl font-semibold text-white">
+            Mario's<span class="text-gradient">Agency</span>
+          </span>
+        </a>
+        <p class="text-white/60 max-w-md mb-6 leading-relaxed">
+          Transformamos emprendimientos en máquinas de ventas digitales. 
+          Tecnología de punta, diseño futurista, resultados extraordinarios.
+        </p>
+        
+        <div class="flex gap-4">
+          {['Instagram', 'Linkedin', 'Twitter', 'Mail'].map((social) => (
+            <a 
+              href="#" 
+              aria-label={social}
+              class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all duration-300 hover:border-[var(--color-cyan-glow)] hover:text-[var(--color-cyan-glow)] hover:shadow-[0_0_20px_rgba(0,229,255,0.2)] hover:-translate-y-1"
+            >
+              <div class="w-5 h-5 bg-current opacity-80" style="mask-image: radial-gradient(circle, black 100%, transparent 100%);"></div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-icons font-semibold text-white mb-6 uppercase tracking-wider text-sm">Navegación</h4>
+        <ul class="space-y-3">
+          {['Inicio', 'Servicios', 'Planes', 'Tecnología', 'Contacto'].map((item) => (
+            <li>
+              <a
+                href={item === 'Inicio' ? '/' : `/${item.toLowerCase()}`}
+                class="text-white/50 transition-all duration-300 hover:text-[var(--color-cyan-glow)] hover:translate-x-1 inline-block"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-icons font-semibold text-white mb-6 uppercase tracking-wider text-sm">Contacto</h4>
+        <ul class="space-y-4 text-white/50">
+          <li class="flex items-center gap-3">
+            <span class="text-sm">hola@mariosagency.com</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-sm">+52 (55) 1234 5678</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <span class="text-sm">Ciudad de México, MX</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
+      <p class="text-sm text-white/40">
+        © 2026 Mario's Agency. Todos los derechos reservados.
+      </p>
+      <div class="flex gap-6 text-sm">
+        <a href="#" class="text-white/40 hover:text-[var(--color-cyan-glow)] transition-colors">Privacidad</a>
+        <a href="#" class="text-white/40 hover:text-[var(--color-cyan-glow)] transition-colors">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Aquí solo dejamos lo que NO es de Tailwind 
+     o lo que depende de tus variables CSS puras.
+  */
+  .text-gradient {
+    /* Esta clase ya está animada en tu global.css */
+    display: inline-block;
+  }
+</style>

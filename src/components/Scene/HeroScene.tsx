@@ -51,13 +51,12 @@ export const HeroSceneDesk = () => {
   const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
-    // 1. Verificar si es Desktop (>= 1024px)
+    // mobile
     const checkViewport = () => {
       setShouldRender(window.innerWidth >= 1024);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Solo calculamos el mouse si el componente está activo
       if (window.innerWidth >= 1024) {
         setMousePosition({
           x: (e.clientX / window.innerWidth) * 2 - 1,
@@ -108,7 +107,6 @@ export const HeroSceneDesk = () => {
         </Suspense>
       </Canvas>
 
-      {/* Gradientes originales */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#020205] pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-r from-[#020205]/20 via-transparent to-transparent pointer-events-none" />
     </div>
