@@ -1,7 +1,7 @@
 ---
 const navItems = [
   { name: 'Inicio', href: '#', active: true },
-  { name: 'Servicios', href: '#servicios' },
+  { name: 'Servicios', href: '/services' },
   { name: 'Planes', href: '#planes' },
   { name: 'Tecnología', href: '#tech' },
   { name: 'Contacto', href: '#contacto' },
@@ -13,7 +13,6 @@ const navItems = [
     <div id="header-container" class="relative w-full flex justify-between items-center px-4 md:px-8 py-3 md:py-4 rounded-2xl md:rounded-full transition-all duration-500 bg-black/40 backdrop-blur-sm border border-white/5">
 
 
-      <!-- Logo con efecto glow -->
       <div class="flex items-center gap-3 z-[1001] group cursor-pointer">
         <div class="relative w-10 h-10 md:w-12 md:h-12">
           <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff] via-[#3b82f6] to-[#a855f7] rounded-xl md:rounded-2xl blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -27,7 +26,6 @@ const navItems = [
         </div>
       </div>
 
-      <!-- Desktop Navigation -->
       <nav class="hidden md:block">
         <ul class="flex gap-8 lg:gap-10 items-center">
           {navItems.map((item, i) => (
@@ -48,7 +46,6 @@ const navItems = [
         </ul>
       </nav>
 
-      <!-- CTA Button Desktop -->
       <div class="hidden md:block">
         <button class="relative px-6 lg:px-8 py-2.5 lg:py-3 text-white text-xs lg:text-sm font-bold rounded-full overflow-hidden group">
           <div class="absolute inset-0 bg-gradient-to-r from-[#0099ff] via-[#00d4ff] to-[#a855f7] opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
@@ -63,7 +60,6 @@ const navItems = [
         </button>
       </div>
 
-      <!-- Mobile Toggle -->
       <button id="mobile-toggle" class="md:hidden relative w-10 h-10 z-[1001] flex items-center justify-center group">
         <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff]/20 to-[#a855f7]/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="flex flex-col gap-1.5 items-end relative">
@@ -75,22 +71,18 @@ const navItems = [
     </div>
   </div>
 
-  <!-- Mobile Menu Mejorado -->
   <div id="mobile-menu" class="fixed inset-0 bg-gradient-to-br from-[#020205] via-[#0a0a0f] to-[#020205] flex flex-col items-center justify-center transition-all duration-700 ease-out opacity-0 pointer-events-none scale-95 z-[998]">
     
-    <!-- Efectos de fondo -->
     <div class="absolute inset-0 overflow-hidden">
       <div class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse-slow"></div>
       <div class="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 1s"></div>
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px] animate-pulse-slow" style="animation-delay: 0.5s"></div>
     </div>
 
-    <!-- Grid animado de fondo -->
     <div class="absolute inset-0 opacity-10">
       <div class="absolute inset-0" style="background-image: linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
     </div>
 
-    <!-- Contenido del menú -->
     <nav class="relative flex flex-col items-center gap-6 px-8">
       {navItems.map((item, i) => (
         <a 
