@@ -1,0 +1,211 @@
+<canvas id="nanoSpace"></canvas>
+
+<script>
+(() => {
+  const canvas = document.getElementById("nanoSpace") as HTMLCanvasElement;
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d")!;
+  let w: number, h: number, cx: number, cy: number;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    cx = w / 2;
+    cy = h / 2;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  /* ===========================
+     CONFIG PRO
+  =========================== */
+  const isMobile = window.innerWidth < 768;
+
+  const STAR_3D_COUNT = isMobile ? 120 : 260;
+  const NODE_COUNT = isMobile ? 0 : 350;
+
+  const LINK_DISTANCE = isMobile ? 80 : 120;
+  const MOUSE_RADIUS = 140;
+
+  const FPS_TARGET = isMobile ? 45 : 60;
+  const FRAME_TIME = 1000 / FPS_TARGET;
+
+  const mouse = { x: -9999, y: -9999 };
+
+  window.addEventListener("mousemove", e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+  window.addEventListener("mouseleave", () => {
+    mouse.x = mouse.y = -9999;
+  });
+
+  /* ===========================
+     STARFIELD 3D — PARTÍCULAS QUE ATRAVIESAN
+  =========================== */
+  class Star3D {
+    x: number = 0;
+    y: number = 0;
+    z: number = 0;
+    size: number = 0;
+    hue: number = 0;
+
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = (Math.random() - 0.5) * w;
+      this.y = (Math.random() - 0.5) * h;
+      this.z = Math.random() * w;
+      this.size = 0.2 + Math.random() * 0.9;
+      this.hue = 200 + Math.random() * 60; // azules / violetas
+    }
+
+    update() {
+      this.z -= 2.6;
+      if (this.z <= 0) this.reset();
+    }
+
+    draw() {
+      const scale = 380 / this.z;
+      const x2d = cx + this.x * scale;
+      const y2d = cy + this.y * scale;
+
+      const depth = 1 - this.z / w;
+      const alpha = Math.min(1, depth * 1.4);
+      const r = depth * 1;
+
+      // Halo (brillo)
+      const gradient = ctx.createRadialGradient(
+        x2d, y2d, 0,
+        x2d, y2d, r * 3
+      );
+      gradient.addColorStop(0, `hsla(${this.hue},100%,85%,${alpha})`);
+      gradient.addColorStop(1, `hsla(${this.hue},100%,60%,0)`);
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(x2d, y2d, r * 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Núcleo
+      ctx.fillStyle = `hsla(${this.hue},100%,90%,${alpha})`;
+      ctx.beginPath();
+      ctx.arc(x2d, y2d, r * 1.2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  /* ===========================
+     NODES — NANOTECNOLOGÍA ENTRELAZADA
+  =========================== */
+  const nodes = Array.from({ length: NODE_COUNT }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
+    influence: 0
+  }));
+
+ function drawNodes() {
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
+
+    // Movimiento base
+    n.x += n.vx;
+    n.y += n.vy;
+
+    // Interacción sutil con mouse
+    const dx = mouse.x - n.x;
+    const dy = mouse.y - n.y;
+    const dist = Math.hypot(dx, dy);
+
+    let targetInfluence = 0;
+
+    if (dist < MOUSE_RADIUS) {
+      const f = 1 - dist / MOUSE_RADIUS;
+      n.x += dx * f * 0.015;
+      n.y += dy * f * 0.015;
+      targetInfluence = 1; // máximo al acercarse
+    }
+
+    // Suavizado de influencia
+    n.influence += (targetInfluence - n.influence) * 0.12;
+
+    // Wrap
+    if (n.x < 0) n.x = w;
+    if (n.x > w) n.x = 0;
+    if (n.y < 0) n.y = h;
+    if (n.y > h) n.y = 0;
+
+    // Color base (violeta) → verde
+    const r = 180 - n.influence * 130;
+    const g = 140 + n.influence * 115;
+    const b = 255 - n.influence * 135;
+
+    // Opacidad: 0.1 normal → 1 al acercarse
+    const alphaNode = 0.1 + n.influence * 0.9;
+
+    // Nodo
+    ctx.fillStyle = `rgba(${r|0},${g|0},${b|0},${alphaNode})`;
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, 1.3, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Conexiones
+    for (let j = i + 1; j < nodes.length; j++) {
+      const m = nodes[j];
+      const d = Math.hypot(n.x - m.x, n.y - m.y);
+
+      if (d < LINK_DISTANCE) {
+        const linkAlpha =
+          (1 - d / LINK_DISTANCE) *
+          (0.1 + n.influence * 0.9);
+
+        ctx.strokeStyle = `rgba(${r|0},${g|0},${b|0},${linkAlpha})`;
+        ctx.lineWidth = 0.45;
+        ctx.beginPath();
+        ctx.moveTo(n.x, n.y);
+        ctx.lineTo(m.x, m.y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+
+  /* ===========================
+     LOOP
+  =========================== */
+  const stars = Array.from({ length: STAR_3D_COUNT }, () => new Star3D());
+  let last = 0;
+
+  function animate(t = 0) {
+    if (t - last < FRAME_TIME) {
+      requestAnimationFrame(animate);
+      return;
+    }
+    last = t;
+
+    ctx.fillStyle = "#020205";
+    ctx.fillRect(0, 0, w, h);
+
+    stars.forEach(s => { s.update(); s.draw(); });
+    drawNodes();
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+</script>
+
+<style>
+#nanoSpace {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at center, #050510 0%, #000 70%);
+}
+</style>
