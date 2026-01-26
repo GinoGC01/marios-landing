@@ -74,27 +74,28 @@ const plans = [
 ---
 
 <Layout title="Planes y Precios">
-  <section class="relative pt-32 pb-20 overflow-hidden z-500">
+  <section class="relative pt-32 pb-20 overflow-hidden z-500" data-animate-section>
     <div class="container mx-auto px-6 text-center">
-      <span class="text-cyan-400 font-icons uppercase tracking-[0.3em] text-xs mb-4 block">
+      <span class="text-cyan-400 font-icons uppercase tracking-[0.3em] text-xs mb-4 block animate-on-scroll" data-animation="fade-in-down">
         PLANES
       </span>
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tighter text-white">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tighter text-white animate-on-scroll" data-animation="fade-in-up" data-delay="100">
         Invierte en tu <span class="text-gradient">Crecimiento</span>
       </h1>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto font-icons">
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto font-icons animate-on-scroll" data-animation="fade-in-up" data-delay="200">
         Elige el plan que mejor se adapte a tus objetivos. Todos incluyen<br/>garantía de satisfacción.
       </p>
     </div>
   </section>
 
-  <section class="relative pb-32 z-500">
+  <section class="relative pb-32 z-500" data-animate-section>
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {plans.map((plan, index) => (
           <div 
-            class="relative flex flex-col scroll-reveal opacity-0 translate-y-10 transition-all duration-1000 ease-out"
-            style={`transition-delay: ${index * 200}ms`}
+            class="relative flex flex-col animate-on-scroll"
+            data-animation="fade-in-up"
+            data-delay={index * 200}
           >
             {/* Badge Superior */}
             {plan.popular && (
@@ -109,7 +110,7 @@ const plans = [
             {plan.premium && (
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-500 px-4 py-1.5 text-[10px] font-bold text-black tracking-wide">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m2 4 3 12h14l3-12-6 7-4 7-4-7-6-7zm3 16h14"/></svg>
                   Premium
                 </span>
               </div>
@@ -217,10 +218,10 @@ const plans = [
     </div>
   </section>
 
-  <section class="relative py-24 border-t border-white/5 overflow-hidden z-500">
+  <section class="relative py-24 border-t border-white/5 overflow-hidden z-500" data-animate-section>
     <div class="absolute inset-0 bg-radial-at-c opacity-30"></div>
     <div class="container mx-auto px-6 text-center relative z-10">
-      <div class="max-w-3xl mx-auto p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl">
+      <div class="max-w-3xl mx-auto p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl animate-on-scroll" data-animation="scale-in" data-delay="200">
         <div class="text-6xl mb-8 filter drop-shadow-[0_0_15px_#00ffff44]">🛡️</div>
         <h3 class="text-3xl font-bold mb-6 text-white tracking-tight">
           Garantía de Satisfacción <span class="text-[#00ffff]">30 Días</span>
@@ -233,15 +234,59 @@ const plans = [
   </section>
 </Layout>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove('opacity-0', 'translate-y-10');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+<style>
+  /* Ocultar elementos antes de animar */
+  .animate-on-scroll {
+    opacity: 0;
+  }
 
-  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+  /* Elementos visibles después de animar */
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Intersection Observer para activar animaciones solo cuando las secciones son visibles
+  function initScrollAnimations() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animar todos los elementos dentro de la sección
+          const animatedElements = entry.target.querySelectorAll('.animate-on-scroll');
+          
+          animatedElements.forEach((el) => {
+            const animationType = el.getAttribute('data-animation');
+            const delay = el.getAttribute('data-delay') || '0';
+            
+            // Aplicar delay y clase de animación
+            setTimeout(() => {
+              el.classList.add(`animate-${animationType}`);
+              el.classList.add('is-visible');
+            }, parseInt(delay));
+          });
+
+          // Dejar de observar esta sección
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observar todas las secciones con animaciones
+    const sections = document.querySelectorAll('[data-animate-section]');
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  }
+
+  // Ejecutar en carga inicial
+  document.addEventListener('DOMContentLoaded', initScrollAnimations);
+  
+  // Ejecutar en navegación de Astro
+  document.addEventListener('astro:page-load', initScrollAnimations);
 </script>
