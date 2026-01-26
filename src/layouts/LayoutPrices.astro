@@ -1,0 +1,52 @@
+---
+// Layout.astro
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+
+// import { HeroSceneDesk } from '../components/Scene/HeroScene.tsx';
+import { HeroSceneDesk } from '../components/Scene/HeroSceneDollar';
+import HeroSceneMob from '../components/Scene/HeroScene.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = 'Tu Máquina de Ventas | Ingeniería Digital',
+  description = 'SEO técnico, IA y desarrollo de alto rendimiento.'
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <title>{title}</title>
+  </head>
+  <body class="bg-[#020205] text-white overflow-x-hidden antialiased relative">
+
+    <div class="absolute w-full h-full bg-[#000000]/30 backdrop-blur-[2px] z-100"></div>
+    
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      
+      <div class="hidden lg:block h-full w-full">
+        <HeroSceneDesk client:only="react" />
+      </div>
+
+      <div class="block lg:hidden h-full w-full">
+        <HeroSceneMob />
+      </div>
+    </div>
+
+    <Header />
+    
+      <slot />
+    <Footer/> 
+  </body>
+</html>
