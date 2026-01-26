@@ -1,11 +1,14 @@
 ---
+const pathname = Astro.url.pathname;
+
 const navItems = [
-  { name: 'Inicio', href: '#', active: true },
-  { name: 'Servicios', href: '/services' },
-  { name: 'Planes', href: '#planes' },
-  { name: 'Tecnología', href: '#tech' },
-  { name: 'Contacto', href: '#contacto' },
+  { name: 'Inicio', href: '/', active: pathname === '/' },
+  { name: 'Servicios', href: '/services', active: pathname === '/services' },
+  { name: 'Planes', href: '/plans', active: pathname === '/plans' },
+  { name: 'Tecnología', href: '/tech', active: pathname === '/tech' },
+  { name: 'Contacto', href: '/contact', active: pathname === '/contact' },
 ];
+
 ---
 
 <header id="main-header" class="fixed top-0 left-0 w-full z-700 transition-all duration-700">

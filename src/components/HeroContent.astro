@@ -6,14 +6,8 @@ const stats = [
 ];
 ---
 
-<div id="hero-content" class="relative z-10 container mx-auto px-4 sm:px-6 text-center pt-32 md:pt-40 pb-20">
+<div id="hero-content" class="relative z-500 container mx-auto px-4 sm:px-6 text-center pt-32 md:pt-40 pb-20 md:my-10">
   
-  <!-- Efectos de fondo interactivos -->
-  <div id="bg-effect" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none transition-transform duration-300">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0099ff]/20 to-[#a855f7]/20 rounded-full blur-[120px] animate-pulse-slow"></div>
-  </div>
-
-
   <div class="hero-title mb-6 relative opacity-0">
     <h1 class="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tight">
       <span class="block text-white mb-2">
@@ -68,14 +62,14 @@ const stats = [
   <div class="hero-stats grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto px-4 opacity-0">
     {stats.map((stat, i) => (
       <div 
-        class="stat-card relative group"
+        class="stat-card relative group "
         data-delay={i * 100}
       >
         <!-- Fondo con efecto glow -->
         <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff]/10 to-[#a855f7]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         
         <!-- Contenido -->
-        <div class="relative bg-gradient-to-br from-white/5 to-white/[0.02] rounded-2xl p-6 border border-white/10 group-hover:border-[#00E5FF]/50 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105">
+        <div class="relative  rounded-2xl p-6 border border-white/10 group-hover:border-[#00E5FF]/50 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 backdrop-blur-[5px] bg-[#000000]/20">
           <!-- Icono -->
           <div class="mb-3 flex justify-center">
             <div class="p-2 bg-gradient-to-br from-[#0099ff]/20 to-[#a855f7]/20 rounded-lg group-hover:scale-110 transition-transform duration-300">

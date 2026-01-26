@@ -1,7 +1,6 @@
 ---
 // src/pages/planes.astro
 import Layout from '../layouts/Layout.astro';
-import LayoutPrices from '../layouts/LayoutPrices.astro';
 
 const WHATSAPP_NUMBER = "521234567890"; // Reemplaza con tu número real
 
@@ -74,7 +73,7 @@ const plans = [
 ];
 ---
 
-<LayoutPrices title="Planes y Precios">
+<Layout title="Planes y Precios">
   <section class="relative pt-32 pb-20 overflow-hidden z-500">
     <div class="container mx-auto px-6 text-center">
       <span class="text-cyan-400 font-icons uppercase tracking-[0.3em] text-xs mb-4 block">
@@ -232,7 +231,7 @@ const plans = [
       </div>
     </div>
   </section>
-</LayoutPrices>
+</Layout>
 
 <script>
   const observer = new IntersectionObserver((entries) => {

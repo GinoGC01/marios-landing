@@ -29,20 +29,9 @@ const {
     <title>{title}</title>
   </head>
   <body class="bg-[#020205] text-white overflow-x-hidden antialiased relative">
-
-    <div class="absolute w-full h-full  backdrop-blur-[1px] z-100 hidden md:block "></div>
-    
-    <div class="fixed inset-0 z-0 pointer-events-none">
-      
-      <HeroSceneCanvas/>
-
-      <!-- <div class="block lg:hidden h-full w-full">
-        <HeroSceneMob />
-      </div> -->
-    </div>
-
+    <div class="absolute w-full h-full backdrop-blur-[1px] z-100 hidden md:block "></div>
+    <HeroSceneCanvas/>
     <Header />
-    
       <slot />
     <Footer/> 
   </body>
