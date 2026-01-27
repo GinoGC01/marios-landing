@@ -4,8 +4,10 @@
 :root {
   /* Definimos los colores del diseño para usarlos en todo el proyecto */
   --color-cyan-glow: #00ffff;
+  --color-purple-glow-full: #6f00ff;
   --color-purple-glow: #6f00ff5d;
   --color-pink-glow: #7c1d7c44;
+  --color-pink-glow-full: #7c1d7c;
   --color-bg-dark: #020205;
   --background-dark: var(--color-bg-dark);
 }
@@ -210,8 +212,8 @@ body {
   background-image: linear-gradient(
     to right, 
     var(--color-cyan-glow), 
-    var(--color-purple-glow), 
-    var(--color-pink-glow),
+    var(--color-purple-glow-full), 
+    var(--color-pink-glow-full),
     var(--color-cyan-glow) /* Repetimos para que el loop sea fluido */
   );
   background-size: 200% auto;
@@ -344,3 +346,29 @@ body {
 .duration-slower { animation-duration: 1.5s; }
 .duration-fast { animation-duration: 0.4s; }
 .duration-faster { animation-duration: 0.2s; }
+
+
+/* FUENTES */
+
+.font-zalando{
+    font-family: "Zalando Sans Expanded", sans-serif;
+}
+
+.font-Jakarta{
+   font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.font-bree{
+  font-family: "Bree Serif", serif;
+}
+
+.font-oswald{
+  font-family: "Oswald", sans-serif;
+}
+
+.font-inter{
+  font-family: 'Inter', sans-serif
+}
+.font-subtitle{
+  font-size: large;
+}

@@ -2,7 +2,7 @@
 // Footer.astro
 ---
 
-<footer class="relative border-t border-white/5 bg-black/50 backdrop-blur-xl z-500">
+<footer class="relative border-t border-white/5 bg-black/50 backdrop-blur-xl z-500 tracking-tight ">
   <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30"></div>
 
   <div class="container relative z-10 mx-auto px-6 py-16">
@@ -17,7 +17,7 @@
             Mario's<span class="text-gradient">Agency</span>
           </span>
         </a>
-        <p class="text-white/60 max-w-md mb-6 leading-relaxed">
+        <p class="text-sm text-white/60 max-w-md mb-6 leading-relaxed">
           Transformamos emprendimientos en máquinas de ventas digitales. 
           Tecnología de punta, diseño futurista, resultados extraordinarios.
         </p>
@@ -36,13 +36,13 @@
       </div>
 
       <div>
-        <h4 class="font-icons font-semibold text-white mb-6 uppercase tracking-wider text-sm">Navegación</h4>
+        <h4 class="font-semibold text-white mb-6 uppercase tracking-wider text-sm ">Navegación</h4>
         <ul class="space-y-3">
           {['Inicio', 'Servicios', 'Planes', 'Tecnología', 'Contacto'].map((item) => (
             <li>
               <a
                 href={item === 'Inicio' ? '/' : `/${item.toLowerCase()}`}
-                class="text-white/50 transition-all duration-300 hover:text-[var(--color-cyan-glow)] hover:translate-x-1 inline-block"
+                class="text-white/50 transition-all duration-300 hover:text-[var(--color-cyan-glow)] hover:translate-x-1 inline-block text-sm"
               >
                 {item}
               </a>
@@ -52,16 +52,16 @@
       </div>
 
       <div>
-        <h4 class="font-icons font-semibold text-white mb-6 uppercase tracking-wider text-sm">Contacto</h4>
+        <h4 class="font-semibold text-white mb-6 uppercase tracking-wider text-sm">Contacto</h4>
         <ul class="space-y-4 text-white/50">
           <li class="flex items-center gap-3">
             <span class="text-sm">hola@mariosagency.com</span>
           </li>
           <li class="flex items-center gap-3">
-            <span class="text-sm">+52 (55) 1234 5678</span>
+            <span class="text-sm">+54 (11) 4023 0671</span>
           </li>
           <li class="flex items-center gap-3">
-            <span class="text-sm">Ciudad de México, MX</span>
+            <span class="text-sm">Argentina, AR</span>
           </li>
         </ul>
       </div>

@@ -1,0 +1,295 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArrowRight from '../components/Icons/ArrowRight.astro'
+import Shield from '../components/Icons/Shield.astro';
+import WhatsApp from '../components/Icons/WhatsApp.astro';
+import Clock from '../components/Icons/Clock.astro'
+import CheckCircle from '../components/Icons/CheckCircle.astro'
+import Chat from '../components/Icons/Chat.astro'
+import Tunder from '../components/Icons/Tunder.astro'
+import Phone from '../components/Icons/Phone.astro'
+
+const whatsappNumber = '5215512345678';
+const whatsappMessage = encodeURIComponent('¡Hola! Me interesa conocer más sobre los servicios de Mario\'s Agency para mi negocio.');
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+const benefits = [
+  { icon: 'Clock', text: 'Respuesta rápida y humana' },
+  { icon: 'CheckCircle', text: 'Diagnóstico inicial sin cargo' },
+  { icon: 'Shield', text: 'Sin vueltas ni compromisos' },
+];
+
+const stats = [
+  { value: '0.8s', label: 'Carga promedio de nuestros sitios' },
+  { value: '100%', label: 'Compromiso en cada entrega' },
+  { value: '24/7', label: 'Soporte de infraestructura' },
+];
+
+const processSteps = [
+  {
+    step: '01',
+    title: 'Hablamos',
+    description: 'Nos contás sobre tu negocio y qué objetivos tenés en mente hoy.',
+    icon: 'MessageCircle',
+  },
+  {
+    step: '02',
+    title: 'Diseñamos',
+    description: 'Armamos la propuesta técnica que mejor se adapte a tu presupuesto.',
+    icon: 'Zap',
+  },
+  {
+    step: '03',
+    title: 'Lanzamos',
+    description: 'Ponemos tu sitio online, listo para recibir clientes y escalar.',
+    icon: 'CheckCircle',
+  },
+];
+---
+
+<Layout title="Contacto - Mario's Agency">
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-8 md:pt-20">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-green-500/10 blur-[180px]"></div>
+      <div class="absolute bottom-1/4 left-1/4 h-[300px] w-[300px] rounded-full bg-primary/5 blur-[150px]"></div>
+    </div>
+
+    <div class="container relative z-10 mx-auto px-4 md:px-6 py-20">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 rounded-full bg-green-500/5 border border-green-500/20 px-5 py-2.5 mb-8 animate-fade-in">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-50"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          <span class="text-sm font-medium text-green-500/80">
+            En línea ahora para ayudarte
+          </span>
+        </div>
+
+        <h1 class="font-display text-3xl md:text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in-up delay-100">
+          Hagamos que tu web <br/>
+          <span class="text-gradient">funcione de verdad</span>
+        </h1>
+
+        <p class="text-sm md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in-up delay-200">
+          Sin formularios eternos ni esperas innecesarias. Una charla por WhatsApp es todo lo que necesitás para arrancar.
+        </p>
+
+        <div class="mb-12 animate-scale-in delay-300">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative inline-flex items-center gap-4 rounded-2xl bg-green-600 px-4 md:px-10 py-6 text-white font-semibold text-xl shadow-lg shadow-green-600/20 hover:bg-green-500 hover:shadow-green-500/30 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98] w-full md:w-auto"
+          >
+            <div class="relative flex items-center md:flex-row flex-col gap-4 w-full">
+              <WhatsApp size="32" />
+              <div class="text-left">
+                <span class="block text-lg md:text-2xl font-bold text-center md:text-start">Consultar por WhatsApp</span>
+                <span class="block text-sm text-green-100/80 font-normal">Charla directa • Sin vueltas</span>
+              </div>
+              <div class="md:block hidden">
+                <ArrowRight  />
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6 mb-16 animate-fade-in-up delay-400">
+          {benefits.map((benefit) => (
+            <div class="flex items-center gap-2 text-muted-foreground">
+              {benefit.icon === 'Clock' && <Clock size="24" color="#00a63e" />}
+              {benefit.icon === 'CheckCircle' && <CheckCircle size="24" color="#00a63e" />}
+              {benefit.icon === 'Shield' && <Shield size="27" color="#00a63e"/>}
+              <span class="text-sm md:text-base">{benefit.text}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+          {stats.map((stat, index) => {
+            const delayClass = index === 0 ? 'delay-500' : index === 1 ? 'delay-600' : 'delay-700';
+            return (
+              <div 
+                class={`rounded-xl border border-white/5 bg-white/[0.02] backdrop-blur-sm text-center py-6 px-4 animate-fade-in-up ${delayClass}`}
+              >
+                <p class="font-display text-3xl font-bold text-foreground mb-1 text-green-500">{stat.value}</p>
+                <p class="text-sm text-muted-foreground">{stat.label}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-6 md:py-24 border-t border-white/[0.03]">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16 process-header">
+        <span class="text-primary font-medium uppercase tracking-widest text-sm mb-4 block">
+          Paso a paso
+        </span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold">
+          ¿Cómo <span class="text-gradient">empezamos?</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {processSteps.map((item, index) => (
+          <div
+            class={`process-card relative rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-sm p-8 group hover:border-white/10 transition-colors duration-300 `}
+            data-index={index}
+          >
+            <div class="absolute -top-4 left-6 px-3 py-1 rounded-full bg-[#121111] border border-white/10">
+              <span class="text-[#06b1c7] font-bold text-sm">{item.step}</span>
+            </div>
+            <div class="pt-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.06] mb-5 group-hover:border-white/10 transition-colors duration-300">
+                {item.icon === 'MessageCircle' && <Chat />}
+                {item.icon === 'Zap' && <Tunder />}
+                {item.icon === 'CheckCircle' && <CheckCircle color="#9a9a99"/>}
+              </div>
+              <h3 class="font-display text-xl font-bold mb-3 text-foreground">{item.title}</h3>
+              <p class="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-6 md:py-24">
+    <div class="container relative z-10 mx-auto px-6">
+      <div class="final-cta relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-6 md:p-16 text-center max-w-3xl mx-auto backdrop-blur-[5px]">
+        <div class="relative z-10">
+          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-green-600/10 border border-green-600/20 mx-auto mb-6">
+            <Phone color="#00a63e" />
+          </div>
+          
+          <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            ¿Todo listo para arrancar?
+          </h2>
+          
+          <p class="text-muted-foreground mb-8 max-w-md mx-auto">
+            Cada día con una web lenta es un cliente que se va con tu competencia.
+          </p>
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-3 rounded-xl bg-green-600 px-4 md:px-10 py-4 text-white font-semibold hover:bg-green-500 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <WhatsApp size="25" />
+            <span class="text-sm">Escribir por WhatsApp</span>
+          </a>
+
+          <p class="text-xs text-muted-foreground/60 mt-6">
+            Sin formularios • Sin esperas • Charla directa
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Intersection Observer para las animaciones de aparición
+  const observeElements = () => {
+    const processHeader = document.querySelector('.process-header');
+    const processCards = document.querySelectorAll('.process-card');
+    const finalCta = document.querySelector('.final-cta');
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '-50px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    if (processHeader) {
+      observer.observe(processHeader);
+    }
+
+    processCards.forEach((card) => {
+      observer.observe(card);
+    });
+
+    if (finalCta) {
+      observer.observe(finalCta);
+    }
+  };
+
+  // Ejecutar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observeElements);
+  } else {
+    observeElements();
+  }
+</script>
+
+<style>
+  /* Animaciones específicas para el componente Contact */
+  .process-header {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .process-header.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .process-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .process-card[data-index="0"] {
+    transition-delay: 0s;
+  }
+
+  .process-card[data-index="1"] {
+    transition-delay: 0.15s;
+  }
+
+  .process-card[data-index="2"] {
+    transition-delay: 0.3s;
+  }
+
+  .process-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .final-cta {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .final-cta.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Asegurar que las animaciones de delay funcionen correctamente */
+  @media (prefers-reduced-motion: reduce) {
+    .process-header,
+    .process-card,
+    .final-cta {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>

@@ -1,72 +1,71 @@
 ---
 // src/pages/planes.astro
 import Layout from '../layouts/Layout.astro';
-
+import ShieldCheck from '../components/Icons/ShieldCheck.astro'
 const WHATSAPP_NUMBER = "521234567890"; // Reemplaza con tu número real
 
 const plans = [
   {
-    id: 'impulso',
-    name: 'Impulso',
+    id: 'impulse',
+    name: 'Impulse',
     price: '$0',
-    period: 'Permanencia 6 meses',
-    description: 'Para emprendedores que inician su presencia digital.',
+    priceUsd: '$0',
+    period: 'Abono Mensual (Mantenimiento)',
+    description: 'Tu primer paso profesional. Landing ultra-rápida para vender por chat.',
     icon: 'rocket',
-    features: [
-      'Landing Page Optimizada',
-      'Diseño Responsive',
-      'SEO Básico',
-      'SSL Incluido',
-      'Hosting 1 Año',
-      'Soporte por Email',
-    ],
-    notIncluded: ['IA Integrada', 'Dashboard Analytics', 'Desarrollo a Medida'],
     accentColor: '#00ffff',
     buttonText: 'Comenzar Ahora',
+    features: [
+      'Página Única con Carga Instantánea',
+      'Optimización Total para Celulares',
+      'Botón directo a WhatsApp/Telegram',
+      'Setup de Google Business (Maps)',
+      'Seguridad y Hosting Incluido',
+      'Soporte Técnico de Guardia',
+    ],
+    notIncluded: ['Formularios', 'Dashboard de Datos', 'Múltiples Secciones'],
   },
   {
-    id: 'autoridad',
-    name: 'Autoridad',
-    price: '$200k',
-    period: 'MXN / Pago único',
-    description: 'Para negocios listos para escalar y dominar su mercado.',
+    id: 'authority',
+    name: 'Authority',
+    price: '$450k',
+    priceUsd: '$299',
+    period: 'Pago único + Abono Mensual',
+    description: 'El estándar para negocios que quieren dominar su mercado local.',
     icon: 'sparkles',
     popular: true,
     accentColor: '#6f00ff',
-    buttonText: 'Comenzar Ahora',
+    buttonText: 'El Plan Más Elegido',
     features: [
-      'Web App Completa',
-      'Diseño UI/UX Premium',
-      'SEO Técnico Avanzado',
-      'Core Web Vitals Perfectos',
-      'Integración con CRM',
-      'Chatbot IA Básico',
-      'Dashboard Analytics',
-      'Soporte Prioritario',
-      '3 Meses de Optimización',
+      'Sitio Web de hasta 6 Secciones',
+      'Diseño Interactivo de Alto Rendimiento',
+      'Formularios de Captura Automatizados',
+      'Conexión con tu Email/Sheets (n8n)',
+      'Estrategia de SEO Técnico',
+      'Configuración de Pixel y Google Ads',
+      'Reporte de Rendimiento Trimestral',
     ],
-    notIncluded: [],
+    notIncluded: ['Base de Datos Compleja', 'Funciones de Inteligencia Artificial'],
   },
   {
-    id: 'elite',
-    name: 'Elite',
-    price: '$450k',
-    period: 'MXN / Pago único',
-    description: 'Solución empresarial completa. Sin límites.',
+    id: 'titan',
+    name: 'Titan',
+    price: '$1.8M',
+    priceUsd: '$1,199',
+    period: 'Pago único + Abono Mensual',
+    description: 'Potencia tecnológica pura. Automatización y gestión de datos.',
     icon: 'crown',
     premium: true,
     accentColor: '#d4a017',
-    buttonText: 'Comenzar Ahora',
+    buttonText: 'Consultar Solución',
     features: [
-      'Todo de Autoridad +',
-      'Desarrollo Full-Stack',
-      'IA Avanzada Personalizada',
-      'Integraciones Ilimitadas',
-      'Panel Administrativo',
-      'App Móvil (iOS/Android)',
-      'Consultor Dedicado',
-      '6 Meses de Soporte VIP',
-      'Capacitación del Equipo',
+      'Desarrollo Full-Stack a Medida',
+      'Base de Datos para Gestión de Clientes',
+      'IA para Clasificación de Consultas',
+      'Panel Administrativo Personalizado',
+      'Integración con tu Software Actual',
+      'Tracking Avanzado (Server-side)',
+      'Consultoría Técnica Mensual',
     ],
     notIncluded: [],
   },
@@ -76,19 +75,20 @@ const plans = [
 <Layout title="Planes y Precios">
   <section class="relative pt-32 pb-20 overflow-hidden z-500" data-animate-section>
     <div class="container mx-auto px-6 text-center">
-      <span class="text-cyan-400 font-icons uppercase tracking-[0.3em] text-xs mb-4 block animate-on-scroll" data-animation="fade-in-down">
-        PLANES
+      <span class="text-cyan-400 font-icons uppercase tracking-[0.3em] text-xs mb-4 block animate-on-scroll tracking-tight font-zalando" data-animation="fade-in-down">
+        ESCALABILIDAD
       </span>
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tighter text-white animate-on-scroll" data-animation="fade-in-up" data-delay="100">
-        Invierte en tu <span class="text-gradient">Crecimiento</span>
+      <h1 class="text-3xl md:text-7xl font-bold mb-6 tracking-tighter text-white animate-on-scroll tracking-tight font-zalando" data-animation="fade-in-up" data-delay="100">
+        Deja de gastar, empieza a <span class="text-gradient">Activar</span>
       </h1>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto font-icons animate-on-scroll" data-animation="fade-in-up" data-delay="200">
-        Elige el plan que mejor se adapte a tus objetivos. Todos incluyen<br/>garantía de satisfacción.
+      <p class="text-sm md:text-lg text-gray-400 max-w-2xl mx-auto font-icons animate-on-scroll tracking-tight font-zalando" data-animation="fade-in-up" data-delay="200">
+        Desde lanzamientos rápidos por WhatsApp hasta ecosistemas corporativos con IA. 
+        Elige la base tecnológica que llevará tu facturación al siguiente nivel.
       </p>
     </div>
   </section>
 
-  <section class="relative pb-32 z-500" data-animate-section>
+  <section class="relative pb-15 md:pb-32 z-500" data-animate-section>
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {plans.map((plan, index) => (
@@ -117,7 +117,7 @@ const plans = [
             )}
 
             {/* Card Principal */}
-            <div class={`h-full flex flex-col p-8 rounded-3xl bg-[#0a0a0f] border transition-all duration-300 relative overflow-hidden group ${
+            <div class={`h-full flex flex-col p-3 md:p-8 rounded-3xl bg-[#0a0a0f] border transition-all duration-300 relative overflow-hidden group ${
               plan.popular ? 'border-purple-500/30' : plan.premium ? 'border-yellow-600/30' : 'border-gray-800'
             }`}>
               
@@ -156,20 +156,23 @@ const plans = [
                   </div>
                 </div>
                 
-                <h3 class="text-2xl font-bold mb-3 text-white tracking-tight">{plan.name}</h3>
+                <h3 class="text-2xl font-bold mb-3 text-white tracking-tight font-zalando">{plan.name}</h3>
+                <div class={`text-xs font-icons text-gray-500 uppercase tracking-wide font-zalando ${
+                    plan.id === 'authority' || plan.id === 'titan' ? 'block' : 'hidden'
+                  }`}>Desde:</div>
                 <div class="flex items-baseline gap-1 mb-2">
-                  <span class={`text-5xl font-bold tracking-tighter ${
+                  <span class={`text-3xl md:text-5xl font-bold tracking-tighter font-zalando ${
                     plan.icon === 'sparkles' ? 'text-cyan-400' : 
                     plan.icon === 'crown' ? 'text-yellow-500' : 
                     'text-white'
                   }`}>
-                    {plan.price}
+                    {`${plan.priceUsd} USD`}
                   </span>
                 </div>
-                <p class="text-xs font-icons text-gray-500 uppercase tracking-wide">{plan.period}</p>
+                <p class="text-xs font-icons text-gray-500 uppercase tracking-wide font-zalando">{plan.period}</p>
               </div>
 
-              <p class="text-gray-400 mb-8 text-sm leading-relaxed font-icons">{plan.description}</p>
+              <p class="text-gray-400 mb-8 text-sm leading-relaxed font-icons font-zalando">{plan.description}</p>
 
               {/* Lista de características */}
               <ul class="space-y-3.5 mb-8 flex-grow relative z-10">
@@ -178,16 +181,16 @@ const plans = [
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 text-green-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12"/>
                     </svg>
-                    <span class="text-sm text-gray-300 leading-tight">{feature}</span>
+                    <span class="text-xs md:text-sm text-gray-300 leading-tight font-zalando">{feature}</span>
                   </li>
                 ))}
-                {plan.notIncluded.map((feature) => (
-                  <li class="flex items-start gap-3 opacity-30">
+                {plan.notIncluded.map((feature: string) => (
+                  <li class="flex items-start gap-3 opacity-30 ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 text-gray-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M18 6 6 18"/>
                       <path d="m6 6 12 12"/>
                     </svg>
-                    <span class="text-sm text-gray-600 line-through leading-tight">{feature}</span>
+                    <span class="text-xs md:text-sm text-gray-600 line-through leading-tight font-zalando">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -197,7 +200,7 @@ const plans = [
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola! Me interesa potenciar mi negocio con el Plan ${plan.name}.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class={`w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-sm transition-all duration-300 transform hover:scale-[1.02] active:scale-95 z-10 ${
+                class={`w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-sm transition-all duration-300 transform hover:scale-[1.02] active:scale-95 z-10 font-zalando ${
                   plan.popular 
                     ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50' 
                     : plan.premium 
@@ -218,19 +221,22 @@ const plans = [
     </div>
   </section>
 
-  <section class="relative py-24 border-t border-white/5 overflow-hidden z-500" data-animate-section>
-    <div class="absolute inset-0 bg-radial-at-c opacity-30"></div>
-    <div class="container mx-auto px-6 text-center relative z-10">
-      <div class="max-w-3xl mx-auto p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl animate-on-scroll" data-animation="scale-in" data-delay="200">
-        <div class="text-6xl mb-8 filter drop-shadow-[0_0_15px_#00ffff44]">🛡️</div>
-        <h3 class="text-3xl font-bold mb-6 text-white tracking-tight">
-          Garantía de Satisfacción <span class="text-[#00ffff]">30 Días</span>
-        </h3>
-        <p class="text-gray-400 text-lg font-icons leading-relaxed">
-          Nuestra lógica es simple: solo ganamos si tú ganas. Si el resultado no supera tus expectativas técnicas y estéticas en el primer mes, devolvemos tu inversión íntegra. Sin fricciones.
-        </p>
+  <section class="relative py-10  md:py-24 border-t border-white/5 overflow-hidden z-500" data-animate-section>
+      <div class="absolute inset-0 bg-radial-at-c opacity-30"></div>
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <div class="max-w-3xl mx-auto p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl animate-on-scroll" data-animation="scale-in" data-delay="200">
+          <div class="grid place-items-center filter drop-shadow-[0_0_15px_#00ffff44] md:mb-5"><ShieldCheck size="40" color="#00ffff"/></div>
+          
+          <h3 class="text-3xl font-bold mb-6 text-white tracking-tight font-zalando">
+            Compromiso de <span class="text-[#00ffff]">Ingeniería y Resultados</span>
+          </h3>
+          
+          <p class="text-gray-400 text-sm md:text-lg font-icons leading-relaxed">
+            No vendemos plantillas, entregamos activos digitales de alto rendimiento. 
+            Si en los primeros 30 días tu infraestructura no cumple con los <strong>estándares de velocidad, seguridad y estabilidad</strong> que prometemos, te devolvemos el 100% de tu inversión. Nuestra prioridad es tu tranquilidad técnica, sin letras pequeñas.
+          </p>
+        </div>
       </div>
-    </div>
   </section>
 </Layout>
 

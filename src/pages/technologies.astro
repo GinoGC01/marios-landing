@@ -1,6 +1,8 @@
 ---
 // src/pages/tecnologia.astro
 import Layout from '../layouts/Layout.astro';
+import Stats from '../components/Icons/Stats.astro'
+import Tunder from '../components/Icons/Tunder.astro'
 
 const stats = [
   { value: '98%', label: 'Mejora en Core Web Vitals', icon: 'Zap' },
@@ -10,9 +12,9 @@ const stats = [
 ];
 
 const technologies = [
-  'React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 
+  'React', 'n8n', 'TypeScript', 'Node.js', 'PostgreSQL', 
   'Tailwind CSS', 'Framer Motion', 'Three.js', 'Supabase', 'Vercel',
-  'OpenAI', 'Stripe', 'AWS', 'Cloudflare'
+  'OpenAI', 'Stripe', 'AWS', 'Cloudflare', 'API Integrations'
 ];
 
 const caseStudies = [
@@ -39,17 +41,17 @@ const caseStudies = [
 
 <Layout>
   <!-- Hero -->
-  <section class="relative pt-32 pb-20 overflow-hidden z-500" data-animate-section>
+  <section class="relative pt-32 pb-4 md:pb-20 overflow-hidden z-500" data-animate-section>
     <div class="container mx-auto px-6">
       <div class="max-w-4xl">
         <span class="text-primary font-medium uppercase tracking-widest text-sm mb-4 block animate-on-scroll" data-animation="fade-in-down">
           Tecnología
         </span>
-        <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
+        <h1 class=" text-3xl md:text-7xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
           La Ciencia detrás de{' '}
           <span class="text-gradient">tus Resultados</span>
         </h1>
-        <p class="text-xl text-muted-foreground max-w-2xl animate-on-scroll" data-animation="fade-in-up" data-delay="200">
+        <p class="text-sm md:text-xl text-muted-foreground max-w-2xl animate-on-scroll" data-animation="fade-in-up" data-delay="200">
           No solo prometemos resultados. Los garantizamos con métricas 
           transparentes y tecnología de última generación.
         </p>
@@ -58,52 +60,48 @@ const caseStudies = [
   </section>
 
   <!-- Stats -->
-  <section class="relative py-20 z-500" data-animate-section>
+  <section class="relative py-7 md:py-20 z-500 backdrop-blur-[5px]" data-animate-section>
     <div class="container mx-auto px-6">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="glass-card text-center animate-on-scroll" data-animation="scale-in-bounce" data-delay="100">
-          <span class="text-4xl mb-4 block">⚡</span>
-          <div class="font-display text-4xl font-bold text-gradient mb-2">
+          <div class=" text-2xl md:text-4xl font-bold text-gradient mb-2">
             {stats[0].value}
           </div>
-          <p class="text-sm text-muted-foreground">{stats[0].label}</p>
+          <p class="text-xs text-sm text-muted-foreground">{stats[0].label}</p>
         </div>
 
         <div class="glass-card text-center animate-on-scroll" data-animation="scale-in-bounce" data-delay="200">
-          <span class="text-4xl mb-4 block">📈</span>
-          <div class="font-display text-4xl font-bold text-gradient mb-2">
+          <div class=" text-2xl md:text-4xl font-bold text-gradient mb-2">
             {stats[1].value}
           </div>
-          <p class="text-sm text-muted-foreground">{stats[1].label}</p>
+          <p class="text-xs text-sm text-muted-foreground">{stats[1].label}</p>
         </div>
 
         <div class="glass-card text-center animate-on-scroll" data-animation="scale-in-bounce" data-delay="300">
-          <span class="text-4xl mb-4 block">⏱️</span>
-          <div class="font-display text-4xl font-bold text-gradient mb-2">
+          <div class=" text-2xl md:text-4xl font-bold text-gradient mb-2">
             {stats[2].value}
           </div>
-          <p class="text-sm text-muted-foreground">{stats[2].label}</p>
+          <p class="text-xs text-sm text-muted-foreground">{stats[2].label}</p>
         </div>
 
         <div class="glass-card text-center animate-on-scroll" data-animation="scale-in-bounce" data-delay="400">
-          <span class="text-4xl mb-4 block">🌍</span>
-          <div class="font-display text-4xl font-bold text-gradient mb-2">
+          <div class=" text-2xl md:text-4xl font-bold text-gradient mb-2">
             {stats[3].value}
           </div>
-          <p class="text-sm text-muted-foreground">{stats[3].label}</p>
+          <p class="text-xs text-sm text-muted-foreground">{stats[3].label}</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- View Transitions Demo -->
-  <section class="relative py-32 border-t border-white/5 z-500" data-animate-section>
+  <section class="relative py-8 md:py-32 border-t border-white/5 z-500" data-animate-section>
     <div class="container mx-auto px-6">
       <div class="text-center mb-16">
         <span class="text-primary font-medium uppercase tracking-widest text-sm mb-4 block animate-on-scroll" data-animation="fade-in-down">
           View Transitions
         </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
+        <h2 class=" text-4xl md:text-5xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
           Navegación que{' '}
           <span class="text-gradient">Fluye</span>
         </h2>
@@ -122,7 +120,7 @@ const caseStudies = [
           <div class="pt-12">
             <div class="aspect-video bg-white/5 rounded-lg flex items-center justify-center border border-white/10 animate-on-scroll" data-animation="fade-in" data-delay="600">
               <div class="text-center">
-                <div class="h-8 w-8 border-2 border-muted-foreground border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                <div class="h-8 w-8 border-2 border-[#9ca3af] border-t-transparent rounded-full animate-spin mx-auto mb-2" />
                 <p class="text-xs text-muted-foreground">Cargando...</p>
               </div>
             </div>
@@ -139,7 +137,7 @@ const caseStudies = [
           <div class="pt-12">
             <div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center border border-primary/20 animate-on-scroll" data-animation="fade-in" data-delay="600">
               <div class="text-center">
-                <span class="text-4xl mb-2 block animate-on-scroll" data-animation="zoom-in" data-delay="700">⚡</span>
+                <div class="flex items-center justify-center animate-scroll mb-2" data-animation="zoom-in" data-delay="700"><Tunder size="32"/></div>
                 <p class="text-xs text-primary animate-on-scroll" data-animation="fade-in-up" data-delay="800">Transición instantánea</p>
               </div>
             </div>
@@ -153,13 +151,13 @@ const caseStudies = [
   </section>
 
   <!-- Tech Stack -->
-  <section class="relative py-32 border-t border-white/5 z-500" data-animate-section>
+  <section class="relative py-6 md:py-32 border-t border-white/5 z-500" data-animate-section>
     <div class="container mx-auto px-6">
       <div class="text-center mb-16">
         <span class="text-primary font-medium uppercase tracking-widest text-sm mb-4 block animate-on-scroll" data-animation="fade-in-down">
           Stack Tecnológico
         </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
+        <h2 class=" text-4xl md:text-5xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
           Las Mejores{' '}
           <span class="text-gradient">Herramientas</span>
         </h2>
@@ -183,13 +181,13 @@ const caseStudies = [
   </section>
 
   <!-- Case Studies -->
-  <section class="relative py-32 border-t border-white/5 z-500" data-animate-section>
+  <section class="relative py-6 md:py-32 border-t border-white/5 z-500" data-animate-section>
     <div class="container mx-auto px-6">
       <div class="text-center mb-16">
         <span class="text-primary font-medium uppercase tracking-widest text-sm mb-4 block animate-on-scroll" data-animation="fade-in-down">
           Casos de Éxito
         </span>
-        <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
+        <h2 class=" text-4xl md:text-5xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
           Resultados{' '}
           <span class="text-gradient">Comprobados</span>
         </h2>
@@ -199,10 +197,10 @@ const caseStudies = [
         <div class="glass-card animate-on-scroll" data-animation="fade-in-up" data-delay="200">
           <div class="flex items-center justify-between mb-6 animate-on-scroll" data-animation="slide-in-left" data-delay="300">
             <div>
-              <h3 class="font-display text-xl font-bold">{caseStudies[0].client}</h3>
+              <h3 class=" text-xl font-bold">{caseStudies[0].client}</h3>
               <p class="text-sm text-muted-foreground">{caseStudies[0].industry}</p>
             </div>
-            <span class="text-4xl animate-on-scroll" data-animation="rotate-in" data-delay="400">📊</span>
+            <span class="text-4xl animate-on-scroll" data-animation="rotate-in" data-delay="400"><Stats size="37"/></span>
           </div>
 
           <div class="space-y-4 z-500">
@@ -221,10 +219,10 @@ const caseStudies = [
         <div class="glass-card animate-on-scroll z-500" data-animation="fade-in-up" data-delay="400">
           <div class="flex items-center justify-between mb-6 animate-on-scroll" data-animation="slide-in-right" data-delay="500">
             <div>
-              <h3 class="font-display text-xl font-bold">{caseStudies[1].client}</h3>
+              <h3 class=" text-xl font-bold">{caseStudies[1].client}</h3>
               <p class="text-sm text-muted-foreground">{caseStudies[1].industry}</p>
             </div>
-            <span class="text-4xl animate-on-scroll" data-animation="rotate-in" data-delay="600">📊</span>
+            <span class="text-4xl animate-on-scroll" data-animation="rotate-in" data-delay="600"><Stats size="37"/></span>
           </div>
 
           <div class="space-y-4">
@@ -247,10 +245,10 @@ const caseStudies = [
   <section class="relative py-20 z-500" data-animate-section>
     <div class="container mx-auto px-6 text-center">
       <div>
-        <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
+        <h2 class=" text-3xl md:text-4xl font-bold mb-6 animate-on-scroll" data-animation="fade-in-up" data-delay="100">
           ¿Quieres estos resultados?
         </h2>
-        <a href="/contacto" class="btn-magnetic inline-flex animate-on-scroll" data-animation="scale-in-bounce" data-delay="300">
+        <a href="/contact" class="btn-magnetic inline-flex animate-on-scroll" data-animation="scale-in-bounce" data-delay="300">
           <span>Hablemos de tu Proyecto</span>
         </a>
       </div>
@@ -314,10 +312,10 @@ const caseStudies = [
   }
 
   .border-muted-foreground {
-    border-color: rgb(156, 163, 175);
+    border-color: #9ca3af;
   }
 
-  .font-display {
+  . {
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 700;
   }

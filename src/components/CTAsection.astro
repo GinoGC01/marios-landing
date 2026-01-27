@@ -1,16 +1,16 @@
 ---
 ---
 
-<section class="relative py-32 overflow-hidden bg-background z-500">
+<section class="relative py-32 overflow-hidden bg-background z-500 tracking-tight ">
   <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-50"></div>
   
   <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
     <div class="h-[600px] w-[600px] rounded-full bg-cyan-glow/10 blur-[150px] animate-pulse-slow"></div>
   </div>
 
-  <div class="container relative z-10 mx-auto px-6">
+  <div class="container relative z-10 mx-auto px-2 md:px-6 w-full">
     <div 
-      class="hero-container relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-12 md:p-20 text-center overflow-hidden shadow-2xl"
+      class="hero-container relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent py-7 px-2 md:px-20 md:py-20 text-center overflow-hidden shadow-2xl"
     >
       <div class="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[var(--color-cyan-glow)] opacity-20 blur-[80px]"></div>
       <div class="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-[var(--color-purple-glow)] opacity-30 blur-[80px]"></div>
@@ -21,27 +21,32 @@
         </span>
       </div>
 
-      <h2 class="text-4xl md:text-6xl font-bold mb-6 relative z-10 animate-in-up text-white" style="animation-delay: 0.2s;">
+      <h2 class="text-4xl md:text-6xl font-bold mb-6 relative z-10 animate-in-up text-white " style="animation-delay: 0.2s;">
         ¿Listo para <span class="text-gradient">Dominar</span>
         <br />
-        tu Mercado Digital?
+        tu Mercado?
       </h2>
 
-      <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10 relative z-10 animate-in-up" style="animation-delay: 0.3s;">
-        Agenda una llamada estratégica de 30 minutos. Sin compromisos, 
-        sin presión. Solo valor puro para tu negocio.
+      <p class="text-white/60 text-sm md:text-lg max-w-2xl mx-auto mb-10 relative z-10 animate-in-up" style="animation-delay: 0.3s;">
+        Agenda una llamada de 30 minutos. Sin compromisos, 
+        sin presión. Solo valor para tu negocio.
       </p>
 
       <div class="animate-in-up" style="animation-delay: 0.4s;">
+
         <a
-          href="/contacto"
-          class="btn-magnetic inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 relative z-10 group"
-        >
-          <span class="flex items-center gap-2">
-            Agendar Llamada Gratis
-          </span>
-        </a>
+        href="/contact"
+        class="cta-primary group relative px-8 py-6 bg-gradient-to-r from-[#0099ff] to-[#a855f7] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,153,255,0.6)] w-full sm:w-auto hover:scale-110 block md:w-[50%] md:m-auto w-full"
+      >
+        <div class="absolute inset-0 bg-gradient-to-r from-[#a855f7] to-[#0099ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="cta-shimmer absolute inset-0 bg-white/20 -translate-x-full skew-x-[-20deg]"></div>
+        <span class="relative flex items-center justify-center gap-2 text-sm md:text-xl ">
+          Agendar Llamada Gratis
+        </span>
+      </a>
+
       </div>
+      
     </div>
   </div>
 </section>
@@ -70,9 +75,51 @@
     100% { transform: scale(1.1); opacity: 0.5; }
   }
 
-  /* Aseguramos que el botón tenga visibilidad si .btn-magnetic no define colores de fondo */
-  .btn-magnetic {
-    background: var(--color-cyan-glow);
-    color: #020205;
+   .cta-primary:hover .cta-shimmer {
+    animation: shimmer 0.6s ease-out;
   }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-150%) skewX(-20deg); }
+    100% { transform: translateX(200%) skewX(-20deg); }
+  }
+
+  /* Magnetic Button */
+.btn-magnetic {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px; /* rounded-full */
+  padding: 1rem 2rem; /* py-4 px-8 */
+  font-weight: 600; /* font-semibold */
+  transition: all 0.3s; /* transition-all duration-300 */
+  background: linear-gradient(135deg, hsl(187, 100%, 50%) 0%, hsl(266, 100%, 50%) 100%);
+  color: hsl(0, 0%, 4%);
+}
+
+.btn-magnetic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; /* inset-0 */
+  opacity: 0;
+  transition: opacity 0.3s; /* transition-opacity duration-300 */
+  background: linear-gradient(135deg, hsl(266, 100%, 50%) 0%, hsl(187, 100%, 50%) 100%);
+}
+
+.btn-magnetic:hover::before {
+  opacity: 1;
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px hsla(187, 100%, 50%, 0.4);
+}
+
+.btn-magnetic span {
+  position: relative;
+  z-index: 10;
+}
+
 </style>

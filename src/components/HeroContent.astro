@@ -1,20 +1,20 @@
 ---
 const stats = [
-  { value: 150, suffix: '+', label: 'Proyectos Entregados', icon: 'sparkles' },
+  { value: 50, suffix: '+', label: 'Proyectos Entregados', icon: 'sparkles' },
   { value: 98, suffix: '%', label: 'Tasa de Conversión', icon: 'trending-up' },
   { value: 3, suffix: 'x', label: 'ROI Promedio', icon: 'zap' },
 ];
 ---
 
-<div id="hero-content" class="relative z-500 container mx-auto px-4 sm:px-6 text-center pt-32 md:pt-40 pb-20 md:my-10">
+<div id="hero-content" class="relative z-500 container mx-auto md:px-4 sm:px-6 text-center pt-32 md:pt-40 pb-20 md:mb-10 md:min-h-[100vh] flex items-center justify-center flex-col gap-4 tracking-tight ">
   
   <div class="hero-title mb-6 relative opacity-0">
-    <h1 class="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tight">
-      <span class="block text-white mb-2">
+    <h1 class="font-black leading-[1.1] tracking-tight">
+      <span class="block text-white mb-2  text-lg md:text-3xl ">
         No es una Web.
       </span>
       <span class="block relative">
-        <span class="relative inline-block bg-gradient-to-r from-[#00E5FF] via-[#0099ff] to-[#a855f7] bg-clip-text text-transparent animate-gradient">
+        <span class="relative inline-block bg-gradient-to-r from-[#00E5FF] via-[#0099ff] to-[#a855f7] bg-clip-text text-transparent animate-gradient  leading-[0.9] text-4xl md:text-7xl">
           Es tu Máquina de Ventas.
         </span>
         <div class="title-glow absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00E5FF]/50 to-transparent blur-sm"></div>
@@ -22,97 +22,79 @@ const stats = [
     </h1>
   </div>
 
-  <p class="hero-subtitle text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed px-4 opacity-0">
+  <p class="hero-subtitle text-lg sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed px-4 opacity-0 tracking-tight ">
     Creamos <span class="text-white font-semibold">experiencias digitales</span> que transforman visitantes en clientes.{' '}
-    <span class="text-[#00E5FF]">SEO técnico</span>, <span class="text-[#a855f7]">IA integrada</span> y velocidad de carga perfecta.
+    <!-- <span class="text-[#00E5FF]">SEO técnico</span>, <span class="text-[#a855f7]">IA integrada</span> y velocidad de carga perfecta. -->
   </p>
 
-  <div class="hero-ctas flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 sm:mb-20 px-4 opacity-0">
-    <a
-      href="/contacto"
-      class="cta-primary group relative px-8 py-4 bg-gradient-to-r from-[#0099ff] to-[#a855f7] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,153,255,0.6)] w-full sm:w-auto"
-    >
-      <div class="absolute inset-0 bg-gradient-to-r from-[#a855f7] to-[#0099ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div class="cta-shimmer absolute inset-0 bg-white/20 -translate-x-full skew-x-[-20deg]"></div>
-      <span class="relative flex items-center justify-center gap-2 text-sm sm:text-base">
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-        Iniciar Proyecto
-        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
-      </span>
-    </a>
-
-    <a
-      href="/demo"
-      class="group px-8 py-4 border-2 border-[#00E5FF]/30 text-white font-semibold rounded-full hover:bg-[#00E5FF]/10 hover:border-[#00E5FF] transition-all duration-300 w-full sm:w-auto hover:scale-105 active:scale-98"
-    >
-      <span class="flex items-center justify-center gap-2 text-sm sm:text-base">
-        <svg class="w-4 h-4 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        Ver Demo
-      </span>
-    </a>
-  </div>
-
-  <div class="hero-stats grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto px-4 opacity-0">
-    {stats.map((stat, i) => (
-      <div 
-        class="stat-card relative group "
-        data-delay={i * 100}
+  <div class="hero-ctas flex flex-col items-center justify-center gap-4 mb-16 sm:mb-20 px-4 opacity-0 w-full md:max-w-7xl">
+      <a
+        href="/contact"
+        class="cta-primary group relative px-8 py-6 bg-gradient-to-r from-[#0099ff] to-[#a855f7] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,153,255,0.6)] w-full sm:w-auto hover:scale-110"
       >
-        <!-- Fondo con efecto glow -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff]/10 to-[#a855f7]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        
-        <!-- Contenido -->
-        <div class="relative  rounded-2xl p-6 border border-white/10 group-hover:border-[#00E5FF]/50 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 backdrop-blur-[5px] bg-[#000000]/20">
-          <!-- Icono -->
-          <div class="mb-3 flex justify-center">
-            <div class="p-2 bg-gradient-to-br from-[#0099ff]/20 to-[#a855f7]/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
-              {stat.icon === 'sparkles' && (
-                <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-              )}
-              {stat.icon === 'trending-up' && (
-                <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              )}
-              {stat.icon === 'zap' && (
-                <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              )}
+        <div class="absolute inset-0 bg-gradient-to-r from-[#a855f7] to-[#0099ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="cta-shimmer absolute inset-0 bg-white/20 -translate-x-full skew-x-[-20deg]"></div>
+        <span class="relative flex items-center justify-center gap-2 text-sm sm:text-base text-xl ">
+          Iniciar Proyecto
+
+        </span>
+      </a>
+
+    <div class="hero-stats grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full md:max-w-4xl mx-auto md:px-4 opacity-0 mt-8">
+      {stats.map((stat, i) => (
+        <div 
+          class="stat-card relative group "
+          data-delay={i * 100}
+        >
+          <!-- Fondo con efecto glow -->
+          <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff]/10 to-[#a855f7]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          
+          <!-- Contenido -->
+          <div class="relative  rounded-2xl p-6 border border-white/10 group-hover:border-[#00E5FF]/50 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 backdrop-blur-[5px] bg-[#000000]/20">
+            <!-- Icono -->
+            <div class="mb-3 flex justify-center">
+              <div class="p-2 bg-gradient-to-br from-[#0099ff]/20 to-[#a855f7]/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                {stat.icon === 'sparkles' && (
+                  <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                )}
+                {stat.icon === 'trending-up' && (
+                  <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                )}
+                {stat.icon === 'zap' && (
+                  <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                )}
+              </div>
             </div>
-          </div>
-          
-          <!-- Número animado -->
-          <div class="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
-            <span class="counter" data-target={stat.value}>{stat.value}</span>{stat.suffix}
-          </div>
-          
-          <!-- Label -->
-          <div class="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-medium">
-            {stat.label}
-          </div>
+            
+            <!-- Número animado -->
+            <div class="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2 ">
+              <span class="counter" data-target={stat.value}>{stat.value}</span>{stat.suffix}
+            </div>
+            
+            <!-- Label -->
+            <div class="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-medium">
+              {stat.label}
+            </div>
 
-          <!-- Línea decorativa -->
-          <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00E5FF]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <!-- Línea decorativa -->
+            <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00E5FF]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
+      ))}
+    </div>
 
-  <div class="scroll-indicator absolute -bottom-1 left-1/2 -translate-x-1/2 hidden md:block opacity-0">
-    <div class="flex flex-col items-center gap-2 text-gray-500 cursor-pointer group">
-      <span class="text-xs uppercase tracking-widest font-medium group-hover:text-[#00E5FF] transition-colors">Scroll</span>
-      <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex items-start justify-center p-1 group-hover:border-[#00E5FF] transition-colors">
-        <div class="scroll-dot w-1.5 h-2 bg-gradient-to-b from-[#00E5FF] to-transparent rounded-full"></div>
+    <div class="scroll-indicator absolute bottom-[-200px] left-1/2 -translate-x-1/2 hidden md:block opacity-0">
+      <div class="flex flex-col items-center gap-2 text-gray-500 cursor-pointer group">
+        <span class="text-xs uppercase tracking-widest font-medium group-hover:text-[#00E5FF] transition-colors">Scroll</span>
+        <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex items-start justify-center p-1 group-hover:border-[#00E5FF] transition-colors">
+          <div class="scroll-dot w-1.5 h-2 bg-gradient-to-b from-[#00E5FF] to-transparent rounded-full"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -216,8 +198,8 @@ const stats = [
   }
 
   @keyframes shimmer {
-    0% { transform: translateX(-100%) skewX(-20deg); }
-    100% { transform: translateX(100%) skewX(-20deg); }
+    0% { transform: translateX(-150%) skewX(-20deg); }
+    100% { transform: translateX(200%) skewX(-20deg); }
   }
 </style>
 
