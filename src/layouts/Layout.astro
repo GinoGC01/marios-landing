@@ -4,7 +4,6 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 
 import HeroSceneCanvas from '../components/Scene/HeroSceneCanvas.astro';
-import HeroSceneMob from '../components/Scene/HeroScene.astro';
 import Footer from '../components/Footer.astro';
 import ButtonWppChat from '../components/Buttons/ButtonWppChat.astro';
 
@@ -26,13 +25,11 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <title>{title}</title>
   </head>
   <body class="bg-[#020205] text-white overflow-x-hidden antialiased relative tracking-tight font-zalando ">
-    <!-- <div class="absolute w-full h-full backdrop-blur-[1px] z-100 hidden md:block "></div> -->
     <ButtonWppChat/>
-
     <HeroSceneCanvas/>
     <Header />
       <slot />
