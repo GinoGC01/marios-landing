@@ -53,7 +53,7 @@ const jsonLd = {
 };
 ---
 
-<section id="servicios" class="relative py-16 md:py-32 hover:backdrop-blur-[4px] overflow-hidden ">
+<section id="servicios" class="relative py-8 md:py-32 hover:backdrop-blur-[4px] overflow-hidden ">
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <div class="container mx-auto px-4 relative z-10">
@@ -70,7 +70,7 @@ const jsonLd = {
       {services.map((service, index) => (
         <li class="flex">
           <article 
-            class="service-card group relative flex flex-col w-full bg-[#0a0a1a] rounded-3xl p-8 border border-white/5 hover:border-cyan-500/30 transition-all duration-500"
+            class="service-card group relative flex flex-col w-full bg-[#0a0a1a] rounded-3xl p-4 md:p-8 border border-white/5 hover:border-cyan-500/30 transition-all duration-500"
             data-parallax-speed={0.03 + (index * 0.01)}
           >
             <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl -z-10"></div>

@@ -149,7 +149,7 @@ const catalogLd = {
         <ul class="grid md:grid-cols-4 gap-6 list-none p-0">
           {services.map((service, index) => (
             <li 
-              class={`group relative rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-500 hover:border-white/20 hover:bg-white/10 animate-on-scroll ${service.shadow} hover:scale-[1.02]
+              class={`group relative rounded-3xl border border-white/10 bg-white/5 p-3 md:p-8 backdrop-blur-sm transition-all duration-500 hover:border-white/20 hover:bg-white/10 animate-on-scroll ${service.shadow} hover:scale-[1.02]
               ${service.size === 'mid' ? 'md:col-span-2' : ''}
               ${service.size != 'mid' ? 'md:col-span-1' : ''}`}
               data-animation="fade-in-up"
@@ -231,7 +231,7 @@ const catalogLd = {
           <a 
             href="/plans" 
             target="_blank"
-            class="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-10 py-5 font-bold text-lg text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] md:w-[70%]"
+            class="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-10 py-5 font-bold text-lg text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] w-full md:w-[70%]"
           >
             Ver Planes
           </a>
