@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lastUpdate = "28 de enero de 2026";
+
+const legalSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Términos y Condiciones Legales | Mario's Agency",
+  "description": "Acuerdo de nivel de servicio (SLA) y delimitación de responsabilidad técnica por niveles de suscripción.",
+  "publisher": { "@type": "Organization", "name": "Mario's Agency" }
+};
+---
+
+<Layout title="Términos y Condiciones | Blindaje Legal">
+  <script type="application/ld+json" set:html={JSON.stringify(legalSchema)} />
+
+  <main class="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden z-[50] backdrop-blur-[2px]">
+    <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_rgba(0,255,100,0.02)_0%,_transparent_85%)]" aria-hidden="true"></div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="max-w-5xl mx-auto">
+        
+        <header class="mb-12 md:mb-20 border-b border-white/10 pb-8 md:pb-12 text-center">
+          <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 font-zalando uppercase tracking-tighter leading-none">
+            Acuerdo de <span class="text-gradient">Servicio Técnico</span>
+          </h1>
+          <p class="text-gray-500 text-[10px] md:text-sm font-zalando tracking-[0.2em] md:tracking-[0.3em] uppercase">
+            SLA - Service Level Agreement // Versión 3.5 // {lastUpdate}
+          </p>
+        </header>
+
+        <div class="grid gap-10 md:gap-16 text-gray-400 font-zalando leading-relaxed text-sm md:text-base">
+          
+          <section class="p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] bg-gradient-to-br from-red-500/5 to-transparent border border-red-500/20 shadow-2xl relative overflow-hidden">
+             <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/5 blur-3xl" aria-hidden="true"></div>
+            
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center gap-3">
+              <span class="text-red-500 font-black">!</span> Delimitación de Responsabilidad
+            </h2>
+            <p class="mb-4 text-white font-medium">
+              Mario's Agency provee exclusivamente <b>Ingeniería Digital e Infraestructura de Software</b>. 
+            </p>
+            <p class="mb-6">
+              El Cliente acepta que la optimización técnica es una herramienta de rendimiento, no una promesa de facturación. <b>No garantizamos, bajo ninguna circunstancia:</b>
+            </p>
+            <ul class="grid gap-2 pl-4 md:pl-6 list-disc text-red-200/70 text-xs md:text-sm italic">
+              <li>Incremento específico en el volumen de ventas o facturación.</li>
+              <li>Cantidad o calidad de prospectos (leads) generados.</li>
+              <li>Éxito o ROI de estrategias comerciales externas al código.</li>
+              <li>Comportamiento de compra de los usuarios finales.</li>
+            </ul>
+            <p class="mt-8 p-4 bg-red-500/10 rounded-xl border border-red-500/20 text-[10px] md:text-xs italic text-red-200">
+              La denominación "Máquina de Ventas" refiere a la eficiencia técnica del activo digital y no constituye una garantía de resultado financiero.
+            </p>
+          </section>
+
+          <section class="space-y-8">
+            <h2 class="text-xl md:text-2xl font-bold text-white uppercase tracking-wider border-l-4 border-cyan-500 pl-4">
+              02. Alcance por Niveles de Servicio
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="p-6 rounded-2xl bg-white/5 border border-white/10 flex flex-col">
+                <h3 class="text-cyan-400 font-bold mb-3 uppercase italic text-sm md:text-base">Plan Impulse</h3>
+                <p class="text-xs mb-4 text-gray-300">Unidad de contenido único (Landing Page). Modificaciones mensuales estrictas:</p>
+                <ul class="text-[11px] space-y-2 text-gray-500 mb-6 flex-grow">
+                  <li>• Cambio de paleta de colores.</li>
+                  <li>• Actualización de textos existentes.</li>
+                  <li>• Reemplazo de hasta 5 imágenes.</li>
+                  <li>• Ajuste de URLs de destino.</li>
+                </ul>
+                <p class="text-[9px] uppercase font-bold text-red-400 border-t border-white/5 pt-4">
+                  Restricción: No se permiten reestructuraciones de diseño ni agregado de secciones.
+                </p>
+              </div>
+
+              <div class="p-6 rounded-2xl bg-white/5 border border-purple-500/20 flex flex-col">
+                <h3 class="text-purple-400 font-bold mb-3 uppercase italic text-sm md:text-base">Plan Authority</h3>
+                <p class="text-xs mb-4 text-gray-300">Ecosistema web de hasta seis (6) secciones técnicas.</p>
+                <div class="space-y-3 text-[11px] text-gray-500 flex-grow">
+                  <p><b>SEO Técnico:</b> Arquitectura optimizada para indexación por IA.</p>
+                  <p><b>Ads Setup:</b> Ingeniería de píxeles. La gestión de pauta es responsabilidad del Cliente.</p>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-2xl bg-white/5 border border-yellow-500/20 flex flex-col">
+                <h3 class="text-yellow-400 font-bold mb-3 uppercase italic text-sm md:text-base">Plan Titan</h3>
+                <p class="text-xs mb-4 text-gray-300">Arquitectura Full-Stack y Agentes de IA (RAG).</p>
+                <div class="space-y-3 text-[11px] text-gray-500 flex-grow">
+                  <p><b>IA:</b> No respondemos por "alucinaciones" del modelo derivadas de datos imprecisos del Cliente.</p>
+                  <p><b>Infra:</b> Desarrollo a medida con bases de datos dinámicas.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="grid gap-12">
+            <section>
+              <h2 class="text-xl md:text-2xl font-bold text-white mb-6 uppercase tracking-tight">03. Dependencia de Terceros</h2>
+              <p class="text-xs md:text-sm">
+                Nuestra ingeniería opera sobre proveedores críticos (AWS, Cloudflare, OpenAI). No somos responsables por caídas globales, ataques DDoS masivos o cambios de políticas en dichas plataformas.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-xl md:text-2xl font-bold text-white mb-6 uppercase tracking-tight">04. Propiedad Intelectual</h2>
+              <p class="text-xs md:text-sm">
+                El Cliente es titular de los activos de marca. <b>Mario's Agency retiene la propiedad industrial</b> de sus metodologías de IA, arquitecturas de código base y algoritmos de optimización propietarios.
+              </p>
+            </section>
+          </div>
+
+          <section class="bg-cyan-500/5 p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] border border-cyan-500/20 shadow-2xl">
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-6 uppercase tracking-tighter">
+              05. Pagos y "Mora Técnica"
+            </h2>
+            <p class="mb-6 text-xs md:text-sm italic">Valores en USD. Pagos locales sujetos a cotización financiera del día.</p>
+            <div class="p-4 md:p-6 bg-black/40 rounded-xl border border-cyan-500/10">
+              <p class="text-cyan-400 font-bold mb-2 uppercase text-[10px] md:text-xs tracking-widest">Protocolo de Suspensión:</p>
+              <p class="text-xs md:text-sm leading-relaxed">
+                El retraso superior a <b>5 días hábiles</b> faculta a la Agencia para la suspensión inmediata de la infraestructura (servidores, SSL y nodos de IA). No nos responsabilizamos por pérdida de tráfico durante la desconexión.
+              </p>
+            </div>
+          </section>
+
+          <footer class="pt-12 border-t border-white/5 text-center md:text-left">
+            <p class="text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-gray-600 leading-relaxed">
+              Jurisdicción: Tribunales Ordinarios en lo Comercial de la Ciudad Autónoma de Buenos Aires, República Argentina.
+            </p>
+          </footer>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .text-gradient {
+    background: linear-gradient(to r, #00ffaa, #00e5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  b { color: white; }
+  
+  /* Animación de entrada suave */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  section {
+    animation: fadeInUp 0.7s ease-out forwards;
+  }
+</style>

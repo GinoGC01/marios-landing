@@ -1,90 +1,131 @@
 ---
-// Footer.astro
+// src/components/Footer.astro
+const currentYear = 2026;
+
+const navLinks = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Servicios', href: '/services' },
+  { name: 'Planes', href: '/plans' },
+  { name: 'Tecnología', href: '/technologies' },
+  { name: 'Contacto', href: '/contact' },
+];
+
+const socialLinks = [
+  { name: 'Instagram', href: 'https://instagram.com/mariosagency', icon: 'instagram' },
+  { name: 'Linkedin', href: 'https://linkedin.com/company/mariosagency', icon: 'linkedin' },
+  { name: 'Twitter', href: 'https://twitter.com/mariosagency', icon: 'twitter' },
+];
+
+// JSON-LD: El cerebro de tu marca para motores de IA
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mario's Agency",
+  "url": "https://mariosagency.com",
+  "logo": "https://mariosagency.com/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+54-11-4023-0671",
+    "contactType": "customer service",
+    "areaServed": "AR",
+    "availableLanguage": "Spanish"
+  },
+  "sameAs": socialLinks.map(link => link.href)
+};
 ---
 
-<footer class="relative border-t border-white/5 bg-black/50 backdrop-blur-xl z-500 tracking-tight ">
-  <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30"></div>
+<footer class="relative border-t border-white/5 bg-black/50 backdrop-blur-xl z-[500] tracking-tight">
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  
+  <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_rgba(34,197,94,0.05)_0%,_transparent_70%)] opacity-30" aria-hidden="true"></div>
 
   <div class="container relative z-10 mx-auto px-6 py-16">
     <div class="grid gap-12 md:grid-cols-4">
       
       <div class="md:col-span-2">
-        <a href="/" class="inline-flex items-center gap-3 mb-6 group">
-          <div class="h-10 w-10 rounded-xl bg-[var(--color-cyan-glow)] flex items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.3)] transition-transform group-hover:scale-110">
-            <span class="font-icons text-xl font-bold text-[#020205]">M</span>
+        <a href="/" class="inline-flex items-center gap-3 mb-6 group" aria-label="Mario's Agency - Volver al inicio">
+          <div class="h-10 w-10 rounded-xl bg-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.3)] transition-transform group-hover:scale-110">
+            <span class="font-bold text-[#020205] text-xl">M</span>
           </div>
-          <span class="font-icons text-xl font-semibold text-white">
-            Mario's<span class="text-gradient">Agency</span>
+          <span class="text-xl font-bold text-white font-zalando">
+            Mario's<span class="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Agency</span>
           </span>
         </a>
-        <p class="text-sm text-white/60 max-w-md mb-6 leading-relaxed">
-          Transformamos emprendimientos en máquinas de ventas digitales. 
-          Tecnología de punta, diseño futurista, resultados extraordinarios.
+        <p class="text-sm text-white/60 max-w-md mb-6 leading-relaxed font-zalando">
+          Ingeniería digital de alto rendimiento. Transformamos negocios en activos de facturación.
         </p>
         
-        <div class="flex gap-4">
-          {['Instagram', 'Linkedin', 'Twitter', 'Mail'].map((social) => (
+        <!-- <nav class="flex gap-4" aria-label="Redes sociales">
+          {socialLinks.map((social) => (
             <a 
-              href="#" 
-              aria-label={social}
-              class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all duration-300 hover:border-[var(--color-cyan-glow)] hover:text-[var(--color-cyan-glow)] hover:shadow-[0_0_20px_rgba(0,229,255,0.2)] hover:-translate-y-1"
+              href={social.href} 
+              aria-label={`Seguir en ${social.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all duration-300 hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)] hover:-translate-y-1"
             >
-              <div class="w-5 h-5 bg-current opacity-80" style="mask-image: radial-gradient(circle, black 100%, transparent 100%);"></div>
+              <span class="sr-only">{social.name}</span>
+              <div class="w-5 h-5 bg-current" style="mask: url(/icons/social.svg) no-repeat center;"></div>
             </a>
           ))}
-        </div>
+          <a href="mailto:hola@mariosagency.com" aria-label="Enviar correo" class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-cyan-400 hover:border-cyan-400 transition-all">
+             <div class="w-5 h-5 bg-current" style="mask: url(/icons/mail.svg) no-repeat center;"></div>
+          </a>
+        </nav> -->
       </div>
 
-      <div>
-        <h4 class="font-semibold text-white mb-6 uppercase tracking-wider text-sm ">Navegación</h4>
-        <ul class="space-y-3">
-          {['Inicio', 'Servicios', 'Planes', 'Tecnología', 'Contacto'].map((item) => (
+      <nav aria-labelledby="footer-nav-title">
+        <h4 id="footer-nav-title" class="font-bold text-white mb-6 uppercase tracking-widest text-xs font-zalando">Navegación</h4>
+        <ul class="space-y-3 list-none p-0">
+          {navLinks.map((item) => (
             <li>
               <a
-                href={item === 'Inicio' ? '/' : `/${item.toLowerCase()}`}
-                class="text-white/50 transition-all duration-300 hover:text-[var(--color-cyan-glow)] hover:translate-x-1 inline-block text-sm"
+                href={item.href}
+                class="text-white/50 transition-all duration-300 hover:text-cyan-400 hover:translate-x-1 inline-block text-sm font-zalando"
               >
-                {item}
+                {item.name}
               </a>
             </li>
           ))}
         </ul>
-      </div>
+      </nav>
 
-      <div>
-        <h4 class="font-semibold text-white mb-6 uppercase tracking-wider text-sm">Contacto</h4>
-        <ul class="space-y-4 text-white/50">
-          <li class="flex items-center gap-3">
-            <span class="text-sm">hola@mariosagency.com</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="text-sm">+54 (11) 4023 0671</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <span class="text-sm">Argentina, AR</span>
-          </li>
-        </ul>
+      <div aria-labelledby="footer-contact-title">
+        <h4 id="footer-contact-title" class="font-bold text-white mb-6 uppercase tracking-widest text-xs font-zalando">Ubicación y Contacto</h4>
+        <address class="not-italic space-y-4 text-white/50 font-zalando">
+          <div class="flex flex-col gap-1">
+            <span class="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">Email Directo</span>
+            <a href="mailto:hola@mariosagency.com" class="text-sm hover:text-white transition-colors">hola@mariosagency.com</a>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span class="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">WhatsApp Soporte</span>
+            <a href="tel:+541140230671" class="text-sm hover:text-white transition-colors">+54 (11) 4023 0671</a>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span class="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">Sede Central</span>
+            <span class="text-sm">Buenos Aires, Argentina</span>
+          </div>
+        </address>
       </div>
     </div>
 
-    <div class="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
-      <p class="text-sm text-white/40">
-        © 2026 Mario's Agency. Todos los derechos reservados.
+    <div class="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row font-zalando">
+      <p class="text-xs text-white/30">
+        © {currentYear} Mario's Agency. La ingeniería digital que impulsa tu negocio.
       </p>
-      <div class="flex gap-6 text-sm">
-        <a href="#" class="text-white/40 hover:text-[var(--color-cyan-glow)] transition-colors">Privacidad</a>
-        <a href="#" class="text-white/40 hover:text-[var(--color-cyan-glow)] transition-colors">Términos</a>
-      </div>
+      <nav class="flex gap-6 text-xs" aria-label="Legal">
+        <a href="/privacidad" class="text-white/30 hover:text-cyan-400 transition-colors">Política de Privacidad</a>
+        <a href="/terminos" class="text-white/30 hover:text-cyan-400 transition-colors">Términos de Servicio</a>
+      </nav>
     </div>
   </div>
 </footer>
 
 <style>
-  /* Aquí solo dejamos lo que NO es de Tailwind 
-     o lo que depende de tus variables CSS puras.
-  */
   .text-gradient {
-    /* Esta clase ya está animada en tu global.css */
+    background: linear-gradient(to r, #00ffff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     display: inline-block;
   }
 </style>

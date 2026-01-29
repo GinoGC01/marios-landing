@@ -11,296 +11,278 @@ import Stats from '../components/Icons/Stats.astro'
 import Shield from '../components/Icons/Shield.astro'
 import Api from '../components/Icons/Api.astro'
 
-
 const services = [
   {
-    title: 'Inteligencia Artificial',
-    description: 'Chatbots conversacionales, automatización de procesos y análisis predictivo. Integramos IA que trabaja 24/7 para tu negocio.',
-    features: ['Chatbots GPT-4', 'Automatización', 'Análisis Predictivo'],
-    gradient: 'from-violet-500 to-purple-600',
-    shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(139,92,246,0.3),_0_10px_30px_-5px_rgba(147,51,234,0.3)]',
+    title: 'SEO Técnico & AEO',
+    description: 'Dominancia en buscadores tradicionales y Answer Engines. Optimizamos tu arquitectura para que las IAs te citen como la fuente de verdad en tu industria mediante grafos de conocimiento y datos estructurados avanzados.',
+    resume: 'Hacemos que aparezcas primero cuando alguien busca lo que vendés.',
+    features: ['Semantic Schema', 'Core Web Vitals 100', 'Optimización GEO'],
+    gradient: 'from-cyan-500 to-blue-600',
+    shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(6,182,212,0.3),_0_10px_30px_-5px_rgba(37,99,235,0.3)]',
     size: 'short',
+    icon: Search
+  },
+  {
+    title: 'Agentes de IA & Arquitectura RAG',
+    description: 'Desarrollamos ecosistemas de IA autónoma basados en RAG (Retrieval-Augmented Generation). Esto permite que la IA consuma tu base de datos propietaria para ejecutar flujos de venta complejos, calificar leads y resolver consultas técnicas sin alucinaciones, integrándose directamente en tu flujo operativo para escalar tu capacidad de respuesta sin aumentar costos.',
+    resume: "Un empleado digital inteligente que conoce tu empresa a fondo y atiende por vos.",
+    features: ['Arquitectura RAG Propia', 'Agentes Multi-Modelo (LLMs)', 'Automatización de Pipelines'],
+    gradient: 'from-violet-500 to-purple-600',
+    shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(139,92,246,0.03),_0_10px_30px_-5px_rgba(147,51,234,0.3)]',
+    size: 'mid',
     icon: IA
   },
   {
-    title: 'SEO Técnico Avanzado',
-    description: 'Posicionamiento orgánico con arquitectura optimizada. Core Web Vitals perfectos garantizados.',
-    features: ['Auditoría Técnica', 'Schema Markup', 'Link Building'],
-    gradient: 'from-cyan-500 to-blue-600',
-    shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(6,182,212,0.3),_0_10px_30px_-5px_rgba(37,99,235,0.3)]',
-    size: 'mid',
-    icon: Search
-
-  },
-  {
-    title: 'Velocidad de Carga',
-    description: 'Tu web carga en menos de 1 segundo. Optimización de imágenes, CDN global y caché inteligente.',
-    features: ['< 1s Load Time', 'CDN Global', 'Lazy Loading'],
+    title: 'Performance al Límite',
+    description: 'Velocidad de carga instantánea (<1s). Arquitectura Edge para que tu web sea la más rápida del mercado, eliminando el rebote por lentitud.',
+    resume: "Tu web vuela para que nadie se vaya por tener que esperar.",
+    features: ['LCP < 1.2s', 'Edge Computing', 'Optimización de activos'],
     gradient: 'from-emerald-500 to-teal-600',
     shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(16,185,129,0.3),_0_10px_30px_-5px_rgba(13,148,136,0.3)]',
     size: 'short',
     icon: ClockFaster
-
   },
   {
-    title: 'Diseño UI/UX Premium',
-    description: 'Interfaces que convierten. Diseño centrado en el usuario con identidad visual única.',
-    features: ['Design System', 'Prototipado', 'User Testing'],
+    title: 'UX & Psicología del Comportamiento',
+    description: 'Interfaces de alto rendimiento fundadas en la economía conductual y la psicología cognitiva. Optimizamos cada interacción para reducir la carga cognitiva, hackear los sesgos de decisión y guiar al usuario mediante arquitecturas de información persuasivas que priorizan la conversión y el Valor de Vida del Cliente (LTV).',
+    resume: "Hacemos que navegar sea tan fácil y persuasivo que comprar sea la única opción lógica.",
+    features: ['Neuro-marketing Digital', 'CRO Avanzado', 'Sistemas de Diseño Evolutivos'],
     gradient: 'from-pink-500 to-rose-600',
     shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(236,72,153,0.3),_0_10px_30px_-5px_rgba(225,29,72,0.3)]',
     size: 'mid',
     icon: PaintingPalette
   },
   {
-    title: 'Desarrollo Full-Stack',
-    description: 'Arquitectura escalable con las mejores tecnologías. Código limpio, documentado y mantenible.',
-    features: ['React/Next.js', 'Node.js', 'PostgreSQL'],
+    title: 'Ingeniería Full-Stack',
+    description: 'Desarrollo de software robusto y escalable. Construimos plataformas capaces de soportar millones de usuarios con código de grado industrial.',
+    resume: "Construimos una estructura digital potente que aguanta todo sin romperse.",
+    features: ['Arquitectura Serverless', 'Bases de Datos SQL/NoSQL', 'APIs de Alta Disponibilidad'],
     gradient: 'from-orange-500 to-red-600',
     shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(249,115,22,0.3),_0_10px_30px_-5px_rgba(220,38,38,0.3)]',
     size: 'large',
     icon: Code
   },
   {
-    title: 'Escalabilidad',
-    description: 'Protección SSL, firewalls, backups automáticos y cumplimiento GDPR incluido.',
-    features: ['SSL Premium', 'WAF', 'GDPR Ready'],
+    title: 'Infraestructura Cloud',
+    description: 'Despliegue escalable en la nube con redundancia total. Tu negocio nunca se detiene, sin importar el volumen de tráfico.',
+    resume: "Tu web siempre online y disponible, sin importar cuánta gente entre a la vez.",
+    features: ['Auto-scaling', 'Cloudflare Edge', 'Monitorización 24/7'],
     gradient: 'from-slate-500 to-zinc-600',
     shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(100,116,139,0.3),_0_10px_30px_-5px_rgba(113,113,122,0.3)]',
     size: 'small',
     icon: Tunder
-    
   },
   {
-    title: 'Integración de APIs',
-    description: 'Conectamos tu web con cualquier servicio: pagos, CRM, email marketing, analytics.',
-    features: ['Stripe', 'HubSpot', 'Zapier'],
+    title: 'Integraciones Críticas',
+    description: 'Conectamos tu ecosistema con pagos, CRMs y herramientas de marketing. Automatización total del flujo de datos.',
+    resume: "Unimos todas tus herramientas para que la información fluya sola y sin errores.",
+    features: ['Pasarelas de Pago', 'Sincronización CRM', 'Webhooks & APIs'],
     gradient: 'from-yellow-500 to-amber-600',
     shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(234,179,8,0.3),_0_10px_30px_-5px_rgba(217,119,6,0.3)]',
     size: 'small',
     icon: Api
   },
   {
-    title: 'Analytics Avanzado',
-    description: 'Dashboard personalizado con métricas en tiempo real. Toma decisiones basadas en datos.',
-    features: ['Real-time Data', 'Heatmaps', 'A/B Testing'],
+    title: 'Big Data & Analytics',
+    description: 'Transformamos datos crudos en decisiones de negocio. Dashboards predictivos para entender el comportamiento de tu cliente real.',
+    resume: "Convertimos tus números en información clara para que sepas cómo ganar más.",
+    features: ['Data Warehousing', 'Visualización Avanzada', 'Modelado de Atribución'],
     gradient: 'from-indigo-500 to-blue-600',
     shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(99,102,241,0.3),_0_10px_30px_-5px_rgba(37,99,235,0.3)]',
     size: 'small',
     icon: Stats
   },
   {
-    title: 'Seguridad Empresarial',
-    description: 'Protección SSL, firewalls, backups automáticos y cumplimiento GDPR incluido.',
-    features: ['SSL Premium', 'WAF', 'GDPR Ready'],
+    title: 'Seguridad Zero Trust & Resiliencia',
+    description: 'Blindamos tu infraestructura bajo el paradigma Zero Trust (Confianza Cero), donde cada solicitud es verificada independientemente. Implementamos capas de defensa perimetral en el Edge (WAF Layer 7) y cifrado de extremo a extremo para neutralizar exfiltraciones de datos y ataques automatizados por IA antes de que comprometan tu activo.',
+    resume: "Protección invisible y total que detiene a los hackers antes de que se acerquen a tus datos.",
+    features: ['Defensa Perimetral WAF', 'Cifrado de Grado Bancario', 'Auditoría de Resiliencia'],
     gradient: 'from-slate-500 to-zinc-600',
     shadow: 'hover:[box-shadow:_0_10px_30px_-5px_rgba(100,116,139,0.3),_0_10px_30px_-5px_rgba(113,113,122,0.3)]',
     size: 'mid',
-    icon:Shield
+    icon: Shield
   },
-]
-;
+];
+
+const catalogLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Servicios de Ingeniería Digital",
+  "provider": { "@type": "LocalBusiness", "name": "Tu Máquina de Ventas" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Catálogo de Ingeniería y SEO",
+    "itemListElement": services.map(s => ({
+      "@type": "Offer",
+      "itemOffered": { "@type": "Service", "name": s.title, "description": s.description }
+    }))
+  }
+};
 ---
 
-<Layout>
-  <section class="relative pt-32 pb-20 overflow-hidden z-500 tracking-tight " data-animate-section>
-    <div class="container mx-auto px-6">
-      <div class="max-w-4xl animate-on-scroll" data-animation="fade-in-up">
-        <span class="text-cyan-400 font-medium uppercase tracking-widest text-sm mb-4 block ">
-          SERVICIOS
-        </span>
-        <h1 class=" text-3xl md:text-7xl font-bold mb-6 leading-tight ">
-          La Ingeniería detrás de <span class="text-gradient">tu Éxito Digital</span>
-        </h1>
-        <p class="text-lg md:text-xl text-gray-400 max-w-2xl">
-          Cada servicio está diseñado para eliminar fricción, aumentar conversiones 
-          y crear una experiencia de usuario inolvidable.
-        </p>
-      </div>
-    </div>
-  </section>
+<Layout title="Servicios de Ingeniería Web | Tu Máquina de Ventas" description="Optimización SEO, Integración de IA y Desarrollo de Software de alto rendimiento.">
+  <script type="application/ld+json" set:html={JSON.stringify(catalogLd)} />
+  
 
-  <!-- Services Grid -->
-  <section class="relative z-500 tracking-tight " data-animate-section>
-    <div class="container mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-6">
-        {services.map((service, index) => (
-          <div 
-            class={`group relative rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-500 hover:border-white/20 hover:bg-white/10 animate-on-scroll ${service.shadow} hover:scale-[1.02]
-            ${service.size === 'mid' ? 'md:col-span-2' : ''}
-            ${service.size != 'mid' ? 'md:col-span-1' : ''}`}
-            data-animation="fade-in-up"
-            data-delay={index * 100}
+  <main>
+    <section class="relative pt-32 pb-20 overflow-hidden z-[50] tracking-tight" data-animate-section>
+
+      <div class="container mx-auto px-6">
+        <header class="max-w-4xl animate-on-scroll" data-animation="fade-in-up">
+          <span class="text-cyan-400 font-medium uppercase tracking-widest text-sm mb-4 block">
+            ESTÁNDARES DE INGENIERÍA 2026
+          </span>
+          <h1 class="text-3xl md:text-6xl font-bold mb-6 leading-none">
+            La Ingeniería que impulsa <span class="text-gradient block md:text-6xl">tu Facturación</span>
+          </h1>
+          <p class="text-lg md:text-xl text-gray-400 max-w-2xl">
+            No creamos webs, construimos activos digitales diseñados para eliminar la fricción de venta y dominar los nuevos buscadores de IA.
+          </p>
+        </header>
+      </div>
+    </section>
+
+    <section class="relative z-[50] tracking-tight" data-animate-section aria-label="Nuestra oferta de servicios">
+      <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30" aria-hidden="true"></div>
+
+      <div class="container mx-auto px-6">
+        <ul class="grid md:grid-cols-4 gap-6 list-none p-0">
+          {services.map((service, index) => (
+            <li 
+              class={`group relative rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-500 hover:border-white/20 hover:bg-white/10 animate-on-scroll ${service.shadow} hover:scale-[1.02]
+              ${service.size === 'mid' ? 'md:col-span-2' : ''}
+              ${service.size != 'mid' ? 'md:col-span-1' : ''}`}
+              data-animation="fade-in-up"
+              data-delay={index * 50}
+            >
+              <article>
+                <div class={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${service.gradient} mb-6`} aria-hidden="true">
+                  <div class="h-7 w-7"><service.icon/></div>
+                </div>
+                
+                <h3 class="text-2xl md:text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                  {service.title}
+                  <svg class="h-5 w-5 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </h3>
+                
+                <p class="text-gray-400 mb-6 leading-relaxed text-sm md:text-base">
+                  {service.description}
+                </p>
+                <p class="text-gray-400/50 mb-6 leading-relaxed text-xs md:text-sm">
+                  {service.resume}
+                </p>
+                
+                <div class="flex flex-wrap gap-2">
+                  {service.features.map((feature) => (
+                    <span class="rounded-full border border-white/10 bg-white/5 py-2 px-4 text-[10px] md:text-xs text-gray-400 whitespace-nowrap">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="relative py-20 mt-15 border-t border-white/5 z-[50] backdrop-blur-[4px] tracking-tight" data-animate-section>
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-20 animate-on-scroll" data-animation="fade-in-up">
+          <span class="text-cyan-400 font-medium uppercase tracking-widest text-sm mb-4 block">
+            EL CAMINO AL RESULTADO
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold">
+            Metodología de <span class="text-gradient uppercase">Optimización</span>
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8">
+          {[
+            { step: '01', title: 'Auditoría de Datos', desc: 'Identificamos las fugas de conversión en tu ecosistema actual.' },
+            { step: '02', title: 'Arquitectura', desc: 'Diseñamos la solución técnica para escalar sin límites.' },
+            { step: '03', title: 'Despliegue Ágil', desc: 'Entregas semanales de código listo para producción.' },
+            { step: '04', title: 'Escalado', desc: 'Optimización de conversiones basada en datos reales de usuario.' },
+          ].map((item, index) => (
+            <div 
+              class="text-center animate-on-scroll"
+              data-animation="fade-in-up"
+              data-delay={index * 100}
+            >
+              <div class="text-6xl font-bold text-gradient mb-4">
+                {item.step}
+              </div>
+              <h3 class="text-xl font-semibold mb-2 text-white">{item.title}</h3>
+              <p class="text-gray-400 text-sm px-4">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="relative py-24 z-[50]" data-animate-section>
+      <div class="container mx-auto px-6 text-center">
+        <div class="max-w-3xl mx-auto animate-on-scroll" data-animation="scale-in">
+          <h2 class="text-4xl md:text-6xl font-bold mb-8 text-white">
+            ¿Buscás resultados o <br class="hidden md:block"/><span class="text-gradient">solo una web?</span>
+          </h2>
+          <a 
+            href="/planes" 
+            class="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-10 py-5 font-bold text-lg text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] md:w-[70%]"
           >
-
-            <!-- Icon -->
-            <div class={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${service.gradient} mb-6`}>
-              <div class="h-7 w-7"><service.icon/></div>
-            </div>
-            
-            <!-- Title -->
-            <h3 class=" text-2xl md:text-xl font-semibold text-white mb-3 flex items-center gap-2 ">
-              {service.title}
-              <svg class="h-5 w-5 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </h3>
-            
-            <!-- Description -->
-            <p class="text-gray-400 mb-6 leading-relaxed">
-              {service.description}
-            </p>
-            
-            <!-- Features Tags -->
-            <div class="flex flex-wrap gap-2">
-              {service.features.map((feature) => (
-                <span class="rounded-full border border-white/10 bg-white/5 py-2 px-5 text-xs text-gray-400">
-                  {feature}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
+            Ver Planes
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Process Section -->
-  <section class="relative py-6 mt-15 border-t border-white/5 z-500 backdrop-blur-[1px] tracking-tight " data-animate-section>
-    <div class="container mx-auto px-6">
-      <div class="text-center mb-20 animate-on-scroll" data-animation="fade-in-up">
-        <span class="text-cyan-400 font-medium uppercase tracking-widest text-sm mb-4 block ">
-          PROCESO
-        </span>
-        <h2 class=" text-4xl md:text-5xl font-bold ">
-          Metodología de <span class="text-gradient">Alto Impacto</span>
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-4 gap-8">
-        {[
-          { step: '01', title: 'Descubrimiento', desc: 'Análisis profundo de tu negocio y objetivos' },
-          { step: '02', title: 'Estrategia', desc: 'Plan detallado con KPIs medibles' },
-          { step: '03', title: 'Ejecución', desc: 'Desarrollo ágil con entregas semanales' },
-          { step: '04', title: 'Optimización', desc: 'Mejora continua basada en datos' },
-        ].map((item, index) => (
-          <div 
-            class="text-center animate-on-scroll"
-            data-animation="fade-in-up"
-            data-delay={index * 100 + 300}
-          >
-            <div class=" text-6xl font-bold text-gradient mb-4">
-              {item.step}
-            </div>
-            <h3 class=" text-xl font-semibold mb-2 text-white">{item.title}</h3>
-            <p class="text-gray-400 text-sm">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="relative py-20 z-500" data-animate-section>
-    <div class="container mx-auto px-6 text-center">
-      <div class="animate-on-scroll" data-animation="scale-in" data-delay="200">
-        <h2 class=" text-3xl md:text-4xl font-bold mb-6 text-white ">
-          ¿Listo para empezar?
-        </h2>
-        <a 
-          href="/planes" 
-          class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-8 py-4 font-semibold text-white transition-transform duration-300 hover:scale-105"
-        >
-          <span>Ver Planes y Precios</span>
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 </Layout>
 
 <style>
+  /* Se mantienen estilos originales para no romper visuales */
   @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(2rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(2rem); }
+    to { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes fade-in-scale {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
-
-  .animate-fade-in {
-    animation: fade-in-up 0.8s ease-out forwards;
-  }
-
-  .animate-fade-in-scale {
-    animation: fade-in-scale 0.6s ease-out forwards;
-    animation-delay: 0.2s;
-  }
-
-  /* Ocultar elementos antes de animar */
-  .animate-on-scroll {
-    opacity: 0;
-  }
-
-  /* Elementos visibles después de animar */
-  .animate-on-scroll.is-visible {
-    opacity: 1;
-  }
+  .animate-fade-in { animation: fade-in-up 0.8s ease-out forwards; }
+  .animate-fade-in-scale { animation: fade-in-scale 0.6s ease-out forwards; animation-delay: 0.2s; }
+  .animate-on-scroll { opacity: 0; }
+  .animate-on-scroll.is-visible { opacity: 1; }
+  
+  /* Fallback para LCP */
+  header.animate-on-scroll { opacity: 1; }
 </style>
 
 <script>
-  // Intersection Observer para activar animaciones solo cuando las secciones son visibles
   function initScrollAnimations() {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Animar todos los elementos dentro de la sección
           const animatedElements = entry.target.querySelectorAll('.animate-on-scroll');
-          
           animatedElements.forEach((el) => {
             const animationType = el.getAttribute('data-animation');
             const delay = el.getAttribute('data-delay') || '0';
-            
-            // Aplicar delay y clase de animación
             setTimeout(() => {
               el.classList.add(`animate-${animationType}`);
               el.classList.add('is-visible');
             }, parseInt(delay));
           });
-
-          // Dejar de observar esta sección
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    // Observar todas las secciones con animaciones
     const sections = document.querySelectorAll('[data-animate-section]');
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+    sections.forEach(section => { observer.observe(section); });
   }
 
-  // Ejecutar en carga inicial
   document.addEventListener('DOMContentLoaded', initScrollAnimations);
-  
-  // Ejecutar en navegación de Astro
   document.addEventListener('astro:page-load', initScrollAnimations);
 </script>

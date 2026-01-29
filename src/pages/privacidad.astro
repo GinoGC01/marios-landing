@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lastUpdate = "28 de enero de 2026";
+
+const privacySchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Política de Privacidad | Mario's Agency",
+  "description": "Protocolos de tratamiento de datos personales y seguridad en sistemas de Inteligencia Artificial.",
+  "publisher": { "@type": "Organization", "name": "Mario's Agency" }
+};
+---
+
+<Layout title="Política de Privacidad | Seguridad de Datos">
+  <script type="application/ld+json" set:html={JSON.stringify(privacySchema)} />
+
+  <main class="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden z-[50] backdrop-blur-[2px]">
+    <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_rgba(0,229,255,0.03)_0%,_transparent_85%)]" aria-hidden="true"></div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        
+        <header class="mb-12 md:mb-20 border-b border-white/10 pb-8 md:pb-12 text-center md:text-left">
+          <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 font-zalando uppercase tracking-tighter leading-none">
+            Privacidad y <span class="text-gradient">Protección</span>
+          </h1>
+          <p class="text-gray-500 text-[10px] md:text-sm font-zalando tracking-[0.2em] md:tracking-[0.3em] uppercase">
+            Protocolo de Datos // Versión 2.0 // {lastUpdate}
+          </p>
+        </header>
+
+        <div class="flex flex-col gap-10 md:gap-16 text-gray-400 font-zalando leading-relaxed text-sm md:text-base">
+          
+          <section class="animate-in">
+            <h2 class="text-lg md:text-xl font-bold text-white mb-4 uppercase tracking-widest border-l-2 border-cyan-400 pl-4">
+              I. Responsable del Tratamiento
+            </h2>
+            <p class="pl-5 md:pl-0">
+              Mario's Agency, con sede en Buenos Aires, Argentina, garantiza la <b>soberanía de los datos</b> y la transparencia en cada capa de nuestra infraestructura técnica.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="text-lg md:text-xl font-bold text-white mb-4 uppercase tracking-widest border-l-2 border-cyan-400 pl-4">
+              II. Información Recabada
+            </h2>
+            <p class="mb-6 pl-5 md:pl-0">Solo procesamos datos esenciales para la ingeniería del proyecto:</p>
+            
+            <ul class="grid gap-4 md:gap-6 pl-5 md:pl-0">
+              <li class="flex items-start gap-4">
+                <span class="text-cyan-400 font-bold text-xs mt-1">01.</span>
+                <p><b>Datos de Contacto:</b> Gestión comercial vía canales encriptados (WhatsApp/Email).</p>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-cyan-400 font-bold text-xs mt-1">02.</span>
+                <p><b>Métricas Técnicas:</b> Análisis anónimo de Core Web Vitals y latencia de red.</p>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="text-cyan-400 font-bold text-xs mt-1">03.</span>
+                <p><b>Vectores de IA:</b> Procesamiento privado de bases de conocimiento mediante arquitectura RAG.</p>
+              </li>
+            </ul>
+          </section>
+
+          <section class="p-6 md:p-10 rounded-2xl md:rounded-[2.5rem] bg-white/[0.02] border border-cyan-500/20 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 blur-3xl" aria-hidden="true"></div>
+            
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <span class="text-cyan-400">!</span> Seguridad en Sistemas de IA
+            </h2>
+            
+            <div class="grid gap-4">
+              <div class="p-4 bg-black/40 rounded-xl border-l-2 border-green-500/50">
+                <p class="text-xs md:text-sm italic">
+                  <b class="text-green-400">Privacidad de Inferencia:</b> Sus datos <strong>no se utilizan para el entrenamiento</strong> de modelos públicos. La IA opera en silos de datos aislados.
+                </p>
+              </div>
+              <div class="p-4 bg-black/40 rounded-xl border-l-2 border-cyan-500/50">
+                <p class="text-xs md:text-sm italic">
+                  <b class="text-cyan-400">Derecho al Borrado:</b> Purga inmediata de bases de datos vectoriales bajo demanda técnica.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <div class="grid md:grid-cols-2 gap-10 md:gap-12">
+            <section>
+              <h2 class="text-lg md:text-xl font-bold text-white mb-4 uppercase tracking-widest border-l-2 border-cyan-400 pl-4">
+                IV. Finalidad
+              </h2>
+              <ul class="list-disc pl-9 space-y-2 text-xs md:text-sm">
+                <li>Soporte técnico avanzado.</li>
+                <li>Seguridad perimetral (Anti-DDoS).</li>
+                <li>Optimización de UX.</li>
+              </ul>
+            </section>
+            
+            <section>
+              <h2 class="text-lg md:text-xl font-bold text-white mb-4 uppercase tracking-widest border-l-2 border-cyan-400 pl-4">
+                V. Infraestructura
+              </h2>
+              <p class="pl-5 md:pl-0 text-xs md:text-sm">
+                Utilizamos nodos de procesamiento elite (AWS, Vercel, Cloudflare) que cumplen con normativas de privacidad grado bancario.
+              </p>
+            </section>
+          </div>
+
+          <section class="grid gap-10 md:gap-16">
+            <div>
+              <h2 class="text-lg md:text-xl font-bold text-white mb-4 uppercase tracking-widest border-l-2 border-cyan-400 pl-4">
+                VI. Sus Derechos (ARCO)
+              </h2>
+              <p class="pl-5 md:pl-0">
+                Puede ejercer sus derechos de acceso o cancelación escribiendo a: 
+                <a href="mailto:privacidad@mariosagency.com" class="text-cyan-400 hover:text-white underline transition-colors">privacidad@mariosagency.com</a>
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-lg md:text-xl font-bold text-white mb-4 uppercase tracking-widest border-l-2 border-cyan-400 pl-4">
+                VII. Cookies
+              </h2>
+              <p class="pl-5 md:pl-0 text-xs md:text-sm">
+                Implementamos cookies técnicas de sesión. No realizamos seguimiento publicitario intrusivo (Cross-site tracking).
+              </p>
+            </div>
+          </section>
+
+          <footer class="pt-12 border-t border-white/5 text-center md:text-left">
+            <p class="text-[10px] text-gray-600 uppercase tracking-[0.2em] md:tracking-[0.4em] leading-relaxed">
+              Jurisdicción: CABA, Argentina. Cumplimiento de estándares de privacidad digital 2026.
+            </p>
+          </footer>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .text-gradient {
+    background: linear-gradient(to r, #00ffff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  b { color: white; }
+  strong { color: white; font-weight: 800; }
+  
+  /* Animación sutil de entrada */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  section {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+</style>

@@ -1,21 +1,42 @@
 ---
-// Layout.astro
+
+// src/layouts/Layout.astro
 import '../styles/global.css';
 import Header from '../components/Header.astro';
-
 import HeroSceneCanvas from '../components/Scene/HeroSceneCanvas.astro';
 import Footer from '../components/Footer.astro';
 import ButtonWppChat from '../components/Buttons/ButtonWppChat.astro';
 
+
+
 interface Props {
   title?: string;
   description?: string;
+  image?: string; // Nuevo: Para Open Graph
 }
 
 const { 
-  title = 'Tu Máquina de Ventas | Ingeniería Digital',
-  description = 'SEO técnico, IA y desarrollo de alto rendimiento.'
+  title = 'Tu Máquina de Ventas | Ingeniería Digital en Argentina',
+  description = 'Expertos en SEO técnico, IA y desarrollo de alto rendimiento para escalar negocios.',
+  image = '/og-image.jpg'
 } = Astro.props;
+
+// Datos estructurados para GEO/AEO
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tu Máquina de Ventas",
+  "description": description,
+  "url": Astro.url,
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "AR"
+  },
+  "serviceType": ["SEO Técnico", "Desarrollo Web", "IA"],
+  "areaServed": "Global"
+};
+
+
 ---
 
 <!DOCTYPE html>
@@ -23,16 +44,28 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url} />
+    <meta name="robots" content="index, follow" />
+    
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:type" content="website" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Zalando+Sans+Expanded:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body class="bg-[#020205] text-white overflow-x-hidden antialiased relative tracking-tight font-zalando ">
     <ButtonWppChat/>
     <HeroSceneCanvas/>
     <Header />
-      <slot />
+    <slot />
     <Footer/> 
   </body>
 </html>

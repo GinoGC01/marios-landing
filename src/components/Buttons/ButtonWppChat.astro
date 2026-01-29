@@ -1,253 +1,172 @@
 ---
-// src/components/WhatsAppButton.astro
-import Image from "astro/components/Image.astro";
 import WhatsApp from "../Icons/WhatsApp.astro";
-// import ProfileImage from '../../assets/perfil.svg'
+const pathname = Astro.url.pathname;
+const isContactPage = pathname === '/contact';
 
+const WHATSAPP_CONFIG = {
+  number: '5491100000000', // Tu número real
+  message: encodeURIComponent("Hola, me gustaría solicitar asesoramiento técnico para un proyecto digital."),
+  agencyName: "Mario's Agency"
+};
+
+const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.number}?text=${WHATSAPP_CONFIG.message}`;
 ---
 
-<div id="whatsapp-widget" class="fixed bottom-6 right-6 z-700 font-inter">
-    <!-- Chat Bubble -->
+{!isContactPage && (
+  <div id="whatsapp-widget" class="fixed bottom-6 right-6 z-[700] font-zalando print:hidden">
+    
     <div 
-        id="whatsapp-bubble" 
-        class="hidden absolute bottom-20 right-0 w-[320px] md:w-[360px] "
+      id="whatsapp-bubble" 
+      class="hidden absolute bottom-20 right-0 w-[320px] md:w-[360px]"
     >
-        <div class="bg-[#111] rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.3),0_0_60px_rgba(37,211,102,0.15)] border border-white/10 overflow-hidden animate-slideUp">
-            <!-- Header -->
-            <div class="bg-gradient-to-r from-green-500 to-green-700 p-4 flex items-center gap-3 relative overflow-hidden">
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-10"></div>
-                <div class="relative w-12 h-12 rounded-full bg-white/20 flex items-center justify-center border-2 border-white/30 shrink-0 p-2">
-                        <WhatsApp size="30"/>
-                </div>
-                <div class="relative flex-1 min-w-0">
-                    <h3 class="text-white font-bold text-lg truncate">Mario's Agency</h3>
-                    <p class="text-white/80 text-xs flex items-center gap-1">
-                        <span class="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse"></span>
-                        Conectado
-                    </p>
-                </div>
-                <button 
-                    id="close-bubble" 
-                    class="relative w-8 h-8 rounded-full hover:bg-white/10 transition-all flex items-center justify-center text-white shrink-0 text-xl leading-none"
-                >
-                    ✕
-                </button>
-            </div>
-
-            <!-- Message -->
-            <div class="p-5 bg-[#0a0a0a] relative">
-                <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-                
-                <!-- Message Bubble -->
-                <div class="relative mt-2">
-                    <div class="bg-[#1a1a1a] border border-white/10 rounded-2xl rounded-tl-none p-4 shadow-lg relative">
-                        <div class="flex items-start gap-2 mb-3">
-                            <div class="w-8 h-8 rounded-full bg-[#25d366]/20 flex items-center justify-center shrink-0 overflow-hidden">
-                                <span class="w-15 h-15 block rounded-full grid place-items-center bg-gradient-to-br from-[#0099ff] via-[#3b82f6] to-[#a855f7] text-xl font-bold">M</span>
-                            </div>
-                            <div class="min-w-0 flex-1">
-                                <p class="text-white font-semibold text-sm mb-1">Mario's Agency</p>
-                                <p class="text-gray-400 text-xs">Hace un momento</p>
-                            </div>
-                        </div>
-                        
-                        <p class="text-gray-300 text-sm leading-relaxed mb-3">
-                            ¡Hola! 👋 ¿Tienes preguntas sobre nuestros servicios?
-                        </p>
-                        <p class="text-gray-300 text-sm leading-relaxed">
-                            Estamos aquí para ayudarte a <span class="text-[#25d366] font-semibold">hacer crecer tu negocio!</span>. 💯
-                        </p>
-                    </div>
-                    
-                    <!-- Triangle pointer -->
-                    <div class="absolute -top-2 left-0 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-b-[12px] border-b-[#1a1a1a]"></div>
-                </div>
-
-                <!-- CTA Button -->
-                <a 
-                    href="https://wa.me/34600000000?text=Hola,%20me%20interesa%20saber%20más%20sobre%20sus%20servicios%20de%20marketing%20dental" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="mt-4 w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-[#128c7e] hover:to-[#25d366] text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-lg group cursor-pointer"
-                >
-                    <div class="w-5 h-5">
-                        <WhatsApp />
-                    </div>
-                    <span class="text-base md:text-lg">Iniciar Conversación</span>
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                </a>
-
-                <p class="text-center text-[10px] text-gray-600 mt-3 uppercase tracking-wider">
-                    Respuesta en menos de 1 hora
-                </p>
-            </div>
+      <div class="bg-[#0c0c0c] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6),0_0_40px_rgba(34,197,94,0.1)] border border-white/5 overflow-hidden animate-slideUp">
+        
+        <div class="bg-gradient-to-r from-green-700 to-green-900 p-5 flex items-center gap-3 relative">
+          <div class="relative w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shrink-0">
+            <WhatsApp size="28"/>
+          </div>
+          
+          <div class="relative flex-1 min-w-0 text-left">
+            <h3 class="text-white font-bold text-base truncate">{WHATSAPP_CONFIG.agencyName}</h3>
+            <p class="text-green-300/80 text-[10px] uppercase tracking-widest font-bold flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+              Consultoría Activa
+            </p>
+          </div>
+          
+          <button 
+            id="close-bubble" 
+            class="relative w-8 h-8 rounded-full hover:bg-white/10 transition-all flex items-center justify-center text-white/70 hover:text-white shrink-0"
+            aria-label="Cerrar chat"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
         </div>
+
+        <div class="p-6 bg-[#0c0c0c] relative">
+          <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+          
+          <div class="relative mt-2">
+            <div class="bg-[#161616] border border-white/5 rounded-2xl rounded-tl-none p-4 shadow-sm">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-gradient-to-br from-cyan-600 to-blue-700">
+                  <span class="text-white font-bold text-xs">M</span>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <p class="text-white font-semibold text-xs mb-0.5">Asesoría Técnica</p>
+                  <p class="text-gray-500 text-[10px]">Tiempo de respuesta: 0.30 - 1 min</p>
+                </div>
+              </div>
+              
+              <p class="text-gray-300 text-sm leading-relaxed mb-3">
+                Hola. ¿En qué podemos asesorarte hoy? 
+              </p>
+              <p class="text-gray-400 text-xs leading-relaxed">
+                Consultanos sobre <span class="text-white">desarrollos a medida</span>, <span class="text-white">auditorías SEO</span> o <span class="text-white">integraciones de IA</span> para tu infraestructura digital.
+              </p>
+            </div>
+            <div class="absolute -top-2 left-0 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-b-[12px] border-b-[#161616]"></div>
+          </div>
+
+          <a 
+            href={whatsappUrl} 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 w-full bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-lg group"
+          >
+            <WhatsApp size="20" />
+            <span class="text-sm uppercase tracking-wide">Iniciar Consulta</span>
+            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+
+          <p class="text-center text-[10px] text-gray-600 mt-4 uppercase tracking-[0.15em]">
+            Comunicación encriptada de extremo a extremo
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- Main Button -->
     <button 
-        id="whatsapp-button"
-        class="relative bg-gradient-to-br from-green-500 to-green-700 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_40px_rgba(37,211,102,0.6)] transition-all duration-300 hover:scale-110 active:scale-95  group p-4 cursor-pointer"
-        aria-label="Abrir chat de WhatsApp"
+      id="whatsapp-button"
+      class="relative bg-gradient-to-br from-green-600 to-green-800 rounded-full shadow-[0_10px_30px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.5)] transition-all duration-300 hover:scale-110 active:scale-90 p-4 cursor-pointer"
+      aria-label="Abrir chat de WhatsApp"
     >
-        <!-- Icon -->
-        <div class="relative z-10 w-8 h-8 text-white transform group-hover:rotate-12 transition-transform duration-300">
-            <WhatsApp size="32" />
-        </div>
+      <div class="relative z-10 w-8 h-8 text-white">
+        <WhatsApp size="32" />
+      </div>
 
-        <!-- Notification badge -->
-        <div 
-            id="notification-badge"
-            class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg transition-all duration-300"
-        >
-            1
-        </div>
+      <div 
+        id="notification-badge"
+        class="absolute -top-1 -right-1 w-6 h-6 bg-red-600 rounded-full flex items-center justify-center text-white text-[12px] font-black shadow-lg font-inter"
+      >
+        1
+      </div>
     </button>
-</div>
+  </div>
+)}
 
 <style>
-    @keyframes slideUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px) scale(0.95);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-
-    @keyframes slideDown {
-        from {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-        to {
-            opacity: 0;
-            transform: translateY(20px) scale(0.95);
-        }
-    }
-
-    .animate-slideUp {
-        animation: slideUp 0.3s ease-out forwards;
-    }
-
-    .animate-slideDown {
-        animation: slideDown 0.3s ease-out forwards;
-    }
-
-    @keyframes fadeOut {
-        from {
-            opacity: 1;
-            transform: scale(1);
-        }
-        to {
-            opacity: 0;
-            transform: scale(0.5);
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: scale(0.5);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-
-    .badge-hide {
-        animation: fadeOut 0.3s ease-out forwards;
-    }
-
-    .badge-show {
-        animation: fadeIn 0.3s ease-out forwards;
-    }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes slideDown {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to { opacity: 0; transform: translateY(20px) scale(0.98); }
+  }
+  .animate-slideUp { animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .animate-slideDown { animation: slideDown 0.3s ease-in forwards; }
+  .badge-hide { display: none !important; }
 </style>
 
 <script>
+  function initWhatsApp() {
     const button = document.getElementById('whatsapp-button');
     const bubble = document.getElementById('whatsapp-bubble');
     const closeBtn = document.getElementById('close-bubble');
     const badge = document.getElementById('notification-badge');
+    const widget = document.getElementById('whatsapp-widget');
+    
     let isOpen = false;
-    let autoOpenTimer: number | null = null;
 
-    function hideBadge() {
-        if (badge) {
-            badge.classList.remove('badge-show');
-            badge.classList.add('badge-hide');
-            setTimeout(() => {
-                badge.style.display = 'none';
-            }, 300);
-        }
-    }
-
-    function showBadge() {
-        if (badge) {
-            badge.style.display = 'flex';
-            badge.classList.remove('badge-hide');
-            badge.classList.add('badge-show');
-        }
-    }
-
-    function toggleBubble(forceClose = false) {
-        if (forceClose || isOpen) {
-            bubble?.classList.remove('animate-slideUp');
-            bubble?.classList.add('animate-slideDown');
-            setTimeout(() => {
-                bubble?.classList.add('hidden');
-                bubble?.classList.remove('animate-slideDown');
-            }, 300);
-            isOpen = false;
-            showBadge();
-        } else {
-            bubble?.classList.remove('hidden');
-            setTimeout(() => {
-                bubble?.classList.add('animate-slideUp');
-            }, 10);
-            isOpen = true;
-            hideBadge();
-        }
-    }
+    const toggle = (forceClose = false) => {
+      if (forceClose || isOpen) {
+        bubble?.classList.remove('animate-slideUp');
+        bubble?.classList.add('animate-slideDown');
+        setTimeout(() => {
+          bubble?.classList.add('hidden');
+          bubble?.classList.remove('animate-slideDown');
+        }, 300);
+        isOpen = false;
+      } else {
+        bubble?.classList.remove('hidden');
+        bubble?.classList.add('animate-slideUp');
+        badge?.classList.add('badge-hide');
+        isOpen = true;
+      }
+    };
 
     button?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleBubble();
-        if (autoOpenTimer) {
-            clearTimeout(autoOpenTimer);
-            autoOpenTimer = null;
-        }
+      e.stopPropagation();
+      toggle();
     });
 
     closeBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleBubble(true);
+      e.stopPropagation();
+      toggle(true);
     });
 
-    // Cerrar al hacer click fuera
     document.addEventListener('click', (e) => {
-        const widget = document.getElementById('whatsapp-widget');
-        if (isOpen && widget && !widget.contains(e.target as Node)) {
-            toggleBubble(true);
-        }
+      if (isOpen && widget && !widget.contains(e.target as Node)) toggle(true);
     });
 
-    // Cerrar con tecla ESC
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen) {
-            toggleBubble(true);
-        }
+      if (e.key === 'Escape' && isOpen) toggle(true);
     });
+  }
 
-    // // Auto-abrir después de 5 segundos (opcional)
-    // autoOpenTimer = window.setTimeout(() => {
-    //     if (!isOpen) {
-    //         toggleBubble();
-    //     }
-    // }, 5000);
+  document.addEventListener('DOMContentLoaded', initWhatsApp);
+  document.addEventListener('astro:page-load', initWhatsApp);
 </script>

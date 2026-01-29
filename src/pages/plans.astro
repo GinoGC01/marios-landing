@@ -1,8 +1,9 @@
 ---
 // src/pages/planes.astro
 import Layout from '../layouts/Layout.astro';
-import ShieldCheck from '../components/Icons/ShieldCheck.astro'
-const WHATSAPP_NUMBER = "521234567890"; // Reemplaza con tu número real
+import ShieldCheck from '../components/Icons/ShieldCheck.astro';
+
+const WHATSAPP_NUMBER = "5491140230671"; // Ajustado a formato AR para el ejemplo
 
 const plans = [
   {
@@ -10,230 +11,214 @@ const plans = [
     name: 'Impulse',
     price: '$0',
     priceUsd: '$0',
-    period: 'Abono Mensual (Mantenimiento)',
-    description: 'Tu primer paso profesional. Landing ultra-rápida para vender por chat.',
+    period: 'Mantenimiento Mensual',
+    description: 'Validación profesional inmediata. Landing de alto impacto optimizada para conversiones rápidas vía chat.',
     icon: 'rocket',
     accentColor: '#00ffff',
-    buttonText: 'Comenzar Ahora',
+    buttonText: 'Lanzar Ahora',
     features: [
-      'Página Única con Carga Instantánea',
-      'Optimización Total para Celulares',
-      'Botón directo a WhatsApp/Telegram',
-      'Setup de Google Business (Maps)',
-      'Seguridad y Hosting Incluido',
-      'Soporte Técnico de Guardia',
+      'Landing Page de Carga Instantánea',
+      'Optimización Mobile-First Real',
+      'Canal Directo WhatsApp/Telegram',
+      'Ficha Google Business (Local SEO)',
+      'Hosting de Alta Disponibilidad',
+      'Certificado SSL & Seguridad Web',
     ],
-    notIncluded: ['Formularios', 'Dashboard de Datos', 'Múltiples Secciones'],
+    notIncluded: ['AEO Avanzado', 'Automatización IA', 'Sistemas de Datos'],
   },
   {
     id: 'authority',
     name: 'Authority',
     price: '$450k',
     priceUsd: '$299',
-    period: 'Pago único + Abono Mensual',
-    description: 'El estándar para negocios que quieren dominar su mercado local.',
+    period: 'Pago único + Mantenimiento mensual',
+    description: 'Para negocios que buscan liderar. Arquitectura optimizada para humanos y motores de IA.',
     icon: 'sparkles',
     popular: true,
     accentColor: '#6f00ff',
-    buttonText: 'El Plan Más Elegido',
+    buttonText: 'Dominar mi Mercado',
     features: [
-      'Sitio Web de hasta 6 Secciones',
-      'Diseño Interactivo de Alto Rendimiento',
-      'Formularios de Captura Automatizados',
-      'Conexión con tu Email/Sheets (n8n)',
-      'Estrategia de SEO Técnico',
-      'Configuración de Pixel y Google Ads',
-      'Reporte de Rendimiento Trimestral',
+      'Ecosistema de hasta 6 Secciones',
+      'Optimización AEO (Answer Engine)',
+      'Formularios con Lógica de Venta',
+      'Automatización de Leads (n8n/API)',
+      'SEO Técnico con Schema Markup',
+      'Setup de Tracking Avanzado',
+      'Reporte de Métricas Trimestral',
     ],
-    notIncluded: ['Base de Datos Compleja', 'Funciones de Inteligencia Artificial'],
+    notIncluded: ['Agentes de IA Autónomos', 'Desarrollo Full-Stack Medida'],
   },
   {
     id: 'titan',
     name: 'Titan',
     price: '$1.8M',
     priceUsd: '$1,199',
-    period: 'Pago único + Abono Mensual',
-    description: 'Potencia tecnológica pura. Automatización y gestión de datos.',
+    period: 'Inversión de Ingeniería',
+    description: 'Poder tecnológico absoluto. Infraestructura a medida para empresas que escalan con datos e IA.',
     icon: 'crown',
     premium: true,
     accentColor: '#d4a017',
-    buttonText: 'Consultar Solución',
+    buttonText: 'Solicitar Consultoría',
     features: [
-      'Desarrollo Full-Stack a Medida',
-      'Base de Datos para Gestión de Clientes',
-      'IA para Clasificación de Consultas',
-      'Panel Administrativo Personalizado',
-      'Integración con tu Software Actual',
-      'Tracking Avanzado (Server-side)',
-      'Consultoría Técnica Mensual',
+      'Desarrollo Full-Stack Exclusivo',
+      'Base de Datos de Alta Performance',
+      'Integración de IA (RAG) para Ventas',
+      'Panel Administrativo a Medida',
+      'Infraestructura Zero-Trust',
+      'Tracking Server-side (Privacy-first)',
+      'Soporte Prioritario 24/7',
     ],
     notIncluded: [],
   },
 ];
+
+// Generación de Schema para AEO/GEO
+const pricingSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "name": "Planes de Ingeniería Digital 2026",
+  "itemListElement": plans.map((plan, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Offer",
+      "name": plan.name,
+      "description": plan.description,
+      "priceCurrency": "USD",
+      "price": plan.priceUsd.replace('$', '').replace(',', '')
+    }
+  }))
+};
 ---
 
-<Layout title="Planes y Precios">
-  <section class="relative pt-32 pb-20 overflow-hidden z-500" data-animate-section>
+<Layout title="Planes y Precios | Ingeniería Web de Alto Rendimiento">
+  <script type="application/ld+json" set:html={JSON.stringify(pricingSchema)} />
+
+  <section class="relative pt-32 pb-20 overflow-hidden z-[50]" data-animate-section>
+
     <div class="container mx-auto px-6 text-center">
-      <span class="text-cyan-400 font-icons uppercase tracking-[0.3em] text-xs mb-4 block animate-on-scroll tracking-tight font-zalando" data-animation="fade-in-down">
-        ESCALABILIDAD
+      <span class="text-cyan-400 font-medium uppercase tracking-[0.3em] text-xs mb-4 block animate-on-scroll font-zalando" data-animation="fade-in-down">
+        MODELOS DE ESCALABILIDAD
       </span>
-      <h1 class="text-3xl md:text-7xl font-bold mb-6 tracking-tighter text-white animate-on-scroll tracking-tight font-zalando" data-animation="fade-in-up" data-delay="100">
+      <h1 class="text-4xl md:text-7xl font-bold mb-6 tracking-tight text-white animate-on-scroll font-zalando" data-animation="fade-in-up" data-delay="100">
         Deja de gastar, empieza a <span class="text-gradient">Activar</span>
       </h1>
-      <p class="text-sm md:text-lg text-gray-400 max-w-2xl mx-auto font-icons animate-on-scroll tracking-tight font-zalando" data-animation="fade-in-up" data-delay="200">
-        Desde lanzamientos rápidos por WhatsApp hasta ecosistemas corporativos con IA. 
-        Elige la base tecnológica que llevará tu facturación al siguiente nivel.
+      <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto animate-on-scroll font-zalando" data-animation="fade-in-up" data-delay="200">
+        Desde lanzamientos rápidos hasta ecosistemas de ingeniería con IA. 
+        Elegí la infraestructura que llevará tu facturación al siguiente nivel.
       </p>
     </div>
   </section>
 
-  <section class="relative pb-15 md:pb-32 z-500" data-animate-section>
+  <section class="relative pb-15 md:pb-32 z-[50]" data-animate-section>
+    <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30" aria-hidden="true"></div>
+
     <div class="container mx-auto px-6">
-      <div class="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <ul class="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto list-none p-0" role="list">
         {plans.map((plan, index) => (
-          <div 
+          <li 
             class="relative flex flex-col animate-on-scroll"
             data-animation="fade-in-up"
-            data-delay={index * 200}
+            data-delay={index * 150}
           >
-            {/* Badge Superior */}
             {plan.popular && (
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-4 py-1.5 text-[10px] font-bold text-white tracking-wide">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-                  Más Popular
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-4 py-1.5 text-[10px] font-bold text-white tracking-wide uppercase">
+                  Más Elegido
                 </span>
               </div>
             )}
             
             {plan.premium && (
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-500 px-4 py-1.5 text-[10px] font-bold text-black tracking-wide">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m2 4 3 12h14l3-12-6 7-4 7-4-7-6-7zm3 16h14"/></svg>
-                  Premium
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-400 px-4 py-1.5 text-[10px] font-bold text-black tracking-wide uppercase">
+                  Nivel Enterprise
                 </span>
               </div>
             )}
 
-            {/* Card Principal */}
-            <div class={`h-full flex flex-col p-3 md:p-8 rounded-3xl bg-[#0a0a0f] border transition-all duration-300 relative overflow-hidden group ${
-              plan.popular ? 'border-purple-500/30' : plan.premium ? 'border-yellow-600/30' : 'border-gray-800'
+            <article class={`h-full flex flex-col p-6 md:p-8 rounded-3xl bg-[#0a0a0f] border transition-all duration-300 relative overflow-hidden group ${
+              plan.popular ? 'border-purple-500/40' : plan.premium ? 'border-yellow-600/40' : 'border-gray-800'
             }`}>
               
-              {/* Glow effect de fondo */}
-              <div 
-                class="absolute -top-32 -right-32 w-64 h-64 opacity-20 blur-[100px] rounded-full pointer-events-none"
-                style={`background-color: ${plan.accentColor}`}
-              ></div>
+              <div class="absolute -top-32 -right-32 w-64 h-64 opacity-10 blur-[100px] rounded-full pointer-events-none" 
+                   style={`background-color: ${plan.accentColor}`} aria-hidden="true"></div>
 
-              {/* Header con icono */}
               <div class="mb-6 relative z-10">
                 <div class="flex items-center justify-between mb-6">
                   <div class={`h-14 w-14 flex items-center justify-center rounded-2xl ${
                     plan.icon === 'rocket' ? 'bg-gray-800/50' : 
-                    plan.icon === 'sparkles' ? 'bg-purple-500/10' : 
-                    'bg-yellow-600/10'
-                  }`}>
-                    {plan.icon === 'rocket' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.1 4-1 4-1"/>
-                        <path d="M12 15v5s3.03-.55 4-2c1.1-1.62 1-4 1-4"/>
-                      </svg>
-                    )}
-                    {plan.icon === 'sparkles' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" class="text-purple-500 h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
-                      </svg>
-                    )}
-                    {plan.icon === 'crown' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-500 h-7 w-7" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/>
-                      </svg>
-                    )}
+                    plan.icon === 'sparkles' ? 'bg-purple-500/10' : 'bg-yellow-600/10'
+                  }`} aria-hidden="true">
+                    {/* SVG Icons con aria-label */}
+                    {plan.icon === 'rocket' && <svg class="text-gray-400 h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.1 4-1 4-1"/><path d="M12 15v5s3.03-.55 4-2c1.1-1.62 1-4 1-4"/></svg>}
+                    {plan.icon === 'sparkles' && <svg class="text-purple-500 h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>}
+                    {plan.icon === 'crown' && <svg class="text-yellow-500 h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>}
                   </div>
                 </div>
                 
-                <h3 class="text-2xl font-bold mb-3 text-white tracking-tight font-zalando">{plan.name}</h3>
-                <div class={`text-xs font-icons text-gray-500 uppercase tracking-wide font-zalando ${
-                    plan.id === 'authority' || plan.id === 'titan' ? 'block' : 'hidden'
-                  }`}>Desde:</div>
-                <div class="flex items-baseline gap-1 mb-2">
-                  <span class={`text-3xl md:text-5xl font-bold tracking-tighter font-zalando ${
-                    plan.icon === 'sparkles' ? 'text-cyan-400' : 
-                    plan.icon === 'crown' ? 'text-yellow-500' : 
-                    'text-white'
+                <h3 class="text-2xl font-bold mb-3 text-white font-zalando">{plan.name}</h3>
+                {plan.id != "impulse" && <div class="text-[10px] text-gray-500 uppercase tracking-widest font-zalando mb-1">Inversión Estimada desde:</div>}
+                <div class="flex items-baseline gap-2 mb-2">
+                  <span class={`text-3xl md:text-5xl font-black tracking-tighter font-zalando ${
+                    plan.id === 'authority' ? 'text-cyan-400' : plan.id === 'titan' ? 'text-yellow-500' : 'text-white'
                   }`}>
-                    {`${plan.priceUsd} USD`}
+                    {plan.priceUsd} <span class="text-lg">USD</span>
                   </span>
                 </div>
-                <p class="text-xs font-icons text-gray-500 uppercase tracking-wide font-zalando">{plan.period}</p>
+                <p class="text-[10px] text-gray-500 uppercase tracking-wide font-zalando">{plan.period}</p>
               </div>
 
-              <p class="text-gray-400 mb-8 text-sm leading-relaxed font-icons font-zalando">{plan.description}</p>
+              <p class="text-gray-400 mb-8 text-sm leading-relaxed font-zalando">{plan.description}</p>
 
-              {/* Lista de características */}
-              <ul class="space-y-3.5 mb-8 flex-grow relative z-10">
+              <ul class="space-y-3.5 mb-8 flex-grow relative z-10" role="list">
                 {plan.features.map((feature) => (
                   <li class="flex items-start gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 text-green-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                    <span class="text-xs md:text-sm text-gray-300 leading-tight font-zalando">{feature}</span>
+                    <svg class="h-5 w-5 shrink-0 text-cyan-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-xs md:text-sm text-gray-300 font-zalando">{feature}</span>
                   </li>
                 ))}
-                {plan.notIncluded.map((feature: string) => (
-                  <li class="flex items-start gap-3 opacity-30 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 text-gray-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 6 6 18"/>
-                      <path d="m6 6 12 12"/>
-                    </svg>
-                    <span class="text-xs md:text-sm text-gray-600 line-through leading-tight font-zalando">{feature}</span>
+                {plan.notIncluded.map((feature) => (
+                  <li class="flex items-start gap-3 opacity-20">
+                    <svg class="h-5 w-5 shrink-0 text-gray-600 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    <span class="text-xs md:text-sm text-gray-600 line-through font-zalando">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Botón de CTA */}
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola! Me interesa potenciar mi negocio con el Plan ${plan.name}.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class={`w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-sm transition-all duration-300 transform hover:scale-[1.02] active:scale-95 z-10 font-zalando ${
-                  plan.popular 
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50' 
-                    : plan.premium 
-                    ? 'bg-gradient-to-r from-yellow-600 to-yellow-500 text-black shadow-lg shadow-yellow-500/30 hover:shadow-yellow-500/50'
-                    : 'border-2 border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500/50'
+                  plan.popular ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/20' : 
+                  plan.premium ? 'bg-gradient-to-r from-yellow-600 to-yellow-500 text-black shadow-lg shadow-yellow-500/20' : 
+                  'border-2 border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10'
                 }`}
               >
                 <span>{plan.buttonText}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 12h14"/>
-                  <path d="m12 5 7 7-7 7"/>
-                </svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </a>
-            </div>
-          </div>
+            </article>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 
-  <section class="relative py-10  md:py-24 border-t border-white/5 overflow-hidden z-500" data-animate-section>
-      <div class="absolute inset-0 bg-radial-at-c opacity-30"></div>
+  <section class="relative py-10 md:py-24 border-t border-white/5 overflow-hidden z-[50]" data-animate-section>
+      <div class="absolute inset-0 bg-radial-at-c opacity-20" aria-hidden="true"></div>
       <div class="container mx-auto px-6 text-center relative z-10">
-        <div class="max-w-3xl mx-auto p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl animate-on-scroll" data-animation="scale-in" data-delay="200">
-          <div class="grid place-items-center filter drop-shadow-[0_0_15px_#00ffff44] md:mb-5"><ShieldCheck size="40" color="#00ffff"/></div>
+        <div class="max-w-4xl mx-auto p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl animate-on-scroll" data-animation="scale-in">
+          <div class="grid place-items-center md:mb-5 drop-shadow-[0_0_15px_rgba(0,255,255,0.3)]"><ShieldCheck size="48" color="#00ffff"/></div>
           
           <h3 class="text-3xl font-bold mb-6 text-white tracking-tight font-zalando">
-            Compromiso de <span class="text-[#00ffff]">Ingeniería y Resultados</span>
+            Compromiso de <span class="text-cyan-400">Ingeniería Web Real</span>
           </h3>
           
-          <p class="text-gray-400 text-sm md:text-lg font-icons leading-relaxed">
-            No vendemos plantillas, entregamos activos digitales de alto rendimiento. 
-            Si en los primeros 30 días tu infraestructura no cumple con los <strong>estándares de velocidad, seguridad y estabilidad</strong> que prometemos, te devolvemos el 100% de tu inversión. Nuestra prioridad es tu tranquilidad técnica, sin letras pequeñas.
+          <p class="text-gray-400 text-base md:text-lg leading-relaxed font-zalando">
+            No instalamos plantillas, desarrollamos <strong class="text-white">activos digitales de alto rendimiento</strong>. 
+            Si en los primeros 30 días tu infraestructura no cumple con los estándares de velocidad y estabilidad prometidos, devolvemos el 100% de tu inversión. Nuestra prioridad es tu tranquilidad técnica.
           </p>
         </div>
       </div>
@@ -241,58 +226,37 @@ const plans = [
 </Layout>
 
 <style>
-  /* Ocultar elementos antes de animar */
-  .animate-on-scroll {
-    opacity: 0;
-  }
-
-  /* Elementos visibles después de animar */
-  .animate-on-scroll.is-visible {
-    opacity: 1;
+  .animate-on-scroll { opacity: 0; }
+  .animate-on-scroll.is-visible { opacity: 1; }
+  .text-gradient {
+    background: linear-gradient(to r, #00E5FF, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 </style>
 
 <script>
-  // Intersection Observer para activar animaciones solo cuando las secciones son visibles
   function initScrollAnimations() {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Animar todos los elementos dentro de la sección
           const animatedElements = entry.target.querySelectorAll('.animate-on-scroll');
-          
           animatedElements.forEach((el) => {
             const animationType = el.getAttribute('data-animation');
             const delay = el.getAttribute('data-delay') || '0';
-            
-            // Aplicar delay y clase de animación
             setTimeout(() => {
               el.classList.add(`animate-${animationType}`);
               el.classList.add('is-visible');
             }, parseInt(delay));
           });
-
-          // Dejar de observar esta sección
           observer.unobserve(entry.target);
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
 
-    // Observar todas las secciones con animaciones
-    const sections = document.querySelectorAll('[data-animate-section]');
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+    document.querySelectorAll('[data-animate-section]').forEach(s => observer.observe(s));
   }
 
-  // Ejecutar en carga inicial
   document.addEventListener('DOMContentLoaded', initScrollAnimations);
-  
-  // Ejecutar en navegación de Astro
   document.addEventListener('astro:page-load', initScrollAnimations);
 </script>

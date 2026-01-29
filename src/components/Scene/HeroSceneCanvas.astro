@@ -22,14 +22,14 @@
   const isMobile = window.innerWidth < 768;
 
   /* =========================
-      CONFIG
+      CONFIGURACIÓN
   ========================= */
   const STAR_COUNT = isMobile ? 120 : 260;
   const NODE_COUNT = isMobile ? 100 : 520;
   const LINK_DISTANCE = isMobile ? 90 : 120;
-  const MOUSE_RADIUS = 140;
+  const MOUSE_RADIUS = 160;
   
-  // Estas constantes solo tendrán efecto real en Desktop
+  // Constantes de explosión (Solo Desktop)
   const EXPLOSION_THRESHOLD = 7;
   const EXPLOSION_RADIUS = 30;
   const EXPLOSION_FORCE = 8;
@@ -71,7 +71,7 @@
       this.hue = 200 + Math.random() * 60;
     }
     update() {
-      this.z -= 2.4;
+      this.z -= 2.0; // Velocidad de las estrellas
       if (this.z <= 0) this.reset();
     }
     draw() {
@@ -80,10 +80,12 @@
       const y2d = cy + this.y * scale;
       const depth = 1 - this.z / w;
       const alpha = Math.min(1, depth * 1.4);
-      const r = depth * 1;
+      const r = depth * 1.2;
+      
       const g = ctx.createRadialGradient(x2d, y2d, 0, x2d, y2d, r * 4);
       g.addColorStop(0, `hsla(${this.hue},100%,85%,${alpha})`);
       g.addColorStop(1, `hsla(${this.hue},100%,60%,0)`);
+      
       ctx.fillStyle = g;
       ctx.beginPath();
       ctx.arc(x2d, y2d, r * 4, 0, Math.PI * 2);
@@ -94,13 +96,13 @@
   const stars = Array.from({ length: STAR_COUNT }, () => new Star());
 
   /* =========================
-      NODOS
+      NODOS (PARTÍCULAS)
   ========================= */
   const nodes = Array.from({ length: NODE_COUNT }, () => ({
     x: Math.random() * w,
     y: Math.random() * h,
-    vx: (Math.random() - 0.5) * 0.35,
-    vy: (Math.random() - 0.5) * 0.35,
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5,
     influence: 0,
     explosionCooldown: 0,
     randomMoveCounter: Math.random() * 100,
@@ -108,8 +110,7 @@
   }));
 
   function checkAndHandleExplosions() {
-    if (isMobile) return; // Salvaguarda adicional
-    const clusters: number[][] = [];
+    if (isMobile) return;
     const visited = new Array(nodes.length).fill(false);
     
     for (let i = 0; i < nodes.length; i++) {
@@ -125,40 +126,41 @@
           visited[j] = true;
         }
       }
-      if (cluster.length >= EXPLOSION_THRESHOLD) clusters.push(cluster);
+      if (cluster.length >= EXPLOSION_THRESHOLD) {
+        handleClusterExplosion(cluster);
+      }
     }
+  }
+
+  function handleClusterExplosion(cluster: number[]) {
+    let centerX = 0, centerY = 0;
+    cluster.forEach(idx => { centerX += nodes[idx].x; centerY += nodes[idx].y; });
+    centerX /= cluster.length; centerY /= cluster.length;
     
-    clusters.forEach(cluster => {
-      let centerX = 0, centerY = 0;
-      cluster.forEach(idx => { centerX += nodes[idx].x; centerY += nodes[idx].y; });
-      centerX /= cluster.length; centerY /= cluster.length;
-      
-      cluster.forEach(idx => {
-        const node = nodes[idx];
-        const dx = node.x - centerX;
-        const dy = node.y - centerY;
-        const distance = Math.sqrt(dx * dx + dy * dy) || 1;
-        node.vx += (dx / distance) * EXPLOSION_FORCE;
-        node.vy += (dy / distance) * EXPLOSION_FORCE;
-        node.explosionCooldown = EXPLOSION_COOLDOWN;
-        createExplosionEffect(centerX, centerY);
-      });
+    cluster.forEach(idx => {
+      const node = nodes[idx];
+      const dx = node.x - centerX;
+      const dy = node.y - centerY;
+      const distance = Math.hypot(dx, dy) || 1;
+      node.vx += (dx / distance) * EXPLOSION_FORCE;
+      node.vy += (dy / distance) * EXPLOSION_FORCE;
+      node.explosionCooldown = EXPLOSION_COOLDOWN;
     });
+    createExplosionVisual(centerX, centerY);
   }
   
-  function createExplosionEffect(x: number, y: number) {
-    for (let i = 0; i < 15; i++) {
+  function createExplosionVisual(x: number, y: number) {
+    for (let i = 0; i < 10; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = 2 + Math.random() * 4;
-      ctx.fillStyle = `rgba(255, 200, 100, 0.8)`;
+      const speed = 1 + Math.random() * 3;
+      ctx.fillStyle = `rgba(140, 255, 200, 0.5)`;
       ctx.beginPath();
-      ctx.arc(x + Math.cos(angle) * speed * 3, y + Math.sin(angle) * speed * 3, 1 + Math.random() * 2, 0, Math.PI * 2);
+      ctx.arc(x + Math.cos(angle) * 10, y + Math.sin(angle) * 10, 1, 0, Math.PI * 2);
       ctx.fill();
     }
   }
 
   function drawNodes() {
-    // Solo procesamos lógica de explosión si NO es móvil
     if (!isMobile) {
       nodes.forEach(node => {
         if (node.explosionCooldown > 0) node.explosionCooldown--;
@@ -173,19 +175,20 @@
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i];
       
-      if (isMobile) {
-        n.randomMoveCounter--;
-        if (n.randomMoveCounter <= 0) {
-          n.randomAngle = Math.random() * Math.PI * 2;
-          n.randomMoveCounter = 30 + Math.random() * 60;
-        }
-        n.vx += Math.cos(n.randomAngle) * 0.0075;
-        n.vy += Math.sin(n.randomAngle) * 0.0075;
+      // MOVIMIENTO ALEATORIO (Ahora en ambos, Desktop y Mobile)
+      n.randomMoveCounter--;
+      if (n.randomMoveCounter <= 0) {
+        n.randomAngle = Math.random() * Math.PI * 2;
+        n.randomMoveCounter = 40 + Math.random() * 100;
       }
+      // Fuerza constante para contrarrestar fricción
+      n.vx += Math.cos(n.randomAngle) * 0.009;
+      n.vy += Math.sin(n.randomAngle) * 0.009;
       
       n.x += n.vx;
       n.y += n.vy;
 
+      // INTERACCIÓN MOUSE / TOUCH
       if (!isMobile) {
         const dx = mouse.x - n.x;
         const dy = mouse.y - n.y;
@@ -193,11 +196,11 @@
         let target = 0;
         if (d < MOUSE_RADIUS) {
           const f = 1 - d / MOUSE_RADIUS;
-          n.x += dx * f * 0.015;
-          n.y += dy * f * 0.015;
+          n.x += dx * f * 0.02; // Atracción suave
+          n.y += dy * f * 0.02;
           target = 1;
         }
-        n.influence += (target - n.influence) * 0.12;
+        n.influence += (target - n.influence) * 0.1;
       } else if (interaction.intensity > 0) {
         const dx = interaction.x - n.x;
         const dy = interaction.y - n.y;
@@ -210,39 +213,47 @@
         }
       }
 
-      n.vx *= 0.99;
-      n.vy *= 0.99;
+      // Fricción constante
+      n.vx *= 0.985;
+      n.vy *= 0.985;
 
-      // Límites
-      if (n.x < 0) { n.x = w; n.vx *= -0.5; }
-      if (n.x > w) { n.x = 0; n.vx *= -0.5; }
-      if (n.y < 0) { n.y = h; n.vy *= -0.5; }
-      if (n.y > h) { n.y = 0; n.vy *= -0.5; }
+      // LÍMITES: TELETRANSPORTE (Wrap-around)
+      if (n.x < 0) n.x = w;
+      if (n.x > w) n.x = 0;
+      if (n.y < 0) n.y = h;
+      if (n.y > h) n.y = 0;
 
       const alpha = isMobile
-        ? 0.25 + interaction.intensity * 0.6
-        : 0.15 + n.influence * 0.85;
+        ? 0.2 + interaction.intensity * 0.6
+        : 0.12 + n.influence * 0.8;
 
-      // isCooling siempre será false en Mobile porque nunca se activa el cooldown
       const isCooling = !isMobile && n.explosionCooldown > 0;
       const color = isCooling 
-        ? `rgba(255, ${200 - n.explosionCooldown * 2}, 100, ${alpha})`
+        ? `rgba(255, 200, 100, ${alpha})`
         : `rgba(180, 140, 255, ${alpha})`;
 
       ctx.fillStyle = color;
       ctx.beginPath();
-      ctx.arc(n.x, n.y, isCooling ? 1.8 : 1.3, 0, Math.PI * 2);
+      ctx.arc(n.x, n.y, isCooling ? 1.6 : 1.1, 0, Math.PI * 2);
       ctx.fill();
 
+      // DIBUJAR VÍNCULOS
       for (let j = i + 1; j < nodes.length; j++) {
         const m = nodes[j];
-        const d = Math.hypot(n.x - m.x, n.y - m.y);
-        if (d < LINK_DISTANCE) {
+        const dx = n.x - m.x;
+        const dy = n.y - m.y;
+        const d = dx * dx + dy * dy; // Distancia al cuadrado para performance
+        const minDist = LINK_DISTANCE * LINK_DISTANCE;
+
+        if (d < minDist) {
+          const distFact = 1 - Math.sqrt(d) / LINK_DISTANCE;
           const linkInCooling = !isMobile && (n.explosionCooldown > 0 || m.explosionCooldown > 0);
+          
           ctx.strokeStyle = linkInCooling
-            ? `rgba(255, 200, 100, ${(1 - d / LINK_DISTANCE) * alpha * 0.7})`
-            : `rgba(140, 255, 200, ${(1 - d / LINK_DISTANCE) * alpha})`;
-          ctx.lineWidth = linkInCooling ? 0.7 : 0.45;
+            ? `rgba(255, 200, 100, ${distFact * alpha * 0.6})`
+            : `rgba(140, 255, 200, ${distFact * alpha * 0.8})`;
+          
+          ctx.lineWidth = linkInCooling ? 0.8 : 0.4;
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
           ctx.lineTo(m.x, m.y);
@@ -253,8 +264,10 @@
   }
 
   function animate() {
+    // Fondo con rastro mínimo
     ctx.fillStyle = "#020205";
     ctx.fillRect(0, 0, w, h);
+    
     stars.forEach(s => { s.update(); s.draw(); });
     drawNodes();
     requestAnimationFrame(animate);

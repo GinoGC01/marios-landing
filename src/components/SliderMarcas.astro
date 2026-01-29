@@ -4,51 +4,51 @@ const logos = [
   'MetaForge', 'DataNova', 'CloudPeak', 'SynapseAI', 'VectorSpace'
 ];
 
+// Mantenemos el doble de logos para el loop
 const doubleLogos = [...logos, ...logos];
 ---
 
-<section class="relative py-10 overflow-hidden border-y border-white/5 bg-[#000000]/80 z-500 backdrop-blur-[7px]">
+<section class="relative py-10 overflow-hidden border-y border-white/5 bg-black/80 z-500 backdrop-blur-[7px]">
   <div class="container mx-auto px-6 mb-10">
-    <p 
-      class="text-center text-sm uppercase tracking-widest text-muted-foreground animate-fade-in font-zalando"
-    >
+    <p class="text-center text-sm uppercase tracking-widest text-gray-500 animate-fade-in font-sans">
       Empresas que confían en nosotros
     </p>
   </div>
 
-  <div class="relative flex overflow-hidden group">
-    <div class="animate-scroll-infinite flex gap-16 pr-16 min-w-full">
+  <div class="relative flex overflow-hidden">
+    <div class="animate-scroll-infinite flex min-w-max">
       {doubleLogos.map((logo) => (
-        <div class="flex h-12 items-center justify-center px-6">
-          <span class="font-logos text-2xl font-semibold text-white/20 hover:text-white/40 transition-colors duration-300 whitespace-nowrap">
+        <div class="flex h-12 items-center justify-center px-12 flex-shrink-0">
+          <span class="font-logos text-2xl font-semibold text-white/20 hover:text-white/40 transition-colors duration-300规范 whitespace-nowrap">
             {logo}
           </span>
         </div>
       ))}
     </div>
-  </div>
 
-  <div class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent"></div>
-  <div class="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent"></div>
+    <div class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10"></div>
+  </div>
 </section>
 
 <style>
-  /* Animación del carrusel */
   @keyframes scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
 
   .animate-scroll-infinite {
-    animation: scroll 7s linear infinite;
+    display: flex;
+    width: max-content;
+    animation: scroll 20s linear infinite; /* 7s es demasiado rápido para leer */
+    will-change: transform;
   }
 
-  /* Pausar al pasar el mouse (opcional) */
-  .group:hover .animate-scroll-infinite {
+  /* Pausar al pasar el mouse mejora la UX */
+  .animate-scroll-infinite:hover {
     animation-play-state: paused;
   }
 
-  /* Animación de entrada simple */
   .animate-fade-in {
     animation: fadeIn 1s ease-out forwards;
   }

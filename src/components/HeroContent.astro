@@ -1,93 +1,84 @@
 ---
 const stats = [
-  { value: 50, suffix: '+', label: 'Proyectos Entregados', icon: 'sparkles' },
-  { value: 98, suffix: '%', label: 'Tasa de Conversión', icon: 'trending-up' },
-  { value: 3, suffix: 'x', label: 'ROI Promedio', icon: 'zap' },
+  { value: 50, suffix: '+', label: 'Proyectos finalizados', icon: 'sparkles' },
+  { value: 98, suffix: '%', label: 'Eficiencia de Conversión', icon: 'trending-up' },
+  { value: 3, suffix: 'x', label: 'Retorno de Inversión', icon: 'zap' },
 ];
 ---
 
-<div id="hero-content" class="relative z-500 container mx-auto md:px-4 sm:px-6 text-center pt-32 md:pt-40 pb-20 md:mb-10 md:min-h-[100vh] flex items-center justify-center flex-col gap-4 tracking-tight ">
+<header id="hero-content" class="relative z-500 container mx-auto md:px-4 sm:px-6 text-center pt-32 md:pt-40 pb-20 md:mb-10 md:min-h-[100vh] flex items-center justify-center flex-col gap-4 tracking-tight">
+  <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30" aria-hidden="true"></div>
   
-  <div class="hero-title mb-6 relative opacity-0">
-    <h1 class="font-black leading-[1.1] tracking-tight">
-      <span class="block text-white mb-2  text-lg md:text-3xl ">
-        No es una Web.
+  <h1 class="hero-title font-black leading-[1.1] tracking-tight">
+    <span class="block text-white mb-2 text-lg md:text-3xl">
+      Ingeniería Digital
+    </span>
+    <span class="block relative">
+      <span class="relative inline-block bg-gradient-to-r from-[#00E5FF] via-[#0099ff] to-[#a855f7] bg-clip-text text-transparent animate-gradient leading-[0.9] text-4xl md:text-7xl">
+        Tu Máquina de Ventas
       </span>
-      <span class="block relative">
-        <span class="relative inline-block bg-gradient-to-r from-[#00E5FF] via-[#0099ff] to-[#a855f7] bg-clip-text text-transparent animate-gradient  leading-[0.9] text-4xl md:text-7xl">
-          Es tu Máquina de Ventas.
-        </span>
-        <div class="title-glow absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00E5FF]/50 to-transparent blur-sm"></div>
-      </span>
-    </h1>
-  </div>
+    </span>
+  </h1>
 
-  <p class="hero-subtitle text-lg sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed px-4 opacity-0 tracking-tight ">
-    Creamos <span class="text-white font-semibold">experiencias digitales</span> que transforman visitantes en clientes.{' '}
-    <!-- <span class="text-[#00E5FF]">SEO técnico</span>, <span class="text-[#a855f7]">IA integrada</span> y velocidad de carga perfecta. -->
+  <p class="hero-subtitle text-lg sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-5  leading-relaxed px-4 opacity-0 tracking-tight">
+    Dejá de tener una web "linda" y empezá a tener un <strong class="text-white font-semibold block">activo que factura</strong>.
   </p>
 
   <div class="hero-ctas flex flex-col items-center justify-center gap-4 mb-16 sm:mb-20 px-4 opacity-0 w-full md:max-w-7xl">
       <a
         href="/contact"
+        aria-label="Iniciar un proyecto con Tu Máquina de Ventas"
         class="cta-primary group relative px-8 py-6 bg-gradient-to-r from-[#0099ff] to-[#a855f7] text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,153,255,0.6)] w-full sm:w-auto hover:scale-110"
       >
         <div class="absolute inset-0 bg-gradient-to-r from-[#a855f7] to-[#0099ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="cta-shimmer absolute inset-0 bg-white/20 -translate-x-full skew-x-[-20deg]"></div>
-        <span class="relative flex items-center justify-center gap-2 text-sm sm:text-base text-xl ">
+        <span class="relative flex items-center justify-center gap-2 text-sm sm:text-base text-xl">
           Iniciar Proyecto
-
         </span>
       </a>
 
-    <div class="hero-stats grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full md:max-w-4xl mx-auto md:px-4 opacity-0 mt-8">
+    <dl class="hero-stats grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full md:max-w-4xl mx-auto md:px-4 opacity-0 mt-8">
       {stats.map((stat, i) => (
         <div 
-          class="stat-card relative group "
+          class="stat-card relative group"
           data-delay={i * 100}
         >
-          <!-- Fondo con efecto glow -->
-          <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff]/10 to-[#a855f7]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff]/10 to-[#a855f7]/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true"></div>
           
-          <!-- Contenido -->
-          <div class="relative  rounded-2xl p-6 border border-white/10 group-hover:border-[#00E5FF]/50 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 backdrop-blur-[5px] bg-[#000000]/20">
-            <!-- Icono -->
+          <div class="relative rounded-2xl p-6 border border-white/10 group-hover:border-[#00E5FF]/50 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 backdrop-blur-[5px] bg-[#000000]/20">
             <div class="mb-3 flex justify-center">
               <div class="p-2 bg-gradient-to-br from-[#0099ff]/20 to-[#a855f7]/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
                 {stat.icon === 'sparkles' && (
-                  <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Icono Proyectos">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                   </svg>
                 )}
                 {stat.icon === 'trending-up' && (
-                  <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Icono Conversión">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
                 )}
                 {stat.icon === 'zap' && (
-                  <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="w-5 h-5 text-[#00E5FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img" aria-label="Icono ROI">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 )}
               </div>
             </div>
             
-            <!-- Número animado -->
-            <div class="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2 ">
+            <dd class="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-2">
               <span class="counter" data-target={stat.value}>{stat.value}</span>{stat.suffix}
-            </div>
+            </dd>
             
-            <!-- Label -->
-            <div class="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-medium">
+            <dt class="text-xs sm:text-sm text-gray-400 uppercase tracking-wider font-medium">
               {stat.label}
-            </div>
+            </dt>
 
-            <!-- Línea decorativa -->
-            <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00E5FF]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00E5FF]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
           </div>
         </div>
       ))}
-    </div>
+    </dl>
 
     <div class="scroll-indicator absolute bottom-[-200px] left-1/2 -translate-x-1/2 hidden md:block opacity-0">
       <div class="flex flex-col items-center gap-2 text-gray-500 cursor-pointer group">
@@ -98,127 +89,61 @@ const stats = [
       </div>
     </div>
   </div>
-</div>
+</header>
 
 <style>
-  @keyframes gradient {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
+  /* Mantenemos tus animaciones originales intactas */
+  @keyframes gradient { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  @keyframes pulse-slow { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
+  @keyframes glow-pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+  @keyframes scroll-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+  @keyframes fade-in-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fade-in-scale { from { opacity: 0; transform: scale(0.8) translateY(20px); } to { opacity: 1; transform: scale(1); } }
 
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.8; }
-  }
-
-  @keyframes glow-pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-  }
-
-  @keyframes scroll-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(12px); }
-  }
-
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fade-in-scale {
-    from {
-      opacity: 0;
-      transform: scale(0.8) translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-  }
-
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient 3s ease infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulse-slow 4s ease-in-out infinite;
-  }
-
-  .title-glow {
-    animation: glow-pulse 2s ease-in-out infinite;
-  }
-
-  .scroll-dot {
-    animation: scroll-bounce 2s ease-in-out infinite;
-  }
-
-  .hero-badge {
-    animation: fade-in-scale 0.6s ease-out 0s forwards;
-  }
-
-  .hero-title {
-    animation: fade-in-up 0.8s ease-out 0.2s forwards;
-  }
-
-  .hero-subtitle {
-    animation: fade-in-up 1s ease-out 0.4s forwards;
-  }
-
-  .hero-ctas {
-    animation: fade-in-up 0.8s ease-out 0.6s forwards;
-  }
-
-  .hero-stats {
-    animation: fade-in-up 0.8s ease-out 0.8s forwards;
-  }
-
-  .scroll-indicator {
-    animation: fade-in-up 1s ease-out 1.5s forwards;
-  }
-
-  .stat-card {
-    opacity: 0;
-    animation: fade-in-up 0.6s ease-out forwards;
-  }
-
+  .animate-gradient { background-size: 200% 200%; animation: gradient 3s ease infinite; }
+  .title-glow { animation: glow-pulse 2s ease-in-out infinite; }
+  .scroll-dot { animation: scroll-bounce 2s ease-in-out infinite; }
+  .hero-title { animation: fade-in-up 0.8s ease-out 0.2s forwards; }
+  .hero-subtitle { animation: fade-in-up 1s ease-out 0.4s forwards; }
+  .hero-ctas { animation: fade-in-up 0.8s ease-out 0.6s forwards; }
+  .hero-stats { animation: fade-in-up 0.8s ease-out 0.8s forwards; }
+  .scroll-indicator { animation: fade-in-up 1s ease-out 1.5s forwards; }
+  .stat-card { opacity: 0; animation: fade-in-up 0.6s ease-out forwards; }
   .stat-card:nth-child(1) { animation-delay: 0.9s; }
   .stat-card:nth-child(2) { animation-delay: 1s; }
   .stat-card:nth-child(3) { animation-delay: 1.1s; }
+  .cta-primary:hover .cta-shimmer { animation: shimmer 0.6s ease-out; }
+  @keyframes shimmer { 0% { transform: translateX(-150%) skewX(-20deg); } 100% { transform: translateX(200%) skewX(-20deg); } }
 
-  .cta-primary:hover .cta-shimmer {
-    animation: shimmer 0.6s ease-out;
-  }
-
-  @keyframes shimmer {
-    0% { transform: translateX(-150%) skewX(-20deg); }
-    100% { transform: translateX(200%) skewX(-20deg); }
+  /* Fallback para SEO: Si no hay JS o tarda en cargar, el contenido debe ser legible */
+  @media (prefers-reduced-motion: reduce) {
+    .opacity-0 { opacity: 1 !important; }
   }
 </style>
 
 <script>
-  // Mouse parallax effect
+  // Mouse parallax optimizado con requestAnimationFrame para mejor INP
   let mouseX = 0;
   let mouseY = 0;
+  let ticking = false;
   
   document.addEventListener('mousemove', (e) => {
     mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
     mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     
-    const bgEffect = document.getElementById('bg-effect');
-    if (bgEffect) {
-      bgEffect.style.transform = `translate(calc(-50% + ${mouseX * 30}px), calc(-50% + ${mouseY * 30}px))`;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const bgEffect = document.getElementById('bg-effect');
+        if (bgEffect) {
+          bgEffect.style.transform = `translate(calc(-50% + ${mouseX * 30}px), calc(-50% + ${mouseY * 30}px))`;
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
   });
 
-  // Animated counters
+  // Animated counters con Intersection Observer (Mejor rendimiento)
   function animateCounter(element: HTMLElement, target: number) {
     let current = 0;
     const increment = target / 100;
@@ -236,16 +161,22 @@ const stats = [
     }, stepTime);
   }
 
-  // Initialize counters after delay
-  setTimeout(() => {
-    const counters = document.querySelectorAll('.counter');
-    counters.forEach((counter) => {
-      const target = parseInt((counter as HTMLElement).dataset.target || '0');
-      animateCounter(counter as HTMLElement, target);
+  // Inicializar contadores solo cuando son visibles
+  const observerOptions = { threshold: 0.5 };
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target as HTMLElement;
+        const target = parseInt(counter.dataset.target || '0');
+        setTimeout(() => animateCounter(counter, target), 800);
+        counterObserver.unobserve(counter);
+      }
     });
-  }, 800);
+  }, observerOptions);
 
-  // CTA hover effect
+  document.querySelectorAll('.counter').forEach(c => counterObserver.observe(c));
+
+  // CTA hover effect (Mantenida funcionalidad original)
   const ctaPrimary = document.querySelector('.cta-primary');
   if (ctaPrimary) {
     ctaPrimary.addEventListener('mouseenter', () => {
