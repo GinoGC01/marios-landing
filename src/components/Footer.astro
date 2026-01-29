@@ -1,6 +1,7 @@
 ---
-// src/components/Footer.astro
 const currentYear = 2026;
+import { Image } from "astro:assets";
+import Logo from '../../public/Icon.webp'
 
 const navLinks = [
   { name: 'Inicio', href: '/' },
@@ -44,9 +45,7 @@ const organizationSchema = {
       
       <div class="md:col-span-2">
         <a href="/" class="inline-flex items-center gap-3 mb-6 group" aria-label="Mario's Agency - Volver al inicio">
-          <div class="h-10 w-10 rounded-xl bg-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(0,255,255,0.3)] transition-transform group-hover:scale-110">
-            <span class="font-bold text-[#020205] text-xl">M</span>
-          </div>
+          <Image src={Logo} alt={"Logo de Mario's Agency"} class={'w-6'}/>
           <span class="text-xl font-bold text-white font-zalando">
             Mario's<span class="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Agency</span>
           </span>
@@ -55,23 +54,7 @@ const organizationSchema = {
           Ingeniería digital de alto rendimiento. Transformamos negocios en activos de facturación.
         </p>
         
-        <!-- <nav class="flex gap-4" aria-label="Redes sociales">
-          {socialLinks.map((social) => (
-            <a 
-              href={social.href} 
-              aria-label={`Seguir en ${social.name}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all duration-300 hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)] hover:-translate-y-1"
-            >
-              <span class="sr-only">{social.name}</span>
-              <div class="w-5 h-5 bg-current" style="mask: url(/icons/social.svg) no-repeat center;"></div>
-            </a>
-          ))}
-          <a href="mailto:hola@mariosagency.com" aria-label="Enviar correo" class="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 hover:text-cyan-400 hover:border-cyan-400 transition-all">
-             <div class="w-5 h-5 bg-current" style="mask: url(/icons/mail.svg) no-repeat center;"></div>
-          </a>
-        </nav> -->
+
       </div>
 
       <nav aria-labelledby="footer-nav-title">
@@ -95,14 +78,14 @@ const organizationSchema = {
         <address class="not-italic space-y-4 text-white/50 font-zalando">
           <div class="flex flex-col gap-1">
             <span class="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">Email Directo</span>
-            <a href="mailto:hola@mariosagency.com" class="text-sm hover:text-white transition-colors">hola@mariosagency.com</a>
+            <a href="mailto:hola@mariosagency.com" class="text-sm hover:text-white transition-colors">ginociancia10@gmail.com</a>
           </div>
           <div class="flex flex-col gap-1">
             <span class="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">WhatsApp Soporte</span>
             <a href="tel:+541140230671" class="text-sm hover:text-white transition-colors">+54 (11) 4023 0671</a>
           </div>
           <div class="flex flex-col gap-1">
-            <span class="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">Sede Central</span>
+            <span class="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">Somos de:</span>
             <span class="text-sm">Buenos Aires, Argentina</span>
           </div>
         </address>
@@ -114,8 +97,8 @@ const organizationSchema = {
         © {currentYear} Mario's Agency. La ingeniería digital que impulsa tu negocio.
       </p>
       <nav class="flex gap-6 text-xs" aria-label="Legal">
-        <a href="/privacidad" class="text-white/30 hover:text-cyan-400 transition-colors">Política de Privacidad</a>
-        <a href="/terminos" class="text-white/30 hover:text-cyan-400 transition-colors">Términos de Servicio</a>
+        <a href="/privacy" class="text-white/30 hover:text-cyan-400 transition-colors">Política de Privacidad</a>
+        <a href="/terms" class="text-white/30 hover:text-cyan-400 transition-colors">Términos de Servicio</a>
       </nav>
     </div>
   </div>

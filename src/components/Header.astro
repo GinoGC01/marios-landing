@@ -1,5 +1,7 @@
 ---
 const pathname = Astro.url.pathname;
+import { Image } from "astro:assets";
+import Logo from '../../public/Icon.webp'
 
 const navItems = [
   { name: 'Inicio', href: '/', active: pathname === '/' },
@@ -30,16 +32,13 @@ const navSchema = {
     <div id="header-container" class="relative w-full flex justify-between items-center px-4 md:px-8 py-3 md:py-4 rounded-2xl md:rounded-full transition-all duration-500 bg-black/40 backdrop-blur-sm border border-white/5">
 
       <div class="flex items-center gap-3 z-[1001] group">
-        <a href="/" class="relative w-10 h-10 md:w-12 md:h-12 block" aria-label="Ir al inicio - Mario's Agency">
-          <div class="absolute inset-0 bg-gradient-to-br from-[#0099ff] via-[#3b82f6] to-[#a855f7] rounded-xl md:rounded-2xl blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
-          <div class="relative w-full h-full bg-gradient-to-br from-[#0099ff] via-[#3b82f6] to-[#a855f7] rounded-xl md:rounded-2xl flex items-center justify-center transform group-hover:scale-105 transition-transform duration-300">
-            <span class="text-white font-black text-xl md:text-2xl">M</span>
-          </div>
-        </a>
+        <a href="/" class="relative h-10 md:h-12 block flex gap-2 items-center" aria-label="Ir al inicio - Mario's Agency">
+        <Image src={Logo} alt={"Logo de Mario's Agency"} class={'w-6'} loading={"eager"}/>
         <div class="flex gap-1 items-center font-bold text-xs md:text-lg tracking-tight font-zalando">
           <span class="text-white">Mario's</span>
           <span class="bg-gradient-to-r from-[#0099ff] to-[#a855f7] bg-clip-text text-transparent">Agency</span>
         </div>
+        </a>
       </div>
 
       <nav class="hidden md:block" aria-label="Navegación principal">
@@ -68,6 +67,7 @@ const navSchema = {
       <div class="hidden md:block">
         <a 
           href="/contact"
+          target="_blank"
           class="relative px-6 lg:px-8 py-2.5 lg:py-3 text-white text-xs lg:text-sm font-bold rounded-full overflow-hidden group inline-block font-zalando bg-gradient-to-r from-[#0099ff] to-[#a855f7]"
         >
           <span class="relative z-10 flex items-center gap-2">

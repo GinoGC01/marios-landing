@@ -101,7 +101,7 @@ const pricingSchema = {
         MODELOS DE ESCALABILIDAD
       </span>
       <h1 class="text-4xl md:text-7xl font-bold mb-6 tracking-tight text-white animate-on-scroll font-zalando" data-animation="fade-in-up" data-delay="100">
-        Deja de gastar, empieza a <span class="text-gradient">Activar</span>
+        Deja de gastar, empezá a <span class="text-gradient">Activar</span>
       </h1>
       <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto animate-on-scroll font-zalando" data-animation="fade-in-up" data-delay="200">
         Desde lanzamientos rápidos hasta ecosistemas de ingeniería con IA. 
@@ -110,7 +110,7 @@ const pricingSchema = {
     </div>
   </section>
 
-  <section class="relative pb-15 md:pb-32 z-[50]" data-animate-section>
+  <section class="relative pb-15 z-[50]" data-animate-section>
     <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30" aria-hidden="true"></div>
 
     <div class="container mx-auto px-6">
@@ -190,14 +190,21 @@ const pricingSchema = {
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola! Me interesa potenciar mi negocio con el Plan ${plan.name}.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class={`w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-sm transition-all duration-300 transform hover:scale-[1.02] active:scale-95 z-10 font-zalando ${
+                class={`w-full flex flex-col items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-sm transition-all duration-300 transform hover:scale-[1.02] active:scale-95 z-10 font-zalando ${
                   plan.popular ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/20' : 
                   plan.premium ? 'bg-gradient-to-r from-yellow-600 to-yellow-500 text-black shadow-lg shadow-yellow-500/20' : 
                   'border-2 border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10'
                 }`}
               >
-                <span>{plan.buttonText}</span>
-                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <div class="flex items-center justify-center gap-2">
+                  <span>{plan.buttonText}</span>
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </div>
+                <span class={`text-xs italic block w-full text-center font-light ${
+                  plan.popular ? 'text-white/50' : 
+                  plan.premium ? 'text-black/50' : 
+                  'text-cyan-400/20'
+                }`}>Enlace directo a WhatsApp</span>
               </a>
             </article>
           </li>
@@ -206,7 +213,7 @@ const pricingSchema = {
     </div>
   </section>
 
-  <section class="relative py-10 md:py-24 border-t border-white/5 overflow-hidden z-[50]" data-animate-section>
+  <section class="relative py-10 md:py-14 border-t border-white/5 overflow-hidden z-[50]" data-animate-section>
       <div class="absolute inset-0 bg-radial-at-c opacity-20" aria-hidden="true"></div>
       <div class="container mx-auto px-6 text-center relative z-10">
         <div class="max-w-4xl mx-auto p-12 rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl animate-on-scroll" data-animation="scale-in">
