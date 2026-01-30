@@ -1,17 +1,29 @@
 ---
+// 1. Obtenemos el pathname actual
 const pathname = Astro.url.pathname;
+
+// 2. Función de normalización: elimina barras finales para evitar discrepancias
+const normalizePath = (path: string) => {
+  return path.replace(/\/+$/, "") || "/";
+};
+
+const currentNormalizedPath = normalizePath(pathname);
+
 import { Image } from "astro:assets";
 import Logo from '../assets/icon.webp'
 
 const navItems = [
-  { name: 'Inicio', href: '/', active: pathname === '/' },
-  { name: 'Servicios', href: '/services', active: pathname === '/services' },
-  { name: 'Planes', href: '/plans', active: pathname === '/plans' },
-  { name: 'Tecnología', href: '/technologies', active: pathname === '/technologies' },
-  { name: 'Contacto', href: '/contact', active: pathname === '/contact' },
-];
+  { name: 'Inicio', href: '/' },
+  { name: 'Servicios', href: '/services' },
+  { name: 'Planes', href: '/plans' },
+  { name: 'Tecnología', href: '/technologies' },
+  { name: 'Contacto', href: '/contact' },
+].map(item => ({
+  ...item,
+  active: currentNormalizedPath === normalizePath(item.href)
+}));
 
-// Generación de Schema para Sitelinks y Navegación IA (AEO)
+// El resto de tu lógica de navSchema se mantiene igual
 const navSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
