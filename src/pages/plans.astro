@@ -72,11 +72,26 @@ const plans = [
   },
 ];
 
+
 // Generación de Schema para AEO/GEO
 const pricingSchema = {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
   "name": "Planes de Ingeniería Digital 2026",
+  "plans":[
+  {
+    id: 'impulse',
+    description: 'Landing profesional optimizada para conversiones rápidas, ideal para validar una oferta, captar clientes desde el primer día y generar consultas directas mediante WhatsApp o chat. Diseñada para máxima velocidad, presencia local y visibilidad inmediata en buscadores.'
+  },
+  {
+    id: 'authority',
+    description: 'Sitio web estratégico orientado al posicionamiento en buscadores y motores de respuesta (AEO), pensado para negocios que buscan autoridad digital, generación constante de leads y automatización de ventas mediante SEO técnico, estructura optimizada y formularios inteligentes.'
+  },
+  {
+    id: 'titan',
+    description: 'Infraestructura digital a medida con desarrollo full-stack e integración de inteligencia artificial, creada para empresas que escalan con datos, automatización avanzada y sistemas propios. Enfocado en rendimiento, seguridad, análisis profundo y crecimiento sostenido.'
+  }
+],
   "itemListElement": plans.map((plan, i) => ({
     "@type": "ListItem",
     "position": i + 1,

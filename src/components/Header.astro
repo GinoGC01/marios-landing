@@ -11,6 +11,7 @@ const currentNormalizedPath = normalizePath(pathname);
 
 import { Image } from "astro:assets";
 import Logo from '../assets/icon.webp'
+import WhatsApp from "./Icons/WhatsApp.astro";
 
 const navItems = [
   { name: 'Inicio', href: '/' },
@@ -22,6 +23,10 @@ const navItems = [
   ...item,
   active: currentNormalizedPath === normalizePath(item.href)
 }));
+
+const whatsappNumber = '5491140230671';
+const whatsappMessage = encodeURIComponent("¡Hola! Quiero iniciar mi futuro en la web. ¿Me dan una mano con mi proyecto?");
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
 // El resto de tu lógica de navSchema se mantiene igual
 const navSchema = {
@@ -78,15 +83,15 @@ const navSchema = {
 
       <div class="hidden md:block">
         <a 
-          href="/contact"
+          href={currentNormalizedPath == "/contact" || currentNormalizedPath == "/contact/" ? whatsappUrl : `/contact` }
           target="_blank"
           class="relative px-6 lg:px-8 py-2.5 lg:py-3 text-white text-xs lg:text-sm font-bold rounded-full overflow-hidden group inline-block font-zalando bg-gradient-to-r from-[#0099ff] to-[#a855f7]"
         >
           <span class="relative z-10 flex items-center gap-2">
             Iniciar Proyecto
-            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            {currentNormalizedPath == "/contact" || currentNormalizedPath == "/contact/" ? <span class="transform group-hover:translate-x-1 transition-transform duration-300"><WhatsApp/></span> : <svg class="w-[24px] h-[24px] transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
+            </svg>}
           </span>
         </a>
       </div>
