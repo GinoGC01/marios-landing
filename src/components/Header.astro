@@ -9,6 +9,8 @@ const normalizePath = (path: string) => {
 
 const currentNormalizedPath = normalizePath(pathname);
 
+const isDetailOfPlan = currentNormalizedPath === "/plans/authority" || currentNormalizedPath === "/plans/titan" || currentNormalizedPath === "/plans/impulse"
+
 import { Image } from "astro:assets";
 import Logo from '../assets/icon.webp'
 import WhatsApp from "./Icons/WhatsApp.astro";
@@ -44,7 +46,7 @@ const navSchema = {
 
 <script type="application/ld+json" set:html={JSON.stringify(navSchema)} />
 
-<header id="main-header" class="fixed top-0 left-0 w-full z-[700] transition-all duration-700">
+{!isDetailOfPlan && <header id="main-header" class="fixed top-0 left-0 w-full z-[700] transition-all duration-700">
   <div class="container mx-auto px-4 md:px-6 py-4 md:py-6 relative z-[1001]">
     <div id="header-container" class="relative w-full flex justify-between items-center px-4 md:px-8 py-3 md:py-4 rounded-2xl md:rounded-full transition-all duration-500 bg-black/40 backdrop-blur-sm border border-white/5">
 
@@ -154,7 +156,7 @@ const navSchema = {
       </a>
     </div>
   </nav>
-</header>
+</header>}
 
 <style>
   /* Animaciones originales preservadas */
