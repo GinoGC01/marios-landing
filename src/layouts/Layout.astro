@@ -6,7 +6,7 @@ import Header from '../components/Header.astro';
 import HeroSceneCanvas from '../components/Scene/HeroSceneCanvas.astro';
 import Footer from '../components/Footer.astro';
 import ButtonWppChat from '../components/Buttons/ButtonWppChat.astro';
-// import SpeedInsights from '@vercel/speed-insights/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 
 
@@ -70,6 +70,6 @@ const schema = {
     <Header />
     <slot />
     <Footer/>
-    <!-- <SpeedInsights /> -->
+    <SpeedInsights />
   </body>
 </html>
