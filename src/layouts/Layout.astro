@@ -6,7 +6,7 @@ import Header from '../components/Header.astro';
 import HeroSceneCanvas from '../components/Scene/HeroSceneCanvas.astro';
 import Footer from '../components/Footer.astro';
 import ButtonWppChat from '../components/Buttons/ButtonWppChat.astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
+// import SpeedInsights from '@vercel/speed-insights/astro';
 
 
 
@@ -62,7 +62,6 @@ const schema = {
 
 
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-    <script src="https://cdn.vercel-insights.com/v1/script.js" defer></script>
   </head>
   <body class="bg-[#020205] text-white overflow-x-hidden antialiased relative tracking-tight font-zalando ">
     <ButtonWppChat/>
@@ -70,6 +69,6 @@ const schema = {
     <Header />
     <slot />
     <Footer/>
-    <SpeedInsights />
+    <!-- <SpeedInsights /> -->
   </body>
 </html>
