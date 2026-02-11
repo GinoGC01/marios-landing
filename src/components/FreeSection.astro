@@ -16,21 +16,23 @@ const consultants = [
 ];
 ---
 
-<section id="wa-conversion" class="relative z-40 container mx-auto px-4 pb-16 md:pb-32">
-  <div class="relative max-w-5xl mx-auto">
-    
+<section id="wa-conversion" class=" relative w-full md:bg-[url(../assets/bg-green.svg)] bg-no-repeat bg-cover bg-center bg-fixed z-40 mx-auto px-4 py-16 md:py-32">
+  <div class="relative max-w-5xl mx-auto">   
     <div class="relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border border-white/5 bg-gradient-to-b from-[#080808] to-black p-[1px] md:p-[2px]">
-      
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#25D366]/30 to-transparent animate-border-flow-fast"></div>
-
-      <div class="relative bg-[#050505] rounded-[1.4rem] md:rounded-[1.9rem] p-6 md:p-12 lg:p-16 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent md:via-[#25D366]/10 via-[#eaeaea]/20 to-transparent animate-border-flow-fast z-30"></div>
+      <div class="relative 
+        bg-[url(../assets/bg-green-mb.svg)] 
+        md:bg-none 
+        md:bg-[#050505] 
+        bg-cover 
+        rounded-[1.4rem] md:rounded-[1.9rem] 
+        p-6 md:p-12 lg:p-16 
+        overflow-hidden">
         
-        <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: radial-gradient(#25D366 1px, transparent 1px); background-size: 40px 40px;"></div>
-
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center relative z-10">
           
           <div class="text-center lg:text-left order-1 lg:order-1">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#25D366]/5 border border-[#25D366]/10 text-[#25D366] text-[10px] font-bold uppercase tracking-[0.3em] mb-4 md:mb-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md md:bg-[#25D366]/5 bg-[#1f2120] border border-[#25D366]/10 text-[#25D366] text-[10px] font-bold uppercase tracking-[0.3em] mb-4 md:mb-6">
               <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]"></span>
@@ -43,17 +45,17 @@ const consultants = [
               <span class="text-[#25D366] drop-shadow-[0_0_15px_rgba(37,211,102,0.3)]">lista para operar.</span>
             </h2>
             
-            <p class="text-gray-400 text-base md:text-lg mb-6 md:mb-8 max-w-md mx-auto lg:mx-0">
-              Eliminamos la burocracia. Accedé al <a href="/plans?impulse" target="_blank" class="underline font-bold">Plan IMPULSE</a> mediante una auditoría directa vía WhatsApp. Implementación técnica en ciclos de 48hs. Totalmente <strong class="text-green-600">GRATIS</strong>.
+            <p class="md:text-gray-400  text-gray-200 text-base md:text-lg mb-6 md:mb-8 max-w-md mx-auto lg:mx-0">
+              Eliminamos la burocracia. Accedé al <a href="/plans?impulse" target="_blank" class="underline font-bold">Plan IMPULSE</a> mediante una auditoría directa. Totalmente <strong class="text-green-600 text-[25px] md:text-base block md:inline">GRATIS</strong>
             </p>
 
-            <div class="flex flex-wrap justify-center lg:justify-start items-center gap-4 text-[10px] md:text-xs font-mono text-gray-500">
+            <div class="flex flex-wrap justify-center lg:justify-start items-center gap-4 text-[10px] md:text-xs font-mono md:text-gray-500 text-gray-300">
               <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-gray-800 animate-pulse"></span>
+                <span class="w-2 h-2 rounded-full md:bg-gray-800 bg-gray-400 animate-pulse"></span>
                 Protocolo: WA-SECURE
               </span>
               <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-gray-800 animate-pulse"></span>
+                <span class="w-2 h-2 rounded-full md:bg-gray-800 bg-gray-400 animate-pulse"></span>
                 Encriptación E2E
               </span>
             </div>
@@ -69,11 +71,11 @@ const consultants = [
 
               <div class="relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 text-center">
                 <div class="mb-6">
-                  <div class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Estado de los Cupos</div>
+                  <div class="md:text-gray-500  text-gray-200 text-[10px] uppercase tracking-widest mb-1">Estado de los Cupos</div>
                   
                   <div class="flex items-baseline justify-center gap-2 text-white">
                     <span class="text-5xl md:text-6xl font-black leading-none">{remainingSlots}</span>
-                    <span class="text-gray-500 text-lg md:text-xl font-medium">disponibles</span>
+                    <span class="md:text-gray-500  text-gray-200 text-lg md:text-xl font-medium">disponibles</span>
                   </div>
 
                   <div class="w-full bg-white/5 h-2 rounded-full mt-4 overflow-hidden p-[1px]">
@@ -81,8 +83,8 @@ const consultants = [
                   </div>
                   
                   <div class="flex justify-between mt-2 text-[9px] uppercase tracking-tighter font-bold">
-                    <span class="text-[#25D366]">{slotsClaimed} CUBIERTOS</span>
-                    <span class="text-gray-600">{totalSlots} TOTALES</span>
+                    <span class="md:text-[#25D366] text-gray-200">{slotsClaimed} CUBIERTOS</span>
+                    <span class="md:text-gray-600 text-gray-200">{totalSlots} TOTALES</span>
                   </div>
                 </div>
 
@@ -96,7 +98,7 @@ const consultants = [
                   <span class="text-xs md:text-base">SOLICITAR VÍA WHATSAPP</span>
                 </a>
 
-                <p class="mt-4 text-[10px] md:text-[11px] text-gray-500 font-medium tracking-tight flex items-center justify-center gap-1">
+                <p class="mt-4 text-[10px] md:text-[11px] md:text-gray-500 text-gray-200 font-medium tracking-tight flex items-center justify-center gap-1">
                   <span class="text-[#25D366] animate-pulse">●</span> Redirección segura a chat directo.
                 </p>
               </div>
@@ -104,12 +106,12 @@ const consultants = [
               <div class="mt-6 flex flex-col items-center gap-3">
                 <div class="flex -space-x-3">
                   {consultants.map(c => (
-                    <div class={`w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-[#050505] bg-gradient-to-br ${c.gradient} flex items-center justify-center text-[9px] md:text-[10px] font-bold text-white`}>
+                    <div class={`w-7 h-7 md:w-8 md:h-8 rounded-full md:border-2 border-1 md:border-[#050505] border-gray-100 bg-gradient-to-br ${c.gradient} flex items-center justify-center text-[9px] md:text-[10px] font-bold text-white`}>
                       {c.initial}
                     </div>
                   ))}
                 </div>
-                <span class="text-[9px] md:text-[10px] text-gray-600 uppercase font-bold tracking-[0.2em]">3 personas consultando ahora</span>
+                <span class="text-[9px] md:text-[10px] md:text-gray-500 text-gray-200 uppercase font-bold tracking-[0.2em]">3 personas consultando ahora</span>
               </div>
 
             </div>
