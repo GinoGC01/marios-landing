@@ -10,7 +10,7 @@ const plans = [
     id: 'impulse',
     name: 'Impulse',
     price: '$0',
-    priceUsd: '$0',
+    priceUsd: '$60',
     period: 'Mantenimiento Mensual',
     description: 'Validación profesional inmediata. Landing de alto impacto optimizada para conversiones rápidas vía chat.',
     icon: 'rocket',
@@ -170,12 +170,14 @@ const pricingSchema = {
                       </svg>
                 </h3>
 
-                {plan.id != "impulse" && <div class="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-zalando mb-1">Inversión Estimada desde:</div>}
+                <div class={`text-[9px] md:text-[10px] ${plan.id === "impulse"? 'text-green-500' : 'text-gray-500'} uppercase tracking-widest font-zalando mb-1`}>{plan.id != "impulse"? 'Inversión Estimada desde:' : '100% bonificado! '}{plan.id === "impulse" && <span class='text-cyan-500'>5 cupos disponibles</span>}</div>
                 <div class="flex items-baseline gap-2 mb-2">
                   <span class={`text-3xl md:text-5xl font-black tracking-tighter font-zalando ${
                     plan.id === 'authority' ? 'text-cyan-400' : plan.id === 'titan' ? 'text-yellow-500' : 'text-white'
                   }`}>
-                    {plan.priceUsd} <span class="text-lg">USD</span>
+                  <span class={`${plan.id === 'impulse' ? 'line-through text-gray-500 text-2xl md:text-3xl' : ""}`}>{plan.priceUsd}</span>  
+                  <span>{plan.id === 'impulse' && "$0"}</span>
+                  <span class="text-lg">USD</span>
                   </span>
                 </div>
                 <p class="text-[10px] text-gray-500 uppercase tracking-wide font-zalando">{plan.period}</p>
