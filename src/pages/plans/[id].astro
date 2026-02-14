@@ -9,27 +9,29 @@ export async function getStaticPaths() {
       id: 'impulse',
       name: 'Impulse',
       tagline: 'Tu Primer Paso',
-      price: '$0', // Precio de entrada / MVP
-      period: '/ despliegue',
-      description: 'Ideal si tenés una idea y querés probar si funciona antes de gastar una fortuna. Es simple: ponemos tu oferta frente a la gente para ver si compran o preguntan.',
-      concept: 'No es una página web aburrida, es como un volante digital de alta calidad entregado en la mano de tu cliente ideal. Tiene una sola misión: que te escriban al WhatsApp.',
+      price: '$0', 
+      period: '/ setup bonificado',
+      maintenancePrice: '$20 USD',
+      maintenanceLabel: 'Mantenimiento Mensual',
+      description: 'Ideal para validar sin riesgo. No inviertas miles en algo que no probaste: por lo que te cuesta una cena al mes, tenés una infraestructura profesional manteniendo tu oferta en línea.',
+      concept: 'Es un entorno de validación profesional. Nosotros invertimos en el desarrollo (Setup $0) y vos solo cubrís el costo operativo mensual para mantenerlo activo y rápido.',
       painPoints: [
-        'Miedo a invertir en una idea sin validación previa.',
-        'Clientes perdidos por tiempos de carga lentos.',
-        'Baja conversión por dificultad de contacto.'
+        'Miedo a invertir capital fuerte en una idea sin validar.',
+        'Pagar desarrollos caros que luego quedan abandonados.',
+        'Perder ventas por no tener una forma profesional de mostrarte.'
       ],
       solutions: [
-        'Landing de validación rápida con riesgo financiero cero.',
-        'Tecnología de carga instantánea (Edge Delivery).',
-        'Integración directa de WhatsApp para cierre inmediato.'
+        'Modelo de "Riesgo Compartido": Setup bonificado al 100%.',
+        'Costo operativo mínimo (precio de una cena) para empezar.',
+        'Infraestructura técnica completa incluida en la mensualidad.'
       ],
       idealFor: 'Emprendedores, lanzamiento de nuevos servicios, probar si un producto se vende.',
       accentColor: '#00ffff',
       benefits: [
-        { label: 'Velocidad', value: 'Como un rayo', desc: 'Abre al instante. No le damos tiempo al cliente de arrepentirse.' },
-        { label: 'Claridad', value: 'Sin rodeos', desc: 'Decimos qué vendés y cuánto cuesta. Sin menús complicados.' },
-        { label: 'Ahorro', value: 'Riesgo Cero', desc: 'Probás tu negocio en el mundo real sin quemar tus ahorros.' },
-        { label: 'Facilidad', value: 'Todo al Celular', desc: 'La gente lo ve, le gusta y te escribe directo a tu WhatsApp.' }
+        { label: 'Inversión', value: 'Setup $0', desc: 'No pagás por el desarrollo, solo por mantenerlo funcionando.' },
+        { label: 'Costo', value: '$20/mes', desc: 'Accesible. Menos de lo que gastás en una salida a comer.' },
+        { label: 'Velocidad', value: 'Inmediata', desc: 'Tu oferta está online y vendiendo en tiempo récord.' },
+        { label: 'Riesgo', value: 'Mínimo', desc: 'Si tu idea no funciona, no perdiste miles de dólares en desarrollo.' }
       ],
       modules: [
         { title: 'Página de Venta Única', desc: 'Una sola pantalla, sin distracciones. Como un vendedor que solo habla de lo importante para cerrar la venta.' },
@@ -41,7 +43,7 @@ export async function getStaticPaths() {
       roadmap: [
         { phase: '01', title: 'La Idea', desc: 'Nos contás qué vendés y elegimos la mejor forma de decirlo.' },
         { phase: '02', title: 'El Armado', desc: 'Preparamos todo para que se vea increíble y funcione rápido.' },
-        { phase: '03', title: 'A la Cancha', desc: 'La publicamos y queda lista para que empieces a recibir mensajes.' }
+        { phase: '03', title: 'A la Cancha', desc: 'La publicamos y queda lista para recibir mensajes. Solo pagás el mantenimiento.' }
       ]
     },
     {
@@ -49,7 +51,9 @@ export async function getStaticPaths() {
       name: 'Authority',
       tagline: 'Tu Oficina Digital',
       price: '$299 USD',
-      period: ' + mantenimiento',
+      period: ' / único',
+      maintenancePrice: '$40 USD',
+      maintenanceLabel: 'Mantenimiento Mensual',
       description: 'Para cuando ya tenés un negocio funcionando y querés que te tomen en serio. Hacemos que Google te ame y que tus clientes te vean como el líder de tu rubro.',
       concept: 'Es como tener la oficina más lujosa de la ciudad, abierta las 24 horas. Responde las dudas de tus clientes, muestra tu trabajo y genera confianza automática.',
       painPoints: [
@@ -88,7 +92,9 @@ export async function getStaticPaths() {
       name: 'Titan',
       tagline: 'Tu Propia Fábrica',
       price: '$1200 USD',
-      period: ' inversión base',
+      period: ' / inversión base',
+      maintenancePrice: 'A Medida',
+      maintenanceLabel: 'Soporte e Infraestructura',
       description: 'Cuando las herramientas normales te quedan chicas. Creamos un sistema a medida para tu empresa que hace el trabajo pesado, organiza tus datos y automatiza tareas.',
       concept: 'Dejás de alquilar software y pasás a ser dueño de tu propia tecnología. Es construir una máquina que trabaja exactamente como vos querés, sin límites.',
       painPoints: [
@@ -133,11 +139,10 @@ export async function getStaticPaths() {
 const { plan } = Astro.props;
 const WHATSAPP_NUMBER = "5491140230671";
 const waMessage = encodeURIComponent(
-  `Hola, estuve analizando la especificación técnica del plan ${plan.name} y quiero evaluar su implementación.`
+  `Hola, me interesa el plan ${plan.name}. Entiendo los costos de inversión (${plan.price}) y mantenimiento (${plan.maintenancePrice}). ¿Podemos avanzar?`
 );
 
-// Función para convertir hex a rgb
-const hexToRgb = (hex:string ) => {
+const hexToRgb = (hex: string) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`
@@ -149,212 +154,217 @@ const rgbAccent = hexToRgb(plan.accentColor);
 
 <Layout title={`Spec: ${plan.name} | Ingeniería Digital`}>
   
-  <section class="min-h-screen pb-32 font-sans selection:bg-[var(--accent)] selection:text-black" style={`--accent-rgb:${rgbAccent}; --accent:${plan.accentColor};`}>
+  <section class=" min-h-screen pb-40 font-sans text-gray-300" style={`--accent-rgb:${rgbAccent}; --accent:${plan.accentColor};`}>
     
-    {/* NAVBAR FLOTANTE */}
-    <nav class="fixed top-0 left-0 w-full z-50 px-4 py-4 pointer-events-none animate-entry" style="transition-delay: 100ms;">
-      <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <a href="/plans" class="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 rounded-full p-3 text-white hover:bg-white/10 transition-all active:scale-95 group shadow-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"><path d="m15 18-6-6 6-6"/></svg>
+    {/* NAVBAR SIMPLIFICADA */}
+    <nav class="fixed top-0 left-0 w-full z-50 px-4 py-4 pointer-events-none animate-entry" style="transition-delay: 50ms;">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="/plans" class="pointer-events-auto bg-[#0a0a0f]/90 backdrop-blur border border-white/10 p-3 text-white hover:border-[var(--accent)] transition-all active:scale-95 group">
+          {/* Icono de flecha "Corner" estilo técnico */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:-translate-x-1 transition-transform"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
         </a>
-        <div class="pointer-events-auto px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[rgba(var(--accent-rgb),0.3)] text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--accent)] shadow-[0_0_15px_rgba(var(--accent-rgb),0.2)]">
-          System Spec: {plan.id.toUpperCase()}
+        <div class="pointer-events-auto px-4 py-1 bg-[#0a0a0f]/90 backdrop-blur border-l-2 border-[var(--accent)] text-[10px] font-mono uppercase tracking-widest text-white/80">
+          SYS.ID: {plan.id.toUpperCase()}
         </div>
       </div>
     </nav>
 
-    {/* BACKGROUND GLOW */}
-    <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30 transition-transform duration-200 ease-out" aria-hidden="true"></div>
-
-
-    {/* HERO SECTION */}
-    <header class="relative z-10 pt-28 px-5 container mx-auto max-w-5xl">
-      <div class="animate-entry inline-flex items-center gap-2 mb-4 px-3 py-1 rounded border bg-[rgba(var(--accent-rgb),0.05)] border-[rgba(var(--accent-rgb),0.2)]" style="transition-delay: 200ms;">
-        <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-[var(--accent)]"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]"></span>
-        </span>
-        <span class="text-[var(--accent)] uppercase tracking-[0.2em] text-[10px] font-bold font-mono">
-            {plan.tagline}
-        </span>
-      </div>
-
-      <h1 class="animate-entry text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tight font-zalando mb-6" style="transition-delay: 300ms;">
-        {plan.name.toUpperCase()}
-      </h1>
-
-      <p class="animate-entry text-lg md:text-xl text-gray-300 max-w-2xl font-light leading-relaxed mb-8" style="transition-delay: 400ms;">
-        {plan.description}
-      </p>
-
-      {/* TERMINAL SECTION: Diagnóstico y Solución */}
-      <div class="animate-entry w-full mt-12 mx-auto md:mx-0" style="transition-delay: 500ms;">
-        <div class="terminal-window bg-[#0c0c0c] border border-white/10 rounded-xl overflow-hidden font-mono text-xs md:text-sm shadow-2xl relative group">
-            
-            {/* Terminal Header */}
-            <div class="bg-[#1a1a1f] p-3 flex items-center gap-2 border-b border-white/5">
-                <div class="flex gap-1.5">
-                    <div class="w-3 h-3 rounded-full bg-red-500/50 group-hover:bg-red-500 transition-colors"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500/50 group-hover:bg-yellow-500 transition-colors"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500/50 group-hover:bg-green-500 transition-colors"></div>
-                </div>
-                <div class="ml-4 text-gray-600 text-[10px] tracking-wide flex-1 text-center font-bold">root@server: ~</div>
-            </div>
-
-            {/* Terminal Body */}
-            <div class="p-6 min-h-[300px] text-gray-300 relative" id="terminal-content">
-                
-                {/* Paso 1: Diagnóstico */}
-                <div class="terminal-step hidden" data-delay="500">
-                    <span class="text-[var(--accent)]">root@server:~$</span> <span class="typing-effect">npm run diagnostics</span>
-                </div>
-                
-                <div class="mt-2 space-y-1 mb-6">
-                    {plan.painPoints.map((point, i) => (
-                        <div class="terminal-step hidden flex gap-2" data-delay={1500 + (i * 500)}>
-                            <span class="text-red-500 font-bold shrink-0">[ERROR]</span>
-                            <span class="text-gray-400">{point}</span>
-                        </div>
-                    ))}
-                    <div class="terminal-step hidden text-red-500 mt-2 font-bold" data-delay={3500}>
-                        &gt; CRITICAL FAILURE DETECTED. ACTION REQUIRED.
-                    </div>
-                </div>
-
-                {/* Paso 2: Solución */}
-                <div class="terminal-step hidden mt-4" data-delay={4500}>
-                    <span class="text-[var(--accent)]">root@server:~$</span> <span class="typing-effect">sudo fix --all</span>
-                </div>
-
-                <div class="mt-2 space-y-1">
-                    {plan.solutions.map((sol, i) => (
-                        <div class="terminal-step hidden flex gap-2" data-delay={5500 + (i * 500)}>
-                            <span class="text-green-500 font-bold shrink-0">[SUCCESS]</span>
-                            <span class="text-white">{sol}</span>
-                        </div>
-                    ))}
-                    <div class="terminal-step hidden text-green-500 mt-2 font-bold" data-delay={7500}>
-                        &gt; SYSTEM OPTIMIZED. READY FOR DEPLOY.
-                    </div>
-                </div>
-
-                {/* Cursor */}
-                <div class="mt-4 flex gap-1">
-                    <span class="text-[var(--accent)]">root@server:~$</span>
-                    <span class="w-2 h-5 bg-gray-500 animate-pulse"></span>
-                </div>
-
-            </div>
-
-            {/* Scanline Effect */}
-            <div class="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-20 bg-[length:100%_2px,3px_100%] opacity-20"></div>
-        </div>
-      </div>
-    </header>
-
-    <main class="relative z-10 container mx-auto px-5 mt-20 space-y-24 max-w-5xl">
+    {/* MAIN CONTENT WRAPPER */}
+    <div class="relative z-10 container mx-auto px-5 pt-32 max-w-7xl">
       
-      {/* BENEFICIOS (Dashboard Grid) */}
-      <section>
-        <div class="animate-entry flex items-center gap-2 mb-6 opacity-80">
-            <svg class="w-5 h-5 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-            <h2 class="text-white font-bold text-lg font-zalando">Métricas de Impacto</h2>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {plan.benefits.map((b, index) => (
-            <div 
-                class="animate-entry group relative bg-[#0a0a0f] border border-white/5 rounded-2xl p-4 hover:border-[rgba(var(--accent-rgb),0.3)] transition-colors duration-300 overflow-hidden"
-                style={`transition-delay: ${index * 100}ms;`}
-            >
-              <div class="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-[0.03] transition-opacity"></div>
-              <span class="text-[10px] uppercase tracking-wider text-gray-500 font-mono font-bold block mb-2">{b.label}</span>
-              <h3 class="text-white font-bold text-base md:text-lg leading-tight mb-1">{b.value}</h3>
-              <p class="text-[10px] md:text-xs text-gray-500 leading-tight">{b.desc}</p>
+      {/* --- HERO SECTION: BLUEPRINT STYLE --- */}
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 mb-24 border-b border-white/5 pb-16">
+        <div class="animate-entry" style="transition-delay: 100ms;">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-2 h-2 bg-[var(--accent)]"></span>
+            <span class="font-mono text-xs text-[var(--accent)] uppercase tracking-[0.2em]">{plan.tagline}</span>
+          </div>
+          
+          <h1 class="text-6xl md:text-8xl font-bold text-white tracking-tighter mb-8 leading-[0.9] font-zalando" style={`color:${plan.accentColor}`}>
+            {plan.name.toUpperCase()}
+          </h1>
+          
+          <div class="relative pl-6 border-l border-white/10">
+            <p class="text-xl md:text-2xl text-gray-200 font-light leading-snug mb-6">
+              {plan.description}
+            </p>
+            <div class="text-xs font-mono text-gray-500 uppercase tracking-wide">
+              // {plan.idealFor}
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* QUÉ INCLUYE (Tech Stack Style) */}
-      <section class="animate-entry bg-gradient-to-b from-white/[0.02] to-transparent rounded-3xl p-1 border border-white/5">
-        <div class="bg-[#050505] rounded-[1.4rem] p-6 md:p-8">
-            <h2 class="text-xs uppercase tracking-[0.2em] text-gray-500 mb-8 font-mono border-b border-white/5 pb-4">
-                Especificaciones Técnicas
-            </h2>
-
-            <ul class="grid md:grid-cols-2 gap-y-6 gap-x-8">
-            {plan.modules.map((m, index) => (
-                <li 
-                    class="animate-entry flex items-start gap-3 group"
-                    style={`transition-delay: ${index * 100}ms;`}
-                >
-                  <div class="w-5 h-5 mt-1 rounded bg-[rgba(var(--accent-rgb),0.1)] flex items-center justify-center text-[var(--accent)] border border-[rgba(var(--accent-rgb),0.2)] shrink-0">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17 4 12"/></svg>
-                  </div>
-                  <div>
-                    <h4 class="text-white font-bold text-sm mb-1 group-hover:text-[var(--accent)] transition-colors">{m.title}</h4>
-                    <p class="text-xs text-gray-400 leading-relaxed">{m.desc}</p>
-                  </div>
-                </li>
-            ))}
-            </ul>
-        </div>
-      </section>
-
-      {/* ROADMAP (Git Commit Style) */}
-      <section>
-        <h2 class="animate-entry text-white font-bold text-lg font-zalando mb-10 flex items-center gap-2">
-            <span class="text-[var(--accent)]">//</span> Protocolo de Ejecución
-        </h2>
-
-        <div class="relative border-l border-white/10 ml-3 md:ml-4 space-y-10 pb-4">
-          {plan.roadmap.map((step, index) => (
-            <div 
-                class="animate-entry relative pl-8 group"
-                style={`transition-delay: ${index * 150}ms;`}
-            >
-              {/* Timeline Node */}
-              <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#050505] border border-gray-600 group-hover:border-[var(--accent)] group-hover:scale-125 transition-all z-10 shadow-[0_0_10px_rgba(0,0,0,1)]"></div>
-              {/* Active Line Segment */}
-              <div class="absolute -left-[1px] top-4 h-full w-[1px] bg-gradient-to-b from-[var(--accent)] to-transparent opacity-0 group-hover:opacity-50 transition-opacity"></div>
-              
-              <span class="text-[10px] text-[var(--accent)] font-mono font-bold uppercase tracking-widest mb-1 block opacity-80">
-                {step.phase}
-              </span>
-              <h3 class="text-white font-bold text-lg mb-2">
-                {step.title}
-              </h3>
-              <p class="text-sm text-gray-400 max-w-md leading-relaxed">
-                {step.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </main>
-
-    {/* CTA (Glassmorphic Sticky Bar) */}
-    <div class="animate-entry fixed bottom-0 left-0 right-0 p-4 z-40 bg-gradient-to-t from-black via-black/90 to-transparent pt-12" style="transition-delay: 800ms;">
-      <div class="max-w-4xl mx-auto bg-[#121212]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-2 pl-5 flex justify-between items-center shadow-2xl shadow-black">
-        
-        <div class="flex flex-col">
-          <span class="text-[9px] md:text-[17px] text-gray-500 uppercase font-bold tracking-wider">Valor de Inversión</span>
-          <div class="flex items-baseline gap-1">
-            <span class="text-white font-bold text-lg md:text-xl">{plan.price}</span>
-            <span class="text-[9px] text-gray-500 font-medium md:text-[12px]">{plan.period}</span>
           </div>
         </div>
 
-        <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`}
-          target="_blank"
-          class="px-5 py-3 rounded-xl font-bold text-black text-xs md:text-sm shadow-lg hover:brightness-110 active:scale-95 transition-all flex items-center gap-2"
-          style={`background:${plan.accentColor}; box-shadow: 0 0 20px rgba(${rgbAccent}, 0.2)`}
-        >
-          <span>INICIAR AHORA</span>
-          <WhatsApp color={'black'}>
-        </a>
+        <div class="relative animate-entry" style="transition-delay: 200ms;">
+          {/* Concept Box - Estilo HUD */}
+          <div class="bg-[#08080a] border border-white/10 p-8 relative">
+            {/* Esquinas Técnicas */}
+            <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[var(--accent)]"></div>
+            <div class="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-[var(--accent)]"></div>
+            <div class="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-[var(--accent)]"></div>
+            <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[var(--accent)]"></div>
+
+            <h3 class="text-xs font-bold text-white/50 uppercase tracking-widest mb-4 border-b border-white/5 pb-2">Concepto de Arquitectura</h3>
+            <p class="text-lg text-gray-300 italic font-medium leading-relaxed">
+              "{plan.concept}"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* --- DIAGNOSTIC VS SOLUTION (SPLIT VIEW) --- */}
+      <div class="mb-24 animate-entry" style="transition-delay: 300ms;">
+        <h2 class="font-mono text-xs text-gray-500 mb-8 uppercase tracking-widest flex items-center gap-4">
+          <span>01. Diagnóstico del sistema</span>
+          <span class="h-px bg-white/10 flex-1"></span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-px bg-white/5 border border-white/10 overflow-hidden">
+          
+          {/* Columna Izquierda: Problemas */}
+          <div class="bg-[#050505] p-8 relative group">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="1"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3 class="text-red-500 font-mono text-sm font-bold mb-6">[DETECTED_ERRORS]</h3>
+            <ul class="space-y-6">
+              {plan.painPoints.map(p => (
+                <li class="flex gap-4 items-start">
+                  <span class="text-red-500/50 mt-1">x</span>
+                  <span class="text-gray-400">{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Columna Derecha: Soluciones */}
+          <div class="bg-[#08080a] p-8 relative group">
+             <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[var(--accent)]" stroke-width="1"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="text-[var(--accent)] font-mono text-sm font-bold mb-6">[APPLIED_PATCHES]</h3>
+            <ul class="space-y-6">
+              {plan.solutions.map(s => (
+                <li class="flex gap-4 items-start">
+                  <span class="text-[var(--accent)] mt-1">✓</span>
+                  <span class="text-white">{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* --- SPECS & METRICS (BENTO GRID) --- */}
+      <div class="mb-24">
+        <h2 class="font-mono text-xs text-gray-500 mb-8 uppercase tracking-widest flex items-center gap-4 animate-entry" style="transition-delay: 400ms;">
+          <span>02. Especificaciones</span>
+          <span class="h-px bg-white/10 flex-1"></span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          {/* Metrics Cards */}
+          {plan.benefits.map((b, i) => (
+            <div class="bg-[#0a0a0f] border border-white/10 p-6 flex flex-col justify-between h-full hover:border-[var(--accent)] transition-colors duration-300 animate-entry backdrop-blur-[5px]" style={`transition-delay: ${400 + (i * 100)}ms;`}>
+              <div>
+                <span class="font-mono text-[10px] text-gray-500 uppercase block mb-3 border-b border-white/5 pb-2">{b.label}</span>
+                <span class="text-2xl font-bold text-white block mb-2">{b.value}</span>
+              </div>
+              <p class="text-xs text-gray-400 leading-relaxed">{b.desc}</p>
+            </div>
+          ))}
+
+          {/* Module List (Spans full width on mobile, 2 cols on LG) */}
+          <div class="md:col-span-2 lg:col-span-4 bg-white/[0.02] border border-white/10 p-8 mt-4 animate-entry" style="transition-delay: 800ms;">
+            <div class="grid md:grid-cols-2 gap-8">
+              {plan.modules.map(m => (
+                <div class="flex gap-4">
+                  <div class="w-1 h-full bg-[var(--accent)]/20 flex flex-col justify-center items-center">
+                    <div class="w-1 h-1 bg-[var(--accent)]"></div>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-bold text-sm mb-1">{m.title}</h4>
+                    <p class="text-xs text-gray-400">{m.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* --- TIMELINE (VERTICAL FLOW) --- */}
+      <div class="mb-20">
+        <h2 class="font-mono text-xs text-gray-500 mb-8 uppercase tracking-widest flex items-center gap-4 animate-entry" style="transition-delay: 900ms;">
+          <span>03. Plan de ejecución</span>
+          <span class="h-px bg-white/10 flex-1"></span>
+        </h2>
+
+        <div class="space-y-0">
+          {plan.roadmap.map((step, i) => (
+            <div class="flex group animate-entry" style={`transition-delay: ${1000 + (i * 100)}ms;`}>
+              <div class="w-20 md:w-32 py-8 border-r border-white/10 font-mono text-[10px] text-gray-500 text-right pr-6 pt-9">
+                {step.phase}
+              </div>
+              <div class="flex-1 py-8 border-b border-white/5 pl-6 md:pl-10 relative">
+                {/* Dot on timeline */}
+                <div class="absolute left-[-5px] top-10 w-2.5 h-2.5 bg-[#050505] border border-gray-600 group-hover:border-[var(--accent)] transition-colors z-10"></div>
+                
+                <h3 class="text-white text-lg font-bold mb-2 group-hover:text-[var(--accent)] transition-colors">{step.title}</h3>
+                <p class="text-sm text-gray-400 max-w-xl">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+    {/* --- STICKY ACTION BAR (ENGINEERING STYLE) --- */}
+    <div class="fixed bottom-0 left-0 right-0 z-50 animate-entry" style="transition-delay: 1200ms;">
+      
+      {/* Barra de estado decorativa superior */}
+      <div class="h-1 w-full bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-50"></div>
+      
+      <div class="bg-[#08080a] border-t border-white/10 p-4 md:p-6 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          
+          <div class="flex items-center gap-6 w-full md:w-auto justify-between md:justify-start">
+            
+            {/* Precio Principal */}
+            <div>
+              <span class="block text-[9px] font-mono text-gray-500 uppercase tracking-wider mb-1">Inversión Inicial</span>
+              <div class="flex items-baseline gap-2">
+                <span class="text-2xl font-bold text-white font-zalando">{plan.price}</span>
+                <span class="text-xs text-gray-400">{plan.period}</span>
+              </div>
+            </div>
+
+            {/* Separador Vertical */}
+            <div class="w-px h-8 bg-white/10 hidden md:block"></div>
+
+            {/* Costo de Mantenimiento (Highlight) */}
+            <div class="bg-white/[0.03] px-3 py-2 border border-white/5 rounded-md">
+              <span class="block text-[8px] font-mono text-[var(--accent)] uppercase tracking-wider mb-0.5 opacity-80">Costo Operativo</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-sm font-bold text-white">+ {plan.maintenancePrice}</span>
+                <span class="text-[9px] text-gray-500">/ mes</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Botón de Acción */}
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`}
+            target="_blank"
+            class="w-full md:w-auto group relative overflow-hidden bg-white text-black px-8 py-3 font-bold text-sm tracking-wide uppercase hover:bg-[var(--accent)] transition-colors duration-300 flex items-center justify-center gap-3 clip-path-slant"
+          >
+            <span>Iniciar Protocolo</span>
+            <WhatsApp class="w-4 h-4" />
+          </a>
+
+        </div>
       </div>
     </div>
 
@@ -366,11 +376,20 @@ const rgbAccent = hexToRgb(plan.accentColor);
     font-family: system-ui, -apple-system, sans-serif;
   }
   
-  /* ESTILOS DE ANIMACIÓN ENTRADA */
+  .page-container {
+    background-color: #050505;
+  }
+
+  /* Clip path para el botón con corte técnico */
+  .clip-path-slant {
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  /* Animaciones de Entrada */
   .animate-entry {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(15px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
   
@@ -378,45 +397,9 @@ const rgbAccent = hexToRgb(plan.accentColor);
     opacity: 1;
     transform: translateY(0);
   }
-
-  /* Efecto de parpadeo suave para el texto de la terminal */
-  .fade-in-line {
-      animation: fadeIn 0.3s ease-out forwards;
-  }
-  
-  @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(2px); }
-      to { opacity: 1; transform: translateY(0); }
-  }
 </style>
 
 <script>
-    // Lógica para animar la terminal
-    function runTerminalAnimation() {
-        const terminal = document.getElementById('terminal-content');
-        if (!terminal) return;
-
-        const steps = terminal.querySelectorAll('.terminal-step');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    steps.forEach(step => {
-                        const delay = parseInt(step.getAttribute('data-delay') || '0');
-                        setTimeout(() => {
-                            step.classList.remove('hidden');
-                            step.classList.add('fade-in-line');
-                        }, delay);
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        observer.observe(terminal);
-    }
-
-    // Lógica para animaciones de entrada generales
     function initScrollAnimations() {
         const elements = document.querySelectorAll('.animate-entry');
         
@@ -424,22 +407,14 @@ const rgbAccent = hexToRgb(plan.accentColor);
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
+                    observer.unobserve(entry.target); // Solo animar una vez
                 }
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
 
         elements.forEach(el => observer.observe(el));
     }
 
-    // Ejecutar al cargar y en navegaciones de Astro
-    document.addEventListener('DOMContentLoaded', () => {
-        runTerminalAnimation();
-        initScrollAnimations();
-    });
-    
-    document.addEventListener('astro:page-load', () => {
-        runTerminalAnimation();
-        initScrollAnimations();
-    });
+    document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    document.addEventListener('astro:page-load', initScrollAnimations);
 </script>
