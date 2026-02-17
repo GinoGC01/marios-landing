@@ -1,5 +1,9 @@
 /* src/styles/global.css */
 @import "tailwindcss";
+  /* View Transitions */
+@view-transition {
+  navigation: auto;
+}
 
 :root {
   /* Definimos los colores del diseño para usarlos en todo el proyecto */
