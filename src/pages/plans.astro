@@ -25,6 +25,7 @@ const plans = [
       'Certificado SSL & Seguridad Web',
     ],
     notIncluded: ['AEO Avanzado', 'Automatización IA', 'Sistemas de Datos'],
+    promotion:true
   },
   {
     id: 'authority',
@@ -138,14 +139,25 @@ const pricingSchema = {
               </div>
             )}
 
-            <article class={`h-full flex flex-col p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-[#0a0a0f] border transition-all duration-500 relative overflow-hidden group plan-article ${
+            {plan.promotion && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 w-max">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-green-600 to-green-400 px-4 py-1.5 text-[10px] font-bold text-black tracking-wide uppercase shadow-[0_0_15px_rgba(2,176,19,0.8)]">
+                  OPORTUNIDAD
+                </span>
+              </div>
+            )}
+
+            <article class={`h-full flex flex-col py-6 px-3 md:py-8 md:py-4 rounded-[1.5rem] md:rounded-[2rem] ${
+              plan.name === 'Impulse' ? "bg-[linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('../assets/promotions/bg.png')]" : 'bg-[#0a0a0f]'
+            }  border transition-all duration-500 relative overflow-hidden group plan-article ${
               plan.popular ? 'border-purple-500/40' : plan.premium ? 'border-yellow-600/40' : 'border-gray-800'
             }`}>
               
               <div class="absolute -top-32 -right-32 w-64 h-64 opacity-10 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-20" 
                    style={`background-color: ${plan.accentColor}`} aria-hidden="true"></div>
 
-              <div class="mb-6 relative z-10">
+              {/* here */}
+              <div class="mb-6 relative z-10 backdrop-blur-[7px] p-4 rounded-lg">
                 <div class="flex items-center justify-between mb-6">
                   <div class={`h-12 w-12 md:h-14 md:w-14 flex items-center justify-center rounded-2xl transition-colors duration-300 ${
                     plan.icon === 'rocket' ? 'bg-gray-800/50 group-hover:bg-cyan-500/20' : 
@@ -180,12 +192,12 @@ const pricingSchema = {
                   <span class="text-lg">USD</span>
                   </span>
                 </div>
-                <p class="text-[10px] text-gray-500 uppercase tracking-wide font-zalando">{plan.period}</p>
+                <p class="text-[10px] text-gray-500 uppercase tracking-wide font-zalando mb-2">{plan.period}</p>
+                <p class="text-gray-400 text-sm leading-relaxed font-zalando">{plan.description}</p>
               </div>
 
-              <p class="text-gray-400 mb-8 text-sm leading-relaxed font-zalando">{plan.description}</p>
-
-              <ul class="space-y-3.5 mb-8 flex-grow relative z-10" role="list">
+              {/* here */}
+              <ul class="space-y-3.5 mb-8 flex-grow relative z-10 px-4" role="list">
                 {plan.features.map((feature) => (
                   <li class="flex items-start gap-3">
                     <svg class="h-5 w-5 shrink-0 text-cyan-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -199,15 +211,15 @@ const pricingSchema = {
                   </li>
                 ))}
               </ul>
-
+              {/* here */}
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola! Me interesa potenciar mi negocio con el Plan ${plan.name}.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class={`w-full flex flex-col items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-sm transition-all duration-300 transform hover:scale-[1.02] active:scale-95 z-10 font-zalando ${
+                class={`backdrop-blur-[10px] w-full flex flex-col items-center justify-center gap-2 py-4 px-8 rounded-2xl font-bold text-sm transition-all duration-300 transform hover:scale-[1.02] active:scale-95 z-10 font-zalando ${
                   plan.popular ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40' : 
                   plan.premium ? 'bg-gradient-to-r from-yellow-600 to-yellow-500 text-black shadow-lg shadow-yellow-500/20 hover:shadow-yellow-500/40' : 
-                  'border-2 border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500/50'
+                  'border-1 border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500/50'
                 }`}
               >
                 <div class="flex items-center justify-center gap-2">
