@@ -50,7 +50,15 @@ const schema = {
     <meta name="description" content={description} />
     <link rel="canonical" href={Astro.url} />
     <meta name="robots" content="index, follow" />
-    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ECCKWNYM35" is:inline></script>
+    <script>
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      function gtag(p0?: string, p1?: string | Date){(window as any).dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ECCKWNYM35');
+    </script>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
