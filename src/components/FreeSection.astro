@@ -2,7 +2,7 @@
 import WhatsApp from "./Icons/WhatsApp.astro";
 
 const totalSlots = 5;
-const slotsClaimed = 2; 
+const slotsClaimed = 5; 
 const remainingSlots = totalSlots - slotsClaimed;
 
 const whatsappNumber = "5491140230671"; 
@@ -89,10 +89,10 @@ const consultants = [
                 </div>
 
                 <a 
-                  href={whatsappUrl}
+                  href={'/plans'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group relative flex items-center justify-center gap-3 w-full py-4 md:py-5 bg-green-600 text-white font-black rounded-xl hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-[0_0_30px_rgba(37,211,102,0.2)]"
+                  class="group relative flex items-center justify-center gap-3 w-full py-4 md:py-5 bg-green-600 text-white font-black rounded-xl  opacity-50"
                 >
                   <div class="block "><WhatsApp /></div>
                   <span class="text-xs md:text-base">SOLICITAR VÍA WHATSAPP</span>
