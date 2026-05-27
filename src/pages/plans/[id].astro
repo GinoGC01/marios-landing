@@ -89,6 +89,49 @@ export async function getStaticPaths() {
       ]
     },
     {
+      id: 'enterprise',
+      name: 'Enterprise',
+      tagline: 'Arquitectura Full-Stack',
+      price: '$1,999 USD',
+      period: ' / setup',
+      maintenancePrice: '$350 USD',
+      maintenanceLabel: 'Mantenimiento y Automatización',
+      description: 'Potencia full-stack con arquitectura personalizada, base de datos vectorial lista para RAG y soporte dedicado.',
+      concept: 'El paso intermedio entre un ecosistema automatizado y la IA corporativa. Obtienes desarrollo a medida sin el retainer enterprise, con capacidad de escalar a Titan cuando lo necesites.',
+      painPoints: [
+        'Crecimiento limitado por soluciones genéricas o plantillas.',
+        'Procesos manuales que consumen tiempo y recursos.',
+        'Necesidad de datos centralizados sin la complejidad de un sistema enterprise.'
+      ],
+      solutions: [
+        'Arquitectura personalizada full-stack.',
+        'Base de datos vectorial preparada para IA.',
+        'Integración de automatizaciones y APIs ilimitadas.'
+      ],
+      idealFor: 'Empresas en crecimiento, equipos de 5-20 personas, negocios con operaciones digitales complejas.',
+      accentColor: '#f59e0b',
+      projectUrl: 'https://app.canchalibre.pro',
+      projectLabel: 'Caso real: canchalibre.pro',
+      benefits: [
+        { label: 'Arquitectura', value: 'A Medida', desc: 'Código adaptado a la lógica exacta de tu negocio.' },
+        { label: 'Datos', value: 'Vectoriales', desc: 'Infraestructura RAG-ready para cuando quieras integrar IA.' },
+        { label: 'Automatización', value: 'Total', desc: 'Flujos n8n, webhooks y APIs que trabajan 24/7.' },
+        { label: 'Soporte', value: 'Prioritario', desc: 'Respuesta en menos de 4 horas hábiles.' }
+      ],
+      modules: [
+        { title: 'Desarrollo Full-Stack', desc: 'Plataforma completa programada a medida con las tecnologías que mejor se adapten a tu caso.' },
+        { title: 'Base de Datos Vectorial', desc: 'Infraestructura de datos preparada para implementar RAG en el futuro sin migraciones costosas.' },
+        { title: 'Automatización de Procesos', desc: 'Conexión de tu web con CRM, pasarelas de pago, email marketing y más mediante n8n.' },
+        { title: 'Panel de Control', desc: 'Dashboard administrativo con KPIs en tiempo real y gestión de contenido.' },
+        { title: 'APIs y Webhooks', desc: 'Integraciones ilimitadas con servicios externos para centralizar toda tu operación.' }
+      ],
+      roadmap: [
+        { phase: '01', title: 'Descubrimiento', desc: 'Relevamiento de procesos actuales y diseño de arquitectura de software.' },
+        { phase: '02', title: 'Construcción', desc: 'Desarrollo iterativo con entregas semanales y validación constante.' },
+        { phase: '03', title: 'Puesta en Marcha', desc: 'Migración de datos, testing y despliegue con soporte continuo.' }
+      ]
+    },
+    {
       id: 'titan',
       name: 'Titan',
       tagline: 'Poder Tecnológico Absoluto',
@@ -185,6 +228,45 @@ const rgbAccent = hexToRgb(plan.accentColor);
             <div class="text-xs font-mono text-gray-500 uppercase tracking-wide">
               // {plan.idealFor}
             </div>
+            {plan.projectUrl && (
+              <div class="mt-6 relative rounded-xl border border-[var(--accent)]/20 bg-gradient-to-br from-[var(--accent)]/5 via-[#08080c] to-[#08080c] overflow-hidden group/proj hover:border-[var(--accent)]/40 transition-all duration-500">
+                <div class="absolute top-0 right-0 w-14 h-14 pointer-events-none overflow-hidden">
+                  <div class="absolute top-0 right-0 w-[75px] h-[1.5px] origin-top-right rotate-45 translate-x-1/2" style="background: var(--accent); opacity: 0.3"></div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4">
+                  <div class="w-[88px] h-[64px] shrink-0 rounded-lg overflow-hidden bg-[var(--accent)]/10 border border-[var(--accent)]/10 flex items-center justify-center relative">
+                    <img
+                      src="/projects/canchalibre-card.webp"
+                      alt="Canchalibre.pro"
+                      class="w-full h-full object-cover absolute inset-0"
+                      loading="lazy"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                    />
+                    <div class="hidden w-full h-full items-center justify-center bg-gradient-to-br from-amber-900/20 to-amber-950/40" style="color: var(--accent); opacity: 0.6">
+                      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    </div>
+                  </div>
+
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-1.5 mb-0.5">
+                      <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background: var(--accent)"></span>
+                      <span class="text-[8px] font-bold uppercase tracking-[0.2em]" style="color: var(--accent); opacity: 0.7">Proyecto en vivo</span>
+                    </div>
+                    <a
+                      href={plan.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sm font-bold text-white hover:[color:var(--accent)] transition-colors leading-tight block truncate"
+                    >
+                      {plan.projectLabel.replace('Caso real: ', '')}
+                      <svg class="w-3 h-3 inline-block ml-1 opacity-60 group-hover/proj:opacity-100 group-hover/proj:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                    </a>
+                    <p class="text-[9px] text-gray-500 leading-tight mt-0.5">Plataforma full-stack a medida</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -309,14 +391,20 @@ const rgbAccent = hexToRgb(plan.accentColor);
               </div>
             </div>
           </div>
-          <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`}
-            target="_blank"
-            class="w-full md:w-auto group relative overflow-hidden bg-white text-black px-8 py-3 font-bold text-sm tracking-wide uppercase hover:bg-[var(--accent)] transition-colors duration-300 flex items-center justify-center gap-3 clip-path-slant"
-          >
-            <span>Iniciar Protocolo</span>
-            <WhatsApp class="w-4 h-4" color="#000000" />
-          </a>
+          <div class="flex flex-col items-end gap-1">
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`}
+              target="_blank"
+              class="w-full md:w-auto group relative overflow-hidden bg-white text-black px-8 py-3 font-bold text-sm tracking-wide uppercase hover:bg-[var(--accent)] transition-colors duration-300 flex items-center justify-center gap-3 clip-path-slant"
+            >
+              <span>Iniciar Protocolo</span>
+              <WhatsApp class="w-4 h-4" color="#000000" />
+            </a>
+            <span class="text-[9px] text-gray-500 flex items-center gap-1">
+              <svg class="w-3 h-3 text-[#25D366]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              30 dias de garantia
+            </span>
+          </div>
         </div>
       </div>
     </div>

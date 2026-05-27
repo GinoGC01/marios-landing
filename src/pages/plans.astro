@@ -1,5 +1,4 @@
 ---
-// src/pages/planes.astro
 import Layout from '../layouts/Layout.astro';
 import ShieldCheck from '../components/Icons/ShieldCheck.astro';
 
@@ -36,7 +35,7 @@ const plans = [
     description: 'Para negocios que buscan automatizar y escalar. Arquitectura de conversión y automatización de flujos.',
     icon: 'sparkles',
     popular: true,
-    accentColor: '#6f00ff',
+    accentColor: '#a855f7',
     buttonText: 'Dominar mi Mercado',
     features: [
       'Ecosistema Web de hasta 6 Secciones',
@@ -48,6 +47,29 @@ const plans = [
       'Mantenimiento y Soporte Mensual',
     ],
     notIncluded: ['Agentes de IA Autónomos (RAG)', 'Desarrollo Full-Stack a Medida'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    price: '$1,999',
+    priceUsd: '$1,999',
+    period: 'Setup inicial + $350/mes',
+    description: 'Potencia full-stack con arquitectura personalizada, base de datos vectorial y soporte dedicado.',
+    icon: 'code',
+    accentColor: '#f59e0b',
+    buttonText: 'Ver Disponibilidad',
+    features: [
+      'Desarrollo Full-Stack a Medida',
+      'Base de Datos Vectorial (RAG-ready)',
+      'Automatización Avanzada con n8n',
+      'SEO Técnico y AEO Completo',
+      'Dashboard Administrativo',
+      'Integraciones API Ilimitadas',
+      'Soporte Prioritario 24/7',
+    ],
+    notIncluded: ['Agentes de IA Autónomos', 'Infraestructura Zero-Trust', 'SLA de Nivel Enterprise'],
+    projectUrl: 'https://app.canchalibre.pro',
+    projectLabel: 'Caso real: canchalibre.pro',
   },
   {
     id: 'titan',
@@ -96,14 +118,19 @@ const pricingSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(pricingSchema)} />
 
   <section class="relative pt-32 md:pt-48 pb-16 md:pb-20 overflow-hidden z-[50]" data-animate-section>
-    <div class="container mx-auto px-4 md:px-6 text-center">
-      <span class="text-cyan-400 font-medium uppercase tracking-[0.3em] text-[10px] md:text-xs mb-4 block animate-on-scroll font-zalando" data-animation="fade-in-down">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[150px]"></div>
+      <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px]"></div>
+    </div>
+    <div class="container mx-auto px-4 md:px-6 text-center relative">
+      <span class="text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-4 block animate-on-scroll" data-animation="fade-in-down">
         MODELOS DE ESCALABILIDAD
       </span>
-      <h1 class="text-4xl md:text-7xl font-bold mb-6 tracking-tight text-white animate-on-scroll font-zalando" data-animation="fade-in-up" data-delay="100">
-        Deja de gastar, empezá a <span class="text-gradient">Activar</span>
+      <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tighter text-white animate-on-scroll leading-[0.9]" data-animation="fade-in-up" data-delay="100">
+        Deja de gastar,<br/>
+        <span class="text-gradient text-6xl md:text-9xl">empezá a facturar</span>
       </h1>
-      <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto animate-on-scroll font-zalando px-2" data-animation="fade-in-up" data-delay="200">
+      <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto animate-on-scroll px-2" data-animation="fade-in-up" data-delay="200">
         Desde lanzamientos rápidos hasta ecosistemas de ingeniería con IA. 
         Elegí la infraestructura que llevará tu facturación al siguiente nivel.
       </p>
@@ -114,145 +141,515 @@ const pricingSchema = {
     <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30" aria-hidden="true"></div>
 
     <div class="container mx-auto px-4 md:px-6">
-      <ul class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 max-w-7xl mx-auto list-none p-0" role="list">
-        {plans.map((plan, index) => (
+      <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 max-w-7xl mx-auto list-none p-0 items-stretch" role="list">
+        {plans.filter(p => p.id !== 'titan').map((plan, index) => (
           <li 
             id={`plan-${plan.id}`}
             data-color={plan.accentColor}
-            class="relative flex flex-col animate-on-scroll plan-card-container scroll-mt-32" 
+            class="relative flex flex-col animate-on-scroll plan-card-container scroll-mt-32 h-full cursor-pointer group/card" 
             data-animation="fade-in-up"
-            data-delay={index * 150}
+            data-delay={index * 120}
+            onclick={`window.location.href='/plans/${plan.id}'`}
           >
             {plan.popular && (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 w-max">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-4 py-1.5 text-[10px] font-bold text-white tracking-wide uppercase shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-20 w-max">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#a855f7] via-[#c084fc] to-[#00E5FF] px-5 py-2 text-[10px] font-black text-white tracking-wide uppercase shadow-[0_0_30px_rgba(168,85,247,0.7)] border border-white/15 drop-shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                   Más Elegido
                 </span>
               </div>
             )}
-            
-            {plan.premium && (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 w-max">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-400 px-4 py-1.5 text-[10px] font-bold text-black tracking-wide uppercase shadow-[0_0_15px_rgba(234,179,8,0.4)]">
-                  Nivel Enterprise
-                </span>
-              </div>
-            )}
 
-            {plan.promotion && (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-20 w-max">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-green-600 to-green-400 px-4 py-1.5 text-[10px] font-bold text-black tracking-wide uppercase shadow-[0_0_15px_rgba(2,176,19,0.8)]">
-                  OPORTUNIDAD
-                </span>
-              </div>
-            )}
-
-            <article class={`h-full flex flex-col py-6 px-3 md:py-8 md:py-4 rounded-[1.5rem] md:rounded-[2rem] ${
-              plan.name === 'Impulse' && plan.promotion ? "bg-[linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('../assets/promotions/bg.svg')]" : 'bg-[#0a0a0f]'
-            }  border transition-all duration-500 relative overflow-hidden group plan-article ${
-              plan.popular ? 'border-purple-500/40' : plan.premium ? 'border-yellow-600/40' : 'border-gray-800'
+            <article class={`plan-card h-full flex flex-col relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border-2 transition-all duration-500 group ${
+              plan.popular ? 'border-purple-500/50 shadow-[0_0_40px_rgba(168,85,247,0.2)] shadow-[inset_0_0_30px_rgba(168,85,247,0.05)]' : 
+              plan.id === 'enterprise' ? 'border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.08)]' :
+              'border-white/10'
             }`}>
-              
-              <div class="absolute -top-32 -right-32 w-64 h-64 opacity-10 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-20" 
-                   style={`background-color: ${plan.accentColor}`} aria-hidden="true"></div>
+              {/* Heavier background gradient */}
+              <div class={`absolute inset-0 transition-opacity duration-500 ${
+                plan.popular ? 'bg-gradient-to-br from-purple-900/25 via-[#08080c] to-[#08080c]' : 
+                plan.id === 'enterprise' ? 'bg-gradient-to-br from-amber-900/15 via-[#08080c] to-[#08080c]' :
+                'bg-gradient-to-br from-cyan-900/10 via-[#08080c] to-[#08080c]'
+              }`}></div>
 
-              {/* here */}
-              <div class="mb-6 relative z-10 backdrop-blur-[7px] p-4 rounded-lg">
-                <div class="flex items-center justify-between mb-6">
-                  <div class={`h-12 w-12 md:h-14 md:w-14 flex items-center justify-center rounded-2xl transition-colors duration-300 ${
-                    plan.icon === 'rocket' ? 'bg-gray-800/50 group-hover:bg-cyan-500/20' : 
-                    plan.icon === 'sparkles' ? 'bg-purple-500/10 group-hover:bg-purple-500/20' : 'bg-yellow-600/10 group-hover:bg-yellow-500/20'
+              {/* Diagonal tech pattern overlay */}
+              <div class="absolute inset-0 opacity-[0.03] pointer-events-none" 
+                   style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 21px)"></div>
+
+              {/* Corner accent */}
+              <div class={`absolute top-0 right-0 w-20 h-20 pointer-events-none overflow-hidden`}>
+                <div class={`absolute top-0 right-0 w-[120px] h-[2px] origin-top-right rotate-45 translate-x-1/2 ${
+                  plan.popular ? 'bg-purple-500/30' : plan.id === 'enterprise' ? 'bg-amber-500/30' : 'bg-white/10'
+                }`}></div>
+              </div>
+
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" 
+                   style={`background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${plan.accentColor}20, transparent 60%)`}></div>
+
+              <div class="absolute -top-32 -right-32 w-64 h-64 opacity-[0.08] blur-[100px] rounded-full pointer-events-none transition-all duration-700 group-hover:opacity-30 group-hover:scale-150" 
+                   style={{backgroundColor: plan.accentColor}} aria-hidden="true"></div>
+
+              <div class="absolute -bottom-32 -left-32 w-48 h-48 opacity-[0.04] blur-[80px] rounded-full pointer-events-none group-hover:opacity-15 transition-all duration-700" 
+                   style={{backgroundColor: plan.accentColor}} aria-hidden="true"></div>
+
+              <div class="relative z-10 flex flex-col h-full p-5 md:p-6 lg:p-7">
+                
+                <div class="flex items-center justify-between mb-5">
+                  <div class={`h-11 w-11 md:h-13 md:w-13 flex items-center justify-center rounded-xl transition-all duration-500 ${
+                    plan.icon === 'rocket' ? 'bg-cyan-500/15 group-hover:bg-cyan-500/30 group-hover:shadow-[0_0_25px_rgba(0,255,255,0.3)] border border-cyan-500/20 group-hover:border-cyan-500/40' : 
+                    plan.icon === 'sparkles' ? 'bg-purple-500/15 group-hover:bg-purple-500/30 group-hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] border border-purple-500/20 group-hover:border-purple-500/40' : 
+                    'bg-amber-500/15 group-hover:bg-amber-500/30 group-hover:shadow-[0_0_25px_rgba(245,158,11,0.3)] border border-amber-500/20 group-hover:border-amber-500/40'
                   }`} aria-hidden="true">
-                    {plan.icon === 'rocket' && <svg class="text-gray-400 group-hover:text-cyan-400 transition-colors h-6 w-6 md:h-7 md:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.1 4-1 4-1"/><path d="M12 15v5s3.03-.55 4-2c1.1-1.62 1-4 1-4"/></svg>}
-                    {plan.icon === 'sparkles' && <svg class="text-purple-500 h-6 w-6 md:h-7 md:w-7" viewBox="0 0 24 24" fill="currentColor"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>}
-                    {plan.icon === 'crown' && <svg class="text-yellow-500 h-6 w-6 md:h-7 md:w-7" viewBox="0 0 24 24" fill="currentColor"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>}
+                    {plan.icon === 'rocket' && <svg class="text-cyan-400 h-5 w-5 md:h-6 md:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.1 4-1 4-1"/><path d="M12 15v5s3.03-.55 4-2c1.1-1.62 1-4 1-4"/></svg>}
+                    {plan.icon === 'sparkles' && <svg class="text-purple-400 h-5 w-5 md:h-6 md:w-6" viewBox="0 0 24 24" fill="currentColor"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>}
+                    {plan.icon === 'code' && <svg class="text-amber-400 h-5 w-5 md:h-6 md:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>}
+                  </div>
+                  <div class="text-[9px] md:text-[10px] font-mono uppercase tracking-wider text-gray-600">
+                    {plan.id === 'impulse' ? 'Starter' : plan.id === 'authority' ? 'Recomendado' : 'Crecimiento'}
                   </div>
                 </div>
                 
-                <h3 class="md:hidden relative flex items-center text-2xl font-bold mb-3 text-white font-zalando underline">
-                      <a href={`/plans/${plan.id}`}>{plan.name}</a>
-                      <svg class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
-                      </svg>
-                </h3>
-                <h3 class=" hidden relative md:flex items-center text-2xl font-bold mb-3 text-white font-zalando group-hover:scale-105 md:group-hover:underline group transition-transform origin-left gap-2">
-                      <a href={`/plans/${plan.id}`}>{plan.name}</a>
-                      <svg class=" h-5 w-5 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
-                      </svg>
+                <h3 class="text-2xl md:text-3xl font-black text-white mb-1 tracking-tight">
+                  <a href={`/plans/${plan.id}`} onclick="event.stopPropagation()" class="card-title-link inline-flex items-center gap-2 group-hover/card:underline group-hover/card:decoration-white/30 group-hover/card:underline-offset-4 transition-all duration-300">
+                    {plan.name}
+                    <svg class="w-4 h-4 opacity-0 -translate-x-1 group-hover/card:opacity-100 group-hover/card:translate-x-0 transition-all duration-300 ease-out" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                  </a>
                 </h3>
 
-                <div class={`text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-zalando mb-1`}>Inversión Estimada desde:</div>
-                <div class="flex items-baseline gap-2 mb-2">
-                  <span class={`text-3xl md:text-5xl font-black tracking-tighter font-zalando ${
-                    plan.id === 'authority' ? 'text-cyan-400' : plan.id === 'titan' ? 'text-yellow-500' : 'text-white'
-                  }`}>
-                  <span class={`${plan.id === 'impulse' && plan.promotion ? 'line-through text-gray-500 text-2xl md:text-3xl' : ""}`}>{plan.priceUsd}</span>  
-                  <span>{plan.id === 'impulse' && plan.promotion &&  "$0"}</span>
-                  <span class="text-lg">USD</span>
-                  </span>
+                <div class="flex items-baseline gap-px mb-0.5 mt-1">
+                  <span class="text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-mono">USD</span>
                 </div>
-                <p class="text-[10px] text-gray-500 uppercase tracking-wide font-zalando mb-2">{plan.period}</p>
-                <p class="text-gray-400 text-sm leading-relaxed font-zalando">{plan.description}</p>
+                <div class="flex flex-col mb-1">
+                  <div class="flex items-baseline gap-2">
+                    <span class={`text-5xl md:text-6xl font-black tracking-tighter leading-none ${
+                      plan.id === 'authority' ? 'text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.3)]' : 
+                      plan.id === 'enterprise' ? 'text-amber-400 drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]' : 
+                      'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.1)]'
+                    }`}>
+                    {plan.priceUsd}
+                    </span>
+                  </div>
+                </div>
+                <p class="text-[10px] md:text-[11px] text-gray-600 uppercase tracking-wide mb-4 pb-4 border-b border-white/[0.07] font-bold">{plan.period}</p>
+                
+                <p class="text-gray-400 text-xs md:text-sm leading-relaxed mb-6">{plan.description}</p>
+
+                {plan.projectUrl && (
+                  <div class="relative mb-6 rounded-xl border border-amber-500/20 bg-gradient-to-br from-amber-900/10 via-[#08080c] to-[#08080c] overflow-hidden group/proj hover:border-amber-500/40 hover:shadow-[0_0_20px_rgba(245,158,11,0.08)] transition-all duration-500">
+                    <div class="absolute top-0 right-0 w-12 h-12 pointer-events-none overflow-hidden">
+                      <div class="absolute top-0 right-0 w-[65px] h-[1.5px] origin-top-right rotate-45 translate-x-1/2 bg-amber-500/30"></div>
+                    </div>
+
+                    <div class="flex items-start gap-3 p-3">
+                      <div class="w-[72px] h-[52px] shrink-0 rounded-lg overflow-hidden bg-amber-500/10 border border-amber-500/10 flex items-center justify-center relative">
+                        <img
+                          src="/projects/canchalibre-card.webp"
+                          alt="Canchalibre.pro"
+                          class="w-full h-full object-cover absolute inset-0"
+                          loading="lazy"
+                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                        />
+                        <div class="hidden w-full h-full items-center justify-center bg-gradient-to-br from-amber-900/20 to-amber-950/40 text-amber-500/60">
+                          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        </div>
+                      </div>
+
+                      <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-1.5 mb-0.5">
+                          <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                          <span class="text-[8px] font-bold text-amber-400/70 uppercase tracking-[0.2em]">Proyecto en vivo</span>
+                        </div>
+                        <a
+                          href={plan.projectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onclick="event.stopPropagation()"
+                          class="text-sm font-bold text-white hover:text-amber-400 transition-colors leading-tight block truncate"
+                        >
+                          {plan.projectLabel.replace('Caso real: ', '')}
+                          <svg class="w-3 h-3 inline-block ml-1 opacity-60 group-hover/proj:opacity-100 group-hover/proj:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                        </a>
+                        <p class="text-[9px] text-gray-500 leading-tight mt-0.5">Plataforma full-stack a medida</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <ul class="space-y-2.5 mb-4 flex-grow list-none p-0" role="list">
+                  {plan.features.map((feature) => (
+                    <li class="flex items-start gap-3 group/feat">
+                      <span class={`inline-flex items-center justify-center w-5 h-5 md:w-5 md:h-5 shrink-0 mt-0.5 rounded-sm ${
+                        plan.popular ? 'bg-purple-500/15 text-purple-400 group-hover/feat:bg-purple-500/25' :
+                        plan.id === 'enterprise' ? 'bg-amber-500/15 text-amber-400 group-hover/feat:bg-amber-500/25' :
+                        'bg-cyan-500/15 text-cyan-400 group-hover/feat:bg-cyan-500/25'
+                      } transition-colors duration-300`}>
+                        <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                      </span>
+                      <span class="text-xs md:text-sm text-gray-300 leading-tight group-hover/feat:text-white transition-colors duration-300">{feature}</span>
+                    </li>
+                  ))}
+                  {plan.notIncluded.map((feature) => (
+                    <li class="flex items-start gap-3 opacity-20 group/feat hover:opacity-30 transition-opacity duration-300">
+                      <span class="inline-flex items-center justify-center w-5 h-5 shrink-0 mt-0.5 rounded-sm bg-gray-800 text-gray-600">
+                        <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18"/></svg>
+                      </span>
+                      <span class="text-xs md:text-sm text-gray-600 line-through">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola! Me interesa potenciar mi negocio con el Plan ${plan.name}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onclick="event.stopPropagation()"
+                  class={`plan-cta w-full flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl font-black text-sm uppercase tracking-wider transition-all duration-300 transform relative overflow-hidden group/btn ${
+                    plan.popular ? 'bg-gradient-to-r from-[#a855f7] via-[#c084fc] to-[#00E5FF] text-white shadow-lg shadow-purple-500/30 hover:shadow-purple-500/60 hover:scale-[1.04] active:scale-95 border border-purple-400/20' : 
+                    plan.icon === 'code' ? 'bg-gradient-to-r from-amber-600 to-amber-500 text-white shadow-lg shadow-amber-500/25 hover:shadow-amber-500/50 hover:scale-[1.04] active:scale-95 border border-amber-400/20' :
+                    'bg-gradient-to-r from-white/10 to-white/5 text-white border border-white/10 hover:from-cyan-500/20 hover:to-cyan-400/10 hover:border-cyan-400/30 hover:shadow-[0_0_30px_rgba(0,255,255,0.15)] hover:scale-[1.04] active:scale-95'
+                  }`}
+                >
+                  <span class="relative z-10">{plan.buttonText}</span>
+                  <svg class="relative z-10 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <div class={`absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500 ${
+                    plan.popular ? 'bg-[linear-gradient(60deg,transparent,rgba(255,255,255,0.1),transparent)]' :
+                    'bg-[linear-gradient(60deg,transparent,rgba(255,255,255,0.06),transparent)]'
+                  }`}></div>
+                </a>
               </div>
-
-              {/* here */}
-              <ul class="space-y-3.5 mb-8 flex-grow relative z-10 px-4" role="list">
-                {plan.features.map((feature) => (
-                  <li class="flex items-start gap-3">
-                    <svg class="h-5 w-5 shrink-0 text-cyan-500 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span class="text-xs md:text-sm text-gray-300 font-zalando">{feature}</span>
-                  </li>
-                ))}
-                {plan.notIncluded.map((feature) => (
-                  <li class="flex items-start gap-3 opacity-20">
-                    <svg class="h-5 w-5 shrink-0 text-gray-100 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-                    <span class="text-xs md:text-sm text-gray-100 line-through font-zalando">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              {/* here */}
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola! Me interesa potenciar mi negocio con el Plan ${plan.name}.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={`backdrop-blur-[10px] w-full flex flex-col items-center justify-center gap-2 py-4 px-8 rounded-2xl font-bold text-sm transition-all duration-300 transform hover:scale-[1.02] active:scale-95 z-10 font-zalando ${
-                  plan.popular ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40' : 
-                  plan.premium ? 'bg-gradient-to-r from-yellow-600 to-yellow-500 text-black shadow-lg shadow-yellow-500/20 hover:shadow-yellow-500/40' : 
-                  'border-1 border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500/50'
-                }`}
-              >
-                <div class="flex items-center justify-center gap-2">
-                  <span>{plan.buttonText}</span>
-                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </div>
-                <span class={`text-[10px] md:text-xs italic block w-full text-center font-light ${
-                  plan.popular ? 'text-white/50' : 
-                  plan.premium ? 'text-black/50' : 
-                  'text-cyan-400/20'
-                }`}>Enlace directo a WhatsApp</span>
-              </a>
             </article>
           </li>
         ))}
       </ul>
+
+      <!-- SEPARADOR -->
+      <div class="relative flex items-center gap-4 my-12 max-w-5xl mx-auto">
+        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent"></div>
+        <div class="flex items-center gap-2 text-yellow-500/60 text-[10px] font-bold uppercase tracking-[0.3em]">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Solución Máxima
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent"></div>
+      </div>
+
+      <!-- TITAN - Full width horizontal card -->
+      {plans.filter(p => p.id === 'titan').map(plan => (
+  <div
+    id="plan-titan"
+    data-color={plan.accentColor}
+    class="animate-on-scroll plan-card-container scroll-mt-32 max-w-7xl mx-auto cursor-pointer group/card"
+    data-animation="fade-in-up"
+    data-delay={360}
+    onclick={`window.location.href='/plans/${plan.id}'`}
+  >
+    <article class="plan-card relative overflow-hidden rounded-[2rem] border-2 border-yellow-600/30 transition-all duration-700 group hover:border-yellow-500/60 hover:shadow-[0_0_80px_rgba(212,160,23,0.18)]">
+
+      {/* BACKGROUNDS - more aggressive gradient */}
+      <div class="absolute inset-0 bg-gradient-to-br from-yellow-900/10 via-[#08080c] to-[#08080c]"></div>
+
+      {/* Diagonal tech pattern */}
+      <div class="absolute inset-0 opacity-[0.04] pointer-events-none" 
+           style="background-image: repeating-linear-gradient(45deg, transparent, transparent 25px, rgba(212,160,23,0.04) 25px, rgba(212,160,23,0.04) 26px)"></div>
+
+      {/* Corner accent */}
+      <div class="absolute top-0 right-0 w-24 h-24 pointer-events-none overflow-hidden">
+        <div class="absolute top-0 right-0 w-[140px] h-[2px] origin-top-right rotate-45 translate-x-1/2 bg-yellow-500/30"></div>
+      </div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+
+      <div
+        class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        style={`background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${plan.accentColor}20, transparent 60%)`}
+      ></div>
+
+      <div class="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+      <div
+        class="absolute -top-40 -right-40 w-[500px] h-[500px] opacity-[0.06] blur-[150px] rounded-full pointer-events-none transition-all duration-700 group-hover:opacity-25 group-hover:scale-150"
+        style={{ backgroundColor: plan.accentColor }}
+        aria-hidden="true"
+      ></div>
+
+      <div class="absolute -bottom-40 -left-40 w-[400px] h-[400px] opacity-[0.03] blur-[120px] rounded-full pointer-events-none group-hover:opacity-15 transition-all duration-700"
+        style={{ backgroundColor: plan.accentColor }}
+        aria-hidden="true"
+      ></div>
+
+      {/* CONTENT */}
+      <div class="relative z-10 p-6 md:p-8 lg:p-10">
+
+        {/* TOP SECTION */}
+        <div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-10">
+
+          {/* LEFT */}
+          <div class="flex-1 max-w-4xl">
+
+            {/* BADGE */}
+            <div class="inline-flex items-center gap-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 px-3 py-1.5 text-[9px] font-black text-yellow-400 uppercase tracking-[0.2em] mb-6 w-fit">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/>
+              </svg>
+              Poder Absoluto
+            </div>
+
+            {/* TITLE + PRICE */}
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+
+              <div>
+                <h3 class="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
+                  <a href={`/plans/${plan.id}`} onclick="event.stopPropagation()" class="card-title-link inline-flex items-center gap-3 group-hover/card:underline group-hover/card:decoration-yellow-400/30 group-hover/card:underline-offset-4 transition-all duration-300">
+                    {plan.name}
+                    <span class="inline-block opacity-0 -translate-y-1.5 translate-x-1 group-hover/card:opacity-100 group-hover/card:translate-y-0 group-hover/card:translate-x-0 transition-all duration-300 ease-out text-[0.45em] text-yellow-400">↗</span>
+                  </a>
+                </h3>
+
+                <span class="block text-yellow-400/60 text-xs md:text-sm font-bold uppercase tracking-[0.3em] mt-3">
+                  Solución Enterprise
+                </span>
+              </div>
+
+              <div class="shrink-0 lg:text-right">
+
+                <div class="flex lg:justify-end items-baseline gap-2">
+                  <span class="text-5xl md:text-7xl font-black tracking-tighter text-yellow-400 drop-shadow-[0_0_30px_rgba(212,160,23,0.4)] [text-shadow:0_0_40px_rgba(212,160,23,0.2)]">
+                    CUSTOM
+                  </span>
+                </div>
+
+                <p class="text-[10px] text-gray-500 uppercase tracking-wide mt-2 font-bold">
+                  + Retainer mensual según alcance
+                </p>
+              </div>
+            </div>
+
+            {/* DESCRIPTION */}
+            <div class="mt-8 max-w-3xl">
+              <p class="text-sm md:text-base text-gray-400 leading-relaxed">
+                {plan.description}
+              </p>
+
+              <a
+                href="/plans/titan"
+                class="inline-flex items-center gap-1.5 text-yellow-400/60 hover:text-yellow-400 text-[11px] font-bold uppercase tracking-wider mt-5 transition-colors group/link"
+              >
+                Ver spec completo
+
+                <svg
+                  class="w-3 h-3 group-hover/link:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="3"
+                >
+                  <path d="M5 12h14"/>
+                  <path d="m12 5 7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* CTA PANEL - more aggressive */}
+          <div class="xl:w-[320px] shrink-0">
+
+            <div class="rounded-2xl border border-yellow-500/20 bg-gradient-to-b from-yellow-500/[0.08] to-yellow-900/10 backdrop-blur-sm p-6 xl:sticky xl:top-24 shadow-[0_0_30px_rgba(212,160,23,0.06)]">
+
+              {/* Small corner accent */}
+              <div class="absolute top-0 right-0 w-12 h-12 pointer-events-none overflow-hidden">
+                <div class="absolute top-0 right-0 w-[70px] h-[1.5px] origin-top-right rotate-45 translate-x-1/2 bg-yellow-500/40"></div>
+              </div>
+
+              <div class="text-center mb-5">
+                <div class="text-[9px] text-yellow-500/80 uppercase tracking-widest font-mono mb-3 font-bold">
+                  ¿Listo para el siguiente nivel?
+                </div>
+
+                <p class="text-[12px] text-gray-400 leading-relaxed">
+                  Agendá una consultoría sin cargo y descubrí cómo Titan puede transformar tu operación.
+                </p>
+              </div>
+
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola! Me interesa potenciar mi negocio con el Plan ${plan.name}.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onclick="event.stopPropagation()"
+                class="plan-cta w-full flex items-center justify-center gap-2.5 py-5 px-6 rounded-xl font-black text-sm uppercase tracking-wider bg-gradient-to-r from-yellow-500 via-yellow-400 to-amber-400 text-black shadow-lg shadow-yellow-500/25 hover:shadow-yellow-500/50 hover:scale-[1.04] active:scale-95 transition-all duration-300 border border-yellow-300/20 group/btn relative overflow-hidden"
+              >
+                <span class="relative z-10">Solicitar Consultoría</span>
+                <svg class="relative z-10 h-4 w-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <div class="absolute inset-0 bg-[linear-gradient(60deg,transparent,rgba(255,255,255,0.15),transparent)] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"></div>
+              </a>
+
+              <div class="flex items-center justify-center gap-2 mt-5">
+                <svg class="w-3 h-3 text-[#25D366]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <span class="text-[10px] text-gray-600">Garantía 30 días</span>
+                <span class="w-1 h-1 rounded-full bg-gray-700"></span>
+                <span class="text-[10px] text-gray-600">Sin compromiso</span>
+              </div>
+
+              <div class="flex items-center justify-center gap-1.5 text-[9px] text-gray-600 uppercase tracking-wider mt-3">
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                Datos protegidos
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FEATURES - more aggressive */}
+        <div class="mt-14 pt-10 border-t border-yellow-500/10">
+
+          <div class="flex items-center gap-3 mb-8">
+            <div class="h-px flex-1 bg-gradient-to-r from-yellow-500/30 to-transparent"></div>
+            <span class="text-[9px] text-yellow-500/60 uppercase tracking-[0.3em] font-bold font-mono shrink-0">/ capabilities</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-5">
+
+            {plan.features.map((feature) => (
+              <div class="flex items-start gap-3 group/feat transition-all duration-300 hover:translate-x-1.5">
+
+                <span class="inline-flex items-center justify-center w-5 h-5 shrink-0 mt-0.5 rounded-sm bg-yellow-500/15 text-yellow-400 group-hover/feat:bg-yellow-500/25 group-hover/feat:shadow-[0_0_10px_rgba(212,160,23,0.3)] transition-all duration-300">
+                  <svg
+                    class="w-2.5 h-2.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </span>
+
+                <span class="text-xs md:text-sm text-gray-300 leading-relaxed group-hover/feat:text-white transition-colors duration-300">
+                  {feature}
+                </span>
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+        {/* FOOTER TRUST BAR - more aggressive */}
+        <div class="mt-12 pt-6 border-t border-yellow-500/10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+
+          <div class="flex flex-wrap gap-2">
+            {['IA Autónoma', 'Zero Trust', 'SLA Enterprise'].map(tag => (
+              <span class="text-[9px] text-yellow-400/50 border border-yellow-500/15 bg-yellow-500/[0.04] rounded-full px-3 py-1 uppercase tracking-wider hover:bg-yellow-500/10 hover:border-yellow-500/30 hover:text-yellow-400/70 transition-all duration-300 cursor-default">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div class="flex items-center gap-3 text-[10px] text-gray-600 uppercase tracking-wider">
+            <span class="hover:text-gray-400 transition-colors">Infraestructura Escalable</span>
+            <span class="w-1 h-1 rounded-full bg-gray-700"></span>
+            <span class="hover:text-gray-400 transition-colors">Enterprise Ready</span>
+            <span class="w-1 h-1 rounded-full bg-gray-700"></span>
+            <span class="hover:text-gray-400 transition-colors">Automatización Inteligente</span>
+          </div>
+
+        </div>
+      </div>
+    </article>
+  </div>
+))}
     </div>
   </section>
 
-  <section class="relative py-12 md:py-16 border-t border-white/5 overflow-hidden z-[50]" data-animate-section>
+  <section class="relative py-16 md:py-20 z-[50] border-t border-white/5" data-animate-section>
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[120px]"></div>
+    </div>
+    <div class="container mx-auto px-4 md:px-6 relative">
+      <div class="text-center mb-12">
+        <span class="text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-4 block animate-on-scroll" data-animation="fade-in-down">
+          RESULTADOS REALES
+        </span>
+        <h2 class="text-4xl md:text-6xl font-black text-white animate-on-scroll leading-tight" data-animation="fade-in-up" data-delay="100">
+          Lo que dicen <span class="text-gradient">nuestros clientes</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="animate-on-scroll group relative rounded-2xl bg-[#0a0a0f] border border-white/5 p-6 md:p-8 hover:border-cyan-500/30 hover:shadow-[0_0_30px_rgba(0,255,255,0.05)] transition-all duration-500" data-animation="fade-in-up" data-delay="200">
+          <div class="absolute -top-px left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-black text-sm">CM</div>
+            <div class="text-left">
+              <p class="text-white font-bold text-sm">Carlos M.</p>
+              <p class="text-gray-600 text-[10px] uppercase tracking-wider font-bold">TechStart MX - SaaS</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Pasamos de 2.1% a 8.7% de conversion en 3 meses. La auditoria tecnica nos cambio el negocio.</p>
+          <div class="flex items-center justify-between border-t border-white/5 pt-4">
+            <span class="text-red-400/40 line-through text-sm font-bold">2.1%</span>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              <span class="text-cyan-400 font-black text-2xl">8.7%</span>
+            </div>
+          </div>
+        </div>
+        <div class="animate-on-scroll group relative rounded-2xl bg-[#0a0a0f] border border-white/5 p-6 md:p-8 hover:border-cyan-500/30 hover:shadow-[0_0_30px_rgba(0,255,255,0.05)] transition-all duration-500" data-animation="fade-in-up" data-delay="300">
+          <div class="absolute -top-px left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-black text-sm">LS</div>
+            <div class="text-left">
+              <p class="text-white font-bold text-sm">Laura S.</p>
+              <p class="text-gray-600 text-[10px] uppercase tracking-wider font-bold">EcoVerde Store</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Nuestras ventas pasaron de $15k a $58k por mes. La velocidad de carga hizo toda la diferencia.</p>
+          <div class="flex items-center justify-between border-t border-white/5 pt-4">
+            <span class="text-red-400/40 line-through text-sm font-bold">$15k/mes</span>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              <span class="text-cyan-400 font-black text-2xl">$58k/mes</span>
+            </div>
+          </div>
+        </div>
+        <div class="animate-on-scroll group relative rounded-2xl bg-[#0a0a0f] border border-white/5 p-6 md:p-8 hover:border-cyan-500/30 hover:shadow-[0_0_30px_rgba(0,255,255,0.05)] transition-all duration-500" data-animation="fade-in-up" data-delay="400">
+          <div class="absolute -top-px left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white font-black text-sm">DP</div>
+            <div class="text-left">
+              <p class="text-white font-bold text-sm">Daniela P.</p>
+              <p class="text-gray-600 text-[10px] uppercase tracking-wider font-bold">Psicóloga - Plan Impulse</p>
+            </div>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">En una semana tenia mi web lista y ya estaba recibiendo consultas por WhatsApp. Increible la velocidad.</p>
+          <div class="flex items-center justify-between border-t border-white/5 pt-4">
+            <span class="text-gray-600 text-sm font-bold">Lanzamiento</span>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              <span class="text-cyan-400 font-black text-2xl">7 dias</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-16 md:py-20 border-t border-white/5 overflow-hidden z-[50]" data-animate-section>
       <div class="absolute inset-0 bg-radial-at-c opacity-20" aria-hidden="true"></div>
       <div class="container mx-auto px-4 md:px-6 text-center relative z-10">
-        <div class="max-w-4xl mx-auto p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl animate-on-scroll" data-animation="scale-in">
-          <div class="grid place-items-center mb-4 md:mb-5 drop-shadow-[0_0_15px_rgba(0,255,255,0.3)]"><ShieldCheck size="48" color="#00ffff"/></div>
+        <div class="max-w-4xl mx-auto p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-[#0a0a0f] border border-white/5 hover:border-cyan-500/20 transition-all duration-500 group">
+          <div class="grid place-items-center mb-4 md:mb-5 group-hover:scale-110 transition-transform duration-500"><ShieldCheck size="48" color="#00ffff"/></div>
           
-          <h3 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white tracking-tight font-zalando">
-            Compromiso de <span class="text-cyan-400">Ingeniería Web Real</span>
+          <h3 class="text-2xl md:text-4xl font-black mb-4 md:mb-6 text-white tracking-tight leading-tight">
+            Compromiso de <span class="text-cyan-400">Ingeniería Real</span>
           </h3>
           
-          <p class="text-gray-400 text-sm md:text-lg leading-relaxed font-zalando">
+          <p class="text-gray-400 text-sm md:text-lg leading-relaxed max-w-2xl mx-auto">
             No instalamos plantillas, desarrollamos <strong class="text-white">activos digitales de alto rendimiento</strong>. 
             Si en los primeros 30 días tu infraestructura no cumple con los estándares de velocidad y estabilidad prometidos, devolvemos el 100% de tu inversión.
           </p>
+          <div class="mt-6 inline-flex items-center gap-2 text-[11px] text-gray-500 border border-white/5 rounded-full px-4 py-2">
+            <svg class="w-3.5 h-3.5 text-[#25D366]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Sin riesgos. Resultados reales.
+          </div>
         </div>
       </div>
   </section>
@@ -265,9 +662,9 @@ const pricingSchema = {
     background: linear-gradient(to right, #00E5FF, #a855f7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* Animación del pulso optimizada */
   @keyframes pulse-ring {
     0% {
       box-shadow: 0 0 0 0 rgba(var(--pulse-color), 0.7);
@@ -286,6 +683,88 @@ const pricingSchema = {
   .selected-plan-highlight {
     animation: pulse-ring 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
     z-index: 30;
+  }
+
+  .plan-card {
+    background: #08080c;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(0);
+  }
+
+  .plan-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .plan-card-container:nth-child(2) .plan-card {
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.1), inset 0 1px 0 rgba(168, 85, 247, 0.15);
+  }
+
+  .plan-card-container:nth-child(2) .plan-card:hover {
+    border-color: rgba(168, 85, 247, 0.7);
+    box-shadow: 0 0 80px rgba(168, 85, 247, 0.2), inset 0 1px 0 rgba(168, 85, 247, 0.25);
+    transform: translateY(-10px);
+  }
+
+  /* Enterprise card specific - higher lift */
+  .plan-card-container:nth-child(3) .plan-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 60px rgba(245, 158, 11, 0.12), inset 0 1px 0 rgba(245, 158, 11, 0.15);
+  }
+
+  .plan-cta {
+    position: relative;
+  }
+
+  .plan-cta::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* Aggressive feature line-through for not-included items */
+  .plan-card ul li:has(.line-through) {
+    position: relative;
+  }
+
+  .plan-card ul li:has(.line-through)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(107, 114, 128, 0.3), transparent);
+    z-index: 1;
+  }
+
+  /* Titan card hover - more dramatic */
+  #plan-titan .plan-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(212, 160, 23, 0.6);
+    box-shadow: 0 0 100px rgba(212, 160, 23, 0.15), inset 0 1px 0 rgba(212, 160, 23, 0.15);
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
   }
 </style>
 
@@ -311,31 +790,27 @@ const pricingSchema = {
     document.querySelectorAll('[data-animate-section]').forEach(s => observer.observe(s));
   }
 
-  // Lógica robusta para detectar query params en Cliente (SSG/SSR Compatible)
   function checkUrlParams() {
-    // Usamos window.location.search en lugar de Astro.url.pathname para capturar query params
     const params = new URLSearchParams(window.location.search);
     
-    // Helper para convertir Hex a RGB (para opacidades CSS)
-    const hexToRgb = (hex) => {
-      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    const hexToRgb = (hex: string) => {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex ?? '');
       return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '0, 255, 255';
     };
 
-    ['impulse', 'authority', 'titan'].forEach(planId => {
+    ['impulse', 'authority', 'enterprise', 'titan'].forEach(planId => {
       if (params.has(planId)) {
         const planContainer = document.getElementById(`plan-${planId}`);
         if (planContainer) {
           const hexColor = planContainer.getAttribute('data-color');
-          const rgbColor = hexToRgb(hexColor);
+          const rgbColor = hexToRgb(hexColor ?? '');
           
-          const article = planContainer.querySelector('article');
-          article?.style.setProperty('--pulse-color', rgbColor);
+          const article = planContainer.querySelector('.plan-card');
+          (article as HTMLElement)?.style.setProperty('--pulse-color', rgbColor);
           article?.classList.add('selected-plan-highlight');
 
-          // Scroll con offset para móviles (evita que el header tape el contenido)
           setTimeout(() => {
-             const yOffset = -100; // Ajuste para navbar fija
+             const yOffset = -100;
              const y = planContainer.getBoundingClientRect().top + window.scrollY + yOffset;
              window.scrollTo({top: y, behavior: 'smooth'});
           }, 600);
@@ -344,14 +819,29 @@ const pricingSchema = {
     });
   }
 
+  // Card mouse-tracking glow effect
+  function initCardGlow() {
+    document.querySelectorAll('.plan-card').forEach(card => {
+      card.addEventListener('mousemove', (e: Event) => {
+        const ev = e as MouseEvent;
+        const rect = card.getBoundingClientRect();
+        const x = ((ev.clientX - rect.left) / rect.width) * 100;
+        const y = ((ev.clientY - rect.top) / rect.height) * 100;
+        (card as HTMLElement).style.setProperty('--mouse-x', x + '%');
+        (card as HTMLElement).style.setProperty('--mouse-y', y + '%');
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     checkUrlParams();
+    initCardGlow();
   });
   
-  // Soporte para View Transitions (si se activa en el futuro)
   document.addEventListener('astro:page-load', () => {
     initScrollAnimations();
     checkUrlParams();
+    initCardGlow();
   });
 </script>

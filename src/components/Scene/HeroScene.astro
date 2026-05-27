@@ -82,5 +82,17 @@
     canvas.classList.remove('opacity-0');
   }
 
-  window.addEventListener('load', initStars);
+  let sceneInit = false;
+  function tryInitStars() {
+    if (sceneInit) return;
+    sceneInit = true;
+    initStars();
+  }
+
+  if (document.readyState === 'complete') {
+    setTimeout(tryInitStars, 3000);
+  } else {
+    window.addEventListener('load', () => setTimeout(tryInitStars, 3000));
+  }
+  window.addEventListener('scroll', tryInitStars, { once: true, passive: true });
 </script>

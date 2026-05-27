@@ -1,22 +1,9 @@
 ---
-import WhatsApp from "./Icons/WhatsApp.astro";
-
-const totalSlots = 5;
-const slotsClaimed = 5; 
-const remainingSlots = totalSlots - slotsClaimed;
-
-const whatsappNumber = "5491140230671"; 
-const message = encodeURIComponent("Hola, vengo desde la web. Me interesa aplicar a uno de los cupos de ingeniería digital costo $0.");
-const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-
-const consultants = [
-  { initial: "MA", gradient: "from-blue-500 to-cyan-400" },
-  { initial: "JD", gradient: "from-purple-500 to-pink-500" },
-  { initial: "SL", gradient: "from-amber-400 to-orange-500" }
-];
+const WHATSAPP_NUMBER = "5491140230671";
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Mario's%20Agency!%20Quiero%20recibir%20la%20gu%C3%ADa%20%2210%20Errores%20de%20Conversi%C3%B3n%22`;
 ---
 
-<section id="wa-conversion" class=" relative w-full md:bg-[url(../assets/bg-green.svg)] bg-no-repeat bg-cover bg-center bg-fixed z-40 mx-auto px-4 py-16 md:py-32">
+<section id="wa-conversion" class="relative w-full md:bg-[url(../assets/bg-green.svg)] bg-no-repeat bg-cover bg-center bg-fixed z-40 mx-auto px-4 py-16 md:py-32">
   <div class="relative max-w-5xl mx-auto">   
     <div class="relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] border border-white/5 bg-gradient-to-b from-[#080808] to-black p-[1px] md:p-[2px]">
       <div class="absolute inset-0 bg-gradient-to-r from-transparent md:via-[#25D366]/10 via-[#eaeaea]/20 to-transparent animate-border-flow-fast z-30"></div>
@@ -37,26 +24,31 @@ const consultants = [
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]"></span>
               </span>
-              Disponibilidad Inmediata
+              Sin formularios. Sin registro.
             </div>
             
             <h2 class="text-3xl md:text-5xl font-black text-white mb-4 md:mb-6 leading-[1.15] md:leading-[1.1]">
-              Tu infraestructura <br class="hidden md:block"/>
-              <span class="text-[#25D366] drop-shadow-[0_0_15px_rgba(37,211,102,0.3)]">lista para operar.</span>
+              Recibí la guía <br class="hidden md:block"/>
+              <span class="text-[#25D366] drop-shadow-[0_0_15px_rgba(37,211,102,0.3)]">directo por WhatsApp</span>
             </h2>
             
-            <p class="md:text-gray-400  text-gray-200 text-base md:text-lg mb-6 md:mb-8 max-w-md mx-auto lg:mx-0">
-              Eliminamos la burocracia. Accedé al <a href="/plans?impulse" target="_blank" class="underline font-bold">Plan IMPULSE</a> mediante una auditoría directa. Totalmente <strong class="text-green-600 text-[25px] md:text-base block md:inline">GRATIS</strong>
+            <p class="md:text-gray-400 text-gray-200 text-base md:text-lg mb-6 md:mb-8 max-w-md mx-auto lg:mx-0">
+              <strong class="text-white">"10 Errores de Conversión que Están Matando tu Web"</strong>
+              <br/>Te lo enviamos al instante. Sin mails, sin crear cuentas, sin spam.
             </p>
 
-            <div class="flex flex-wrap justify-center lg:justify-start items-center gap-4 text-[10px] md:text-xs font-mono md:text-gray-500 text-gray-300">
+            <div class="flex flex-wrap justify-center lg:justify-start items-center gap-4 text-[10px] md:text-xs font-mono md:text-gray-500 text-gray-300 mb-6 md:mb-0">
               <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full md:bg-gray-800 bg-gray-400 animate-pulse"></span>
-                Protocolo: WA-SECURE
+                <span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+                PDF descargable
               </span>
               <span class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full md:bg-gray-800 bg-gray-400 animate-pulse"></span>
-                Encriptación E2E
+                <span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+                10 páginas
+              </span>
+              <span class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#25D366]"></span>
+                Te llega en 1 min
               </span>
             </div>
           </div>
@@ -70,48 +62,30 @@ const consultants = [
               </div>
 
               <div class="relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 text-center">
-                <div class="mb-6">
-                  <div class="md:text-gray-500  text-gray-200 text-[10px] uppercase tracking-widest mb-1">Estado de los Cupos</div>
+                <div class="mb-2">
+                  <div class="md:text-gray-500 text-gray-200 text-[10px] uppercase tracking-widest mb-5">Recibilo ahora por WhatsApp</div>
                   
-                  <div class="flex items-baseline justify-center gap-2 text-white">
-                    <span class="text-5xl md:text-6xl font-black leading-none">{remainingSlots}</span>
-                    <span class="md:text-gray-500  text-gray-200 text-lg md:text-xl font-medium">disponibles</span>
-                  </div>
+                  <a 
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group relative flex items-center justify-center gap-3 w-full py-4 md:py-5 bg-gradient-to-r from-[#25D366] to-[#1db954] text-white font-black rounded-xl hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-lg shadow-[#25D366]/20 overflow-hidden"
+                  >
+                    <svg class="w-5 h-5 relative z-10" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    <span class="relative z-10 text-xs md:text-sm">Recibir Guía por WhatsApp</span>
+                    <div class="absolute inset-0 bg-[linear-gradient(60deg,transparent,rgba(255,255,255,0.12),transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </a>
 
-                  <div class="w-full bg-white/5 h-2 rounded-full mt-4 overflow-hidden p-[1px]">
-                    <div class="bg-gradient-to-r from-[#25D366]/50 to-[#25D366] h-full rounded-full transition-all duration-1000" style={`width: ${(slotsClaimed / totalSlots) * 100}%`}></div>
-                  </div>
-                  
-                  <div class="flex justify-between mt-2 text-[9px] uppercase tracking-tighter font-bold">
-                    <span class="md:text-[#25D366] text-gray-200">{slotsClaimed} CUBIERTOS</span>
-                    <span class="md:text-gray-600 text-gray-200">{totalSlots} TOTALES</span>
-                  </div>
+                  <p class="mt-4 text-[10px] md:text-[11px] md:text-gray-500 text-gray-200 font-medium tracking-tight">
+                    Te atiende una persona real, no un bot.
+                  </p>
                 </div>
 
-                <a 
-                  href={'/plans'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="group relative flex items-center justify-center gap-3 w-full py-4 md:py-5 bg-green-600 text-white font-black rounded-xl  opacity-50"
-                >
-                  <div class="block "><WhatsApp /></div>
-                  <span class="text-xs md:text-base">SOLICITAR VÍA WHATSAPP</span>
-                </a>
-
-                <p class="mt-4 text-[10px] md:text-[11px] md:text-gray-500 text-gray-200 font-medium tracking-tight flex items-center justify-center gap-1">
-                  <span class="text-[#25D366] animate-pulse">●</span> Redirección segura a chat directo.
-                </p>
               </div>
 
-              <div class="mt-6 flex flex-col items-center gap-3">
-                <div class="flex -space-x-3">
-                  {consultants.map(c => (
-                    <div class={`w-7 h-7 md:w-8 md:h-8 rounded-full md:border-2 border-1 md:border-[#050505] border-gray-100 bg-gradient-to-br ${c.gradient} flex items-center justify-center text-[9px] md:text-[10px] font-bold text-white`}>
-                      {c.initial}
-                    </div>
-                  ))}
-                </div>
-                <span class="text-[9px] md:text-[10px] md:text-gray-500 text-gray-200 uppercase font-bold tracking-[0.2em]">3 personas consultando ahora</span>
+              <div class="mt-6 flex items-center justify-center gap-2 text-[9px] md:text-[10px] md:text-gray-500 text-gray-200 uppercase font-bold tracking-[0.2em]">
+                <svg class="w-3 h-3 text-[#25D366]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                Sin registro. Sin spam.
               </div>
 
             </div>
@@ -143,5 +117,3 @@ const consultants = [
     animation: radar 2.5s ease-out 1.25s infinite;
   }
 </style>
-
-
