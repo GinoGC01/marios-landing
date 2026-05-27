@@ -118,10 +118,7 @@ const pricingSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(pricingSchema)} />
 
   <section class="relative pt-32 md:pt-48 pb-16 md:pb-20 overflow-hidden z-[50]" data-animate-section>
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[150px]"></div>
-      <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px]"></div>
-    </div>
+
     <div class="container mx-auto px-4 md:px-6 text-center relative">
       <span class="text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-4 block animate-on-scroll" data-animation="fade-in-down">
         MODELOS DE ESCALABILIDAD
@@ -138,7 +135,7 @@ const pricingSchema = {
   </section>
 
   <section class="relative pb-16 md:pb-24 z-[50]" data-animate-section>
-    <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30" aria-hidden="true"></div>
+    <!-- <div class="absolute inset-0 pointer-events-none bg-radial-at-c opacity-30" aria-hidden="true"></div> -->
 
     <div class="container mx-auto px-4 md:px-6">
       <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 max-w-7xl mx-auto list-none p-0 items-stretch" role="list">
@@ -166,15 +163,16 @@ const pricingSchema = {
               'border-white/10'
             }`}>
               {/* Heavier background gradient */}
-              <div class={`absolute inset-0 transition-opacity duration-500 ${
+              {/* <div class={`absolute inset-0 transition-opacity duration-500 ${
                 plan.popular ? 'bg-gradient-to-br from-purple-900/25 via-[#08080c] to-[#08080c]' : 
                 plan.id === 'enterprise' ? 'bg-gradient-to-br from-amber-900/15 via-[#08080c] to-[#08080c]' :
                 'bg-gradient-to-br from-cyan-900/10 via-[#08080c] to-[#08080c]'
-              }`}></div>
+              }`}
+              aria-hidden="true"></div> */}
 
               {/* Diagonal tech pattern overlay */}
               <div class="absolute inset-0 opacity-[0.03] pointer-events-none" 
-                   style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 21px)"></div>
+                   style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 21px)" aria-hidden="true"></div>
 
               {/* Corner accent */}
               <div class={`absolute top-0 right-0 w-20 h-20 pointer-events-none overflow-hidden`}>
@@ -183,14 +181,14 @@ const pricingSchema = {
                 }`}></div>
               </div>
 
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" 
-                   style={`background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${plan.accentColor}20, transparent 60%)`}></div>
+              {/* <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" 
+                   style={`background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${plan.accentColor}20, transparent 60%)`} arial-hidden="true"></div> */}
 
-              <div class="absolute -top-32 -right-32 w-64 h-64 opacity-[0.08] blur-[100px] rounded-full pointer-events-none transition-all duration-700 group-hover:opacity-30 group-hover:scale-150" 
+              {/* <div class="absolute -top-32 -right-32 w-64 h-64 opacity-[0.08] blur-[100px] rounded-full pointer-events-none transition-all duration-700 group-hover:opacity-30 group-hover:scale-150" 
                    style={{backgroundColor: plan.accentColor}} aria-hidden="true"></div>
 
               <div class="absolute -bottom-32 -left-32 w-48 h-48 opacity-[0.04] blur-[80px] rounded-full pointer-events-none group-hover:opacity-15 transition-all duration-700" 
-                   style={{backgroundColor: plan.accentColor}} aria-hidden="true"></div>
+                   style={{backgroundColor: plan.accentColor}} aria-hidden="true"></div> */}
 
               <div class="relative z-10 flex flex-col h-full p-5 md:p-6 lg:p-7">
                 
@@ -335,228 +333,228 @@ const pricingSchema = {
 
       <!-- TITAN - Full width horizontal card -->
       {plans.filter(p => p.id === 'titan').map(plan => (
-  <div
-    id="plan-titan"
-    data-color={plan.accentColor}
-    class="animate-on-scroll plan-card-container scroll-mt-32 max-w-7xl mx-auto cursor-pointer group/card"
-    data-animation="fade-in-up"
-    data-delay={360}
-    onclick={`window.location.href='/plans/${plan.id}'`}
-  >
-    <article class="plan-card relative overflow-hidden rounded-[2rem] border-2 border-yellow-600/30 transition-all duration-700 group hover:border-yellow-500/60 hover:shadow-[0_0_80px_rgba(212,160,23,0.18)]">
+        <div
+          id="plan-titan"
+          data-color={plan.accentColor}
+          class="animate-on-scroll plan-card-container scroll-mt-32 max-w-7xl mx-auto cursor-pointer group/card"
+          data-animation="fade-in-up"
+          data-delay={360}
+          onclick={`window.location.href='/plans/${plan.id}'`}
+        >
+          <article class="plan-card relative overflow-hidden rounded-[2rem] border-2 border-yellow-600/30 transition-all duration-700 group hover:border-yellow-500/60 hover:shadow-[0_0_80px_rgba(212,160,23,0.18)]">
 
-      {/* BACKGROUNDS - more aggressive gradient */}
-      <div class="absolute inset-0 bg-gradient-to-br from-yellow-900/10 via-[#08080c] to-[#08080c]"></div>
+            {/* BACKGROUNDS - more aggressive gradient */}
+            <div class="absolute inset-0 bg-gradient-to-br from-yellow-900/10 via-[#08080c] to-[#08080c]"></div>
 
-      {/* Diagonal tech pattern */}
-      <div class="absolute inset-0 opacity-[0.04] pointer-events-none" 
-           style="background-image: repeating-linear-gradient(45deg, transparent, transparent 25px, rgba(212,160,23,0.04) 25px, rgba(212,160,23,0.04) 26px)"></div>
+            {/* Diagonal tech pattern */}
+            <div class="absolute inset-0 opacity-[0.04] pointer-events-none" 
+                style="background-image: repeating-linear-gradient(45deg, transparent, transparent 25px, rgba(212,160,23,0.04) 25px, rgba(212,160,23,0.04) 26px)"></div>
 
-      {/* Corner accent */}
-      <div class="absolute top-0 right-0 w-24 h-24 pointer-events-none overflow-hidden">
-        <div class="absolute top-0 right-0 w-[140px] h-[2px] origin-top-right rotate-45 translate-x-1/2 bg-yellow-500/30"></div>
-      </div>
-
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-
-      <div
-        class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-        style={`background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${plan.accentColor}20, transparent 60%)`}
-      ></div>
-
-      <div class="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-      <div
-        class="absolute -top-40 -right-40 w-[500px] h-[500px] opacity-[0.06] blur-[150px] rounded-full pointer-events-none transition-all duration-700 group-hover:opacity-25 group-hover:scale-150"
-        style={{ backgroundColor: plan.accentColor }}
-        aria-hidden="true"
-      ></div>
-
-      <div class="absolute -bottom-40 -left-40 w-[400px] h-[400px] opacity-[0.03] blur-[120px] rounded-full pointer-events-none group-hover:opacity-15 transition-all duration-700"
-        style={{ backgroundColor: plan.accentColor }}
-        aria-hidden="true"
-      ></div>
-
-      {/* CONTENT */}
-      <div class="relative z-10 p-6 md:p-8 lg:p-10">
-
-        {/* TOP SECTION */}
-        <div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-10">
-
-          {/* LEFT */}
-          <div class="flex-1 max-w-4xl">
-
-            {/* BADGE */}
-            <div class="inline-flex items-center gap-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 px-3 py-1.5 text-[9px] font-black text-yellow-400 uppercase tracking-[0.2em] mb-6 w-fit">
-              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-                <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/>
-              </svg>
-              Poder Absoluto
+            {/* Corner accent */}
+            <div class="absolute top-0 right-0 w-24 h-24 pointer-events-none overflow-hidden">
+              <div class="absolute top-0 right-0 w-[140px] h-[2px] origin-top-right rotate-45 translate-x-1/2 bg-yellow-500/30"></div>
             </div>
 
-            {/* TITLE + PRICE */}
-            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-500/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
 
-              <div>
-                <h3 class="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
-                  <a href={`/plans/${plan.id}`} onclick="event.stopPropagation()" class="card-title-link inline-flex items-center gap-3 group-hover/card:underline group-hover/card:decoration-yellow-400/30 group-hover/card:underline-offset-4 transition-all duration-300">
-                    {plan.name}
-                    <span class="inline-block opacity-0 -translate-y-1.5 translate-x-1 group-hover/card:opacity-100 group-hover/card:translate-y-0 group-hover/card:translate-x-0 transition-all duration-300 ease-out text-[0.45em] text-yellow-400">↗</span>
-                  </a>
-                </h3>
+            <div
+              class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+              style={`background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${plan.accentColor}20, transparent 60%)`}
+            ></div>
 
-                <span class="block text-yellow-400/60 text-xs md:text-sm font-bold uppercase tracking-[0.3em] mt-3">
-                  Solución Enterprise
-                </span>
-              </div>
+            <div class="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              <div class="shrink-0 lg:text-right">
+            <div
+              class="absolute -top-40 -right-40 w-[500px] h-[500px] opacity-[0.06] blur-[150px] rounded-full pointer-events-none transition-all duration-700 group-hover:opacity-25 group-hover:scale-150"
+              style={{ backgroundColor: plan.accentColor }}
+              aria-hidden="true"
+            ></div>
 
-                <div class="flex lg:justify-end items-baseline gap-2">
-                  <span class="text-5xl md:text-7xl font-black tracking-tighter text-yellow-400 drop-shadow-[0_0_30px_rgba(212,160,23,0.4)] [text-shadow:0_0_40px_rgba(212,160,23,0.2)]">
-                    CUSTOM
-                  </span>
+            <div class="absolute -bottom-40 -left-40 w-[400px] h-[400px] opacity-[0.03] blur-[120px] rounded-full pointer-events-none group-hover:opacity-15 transition-all duration-700"
+              style={{ backgroundColor: plan.accentColor }}
+              aria-hidden="true"
+            ></div>
+
+            {/* CONTENT */}
+            <div class="relative z-10 p-6 md:p-8 lg:p-10">
+
+              {/* TOP SECTION */}
+              <div class="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-10">
+
+                {/* LEFT */}
+                <div class="flex-1 max-w-4xl">
+
+                  {/* BADGE */}
+                  <div class="inline-flex items-center gap-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 px-3 py-1.5 text-[9px] font-black text-yellow-400 uppercase tracking-[0.2em] mb-6 w-fit">
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/>
+                    </svg>
+                    Poder Absoluto
+                  </div>
+
+                  {/* TITLE + PRICE */}
+                  <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+
+                    <div>
+                      <h3 class="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
+                        <a href={`/plans/${plan.id}`} onclick="event.stopPropagation()" class="card-title-link inline-flex items-center gap-3 group-hover/card:underline group-hover/card:decoration-yellow-400/30 group-hover/card:underline-offset-4 transition-all duration-300">
+                          {plan.name}
+                          <span class="inline-block opacity-0 -translate-y-1.5 translate-x-1 group-hover/card:opacity-100 group-hover/card:translate-y-0 group-hover/card:translate-x-0 transition-all duration-300 ease-out text-[0.45em] text-yellow-400">↗</span>
+                        </a>
+                      </h3>
+
+                      <span class="block text-yellow-400/60 text-xs md:text-sm font-bold uppercase tracking-[0.3em] mt-3">
+                        Solución Enterprise
+                      </span>
+                    </div>
+
+                    <div class="shrink-0 lg:text-right">
+
+                      <div class="flex lg:justify-end items-baseline gap-2">
+                        <span class="text-5xl md:text-7xl font-black tracking-tighter text-yellow-400 drop-shadow-[0_0_30px_rgba(212,160,23,0.4)] [text-shadow:0_0_40px_rgba(212,160,23,0.2)]">
+                          CUSTOM
+                        </span>
+                      </div>
+
+                      <p class="text-[10px] text-gray-500 uppercase tracking-wide mt-2 font-bold">
+                        + Retainer mensual según alcance
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* DESCRIPTION */}
+                  <div class="mt-8 max-w-3xl">
+                    <p class="text-sm md:text-base text-gray-400 leading-relaxed">
+                      {plan.description}
+                    </p>
+
+                    <a
+                      href="/plans/titan"
+                      class="inline-flex items-center gap-1.5 text-yellow-400/60 hover:text-yellow-400 text-[11px] font-bold uppercase tracking-wider mt-5 transition-colors group/link"
+                    >
+                      Ver spec completo
+
+                      <svg
+                        class="w-3 h-3 group-hover/link:translate-x-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="3"
+                      >
+                        <path d="M5 12h14"/>
+                        <path d="m12 5 7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
 
-                <p class="text-[10px] text-gray-500 uppercase tracking-wide mt-2 font-bold">
-                  + Retainer mensual según alcance
-                </p>
+                {/* CTA PANEL - more aggressive */}
+                <div class="xl:w-[320px] shrink-0">
+
+                  <div class="rounded-2xl border border-yellow-500/20 bg-gradient-to-b from-yellow-500/[0.08] to-yellow-900/10 backdrop-blur-sm p-6 xl:sticky xl:top-24 shadow-[0_0_30px_rgba(212,160,23,0.06)]">
+
+                    {/* Small corner accent */}
+                    <div class="absolute top-0 right-0 w-12 h-12 pointer-events-none overflow-hidden">
+                      <div class="absolute top-0 right-0 w-[70px] h-[1.5px] origin-top-right rotate-45 translate-x-1/2 bg-yellow-500/40"></div>
+                    </div>
+
+                    <div class="text-center mb-5">
+                      <div class="text-[9px] text-yellow-500/80 uppercase tracking-widest font-mono mb-3 font-bold">
+                        ¿Listo para el siguiente nivel?
+                      </div>
+
+                      <p class="text-[12px] text-gray-400 leading-relaxed">
+                        Agendá una consultoría sin cargo y descubrí cómo Titan puede transformar tu operación.
+                      </p>
+                    </div>
+
+                    <a
+                      href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola! Me interesa potenciar mi negocio con el Plan ${plan.name}.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onclick="event.stopPropagation()"
+                      class="plan-cta w-full flex items-center justify-center gap-2.5 py-5 px-6 rounded-xl font-black text-sm uppercase tracking-wider bg-gradient-to-r from-yellow-500 via-yellow-400 to-amber-400 text-black shadow-lg shadow-yellow-500/25 hover:shadow-yellow-500/50 hover:scale-[1.04] active:scale-95 transition-all duration-300 border border-yellow-300/20 group/btn relative overflow-hidden"
+                    >
+                      <span class="relative z-10">Solicitar Consultoría</span>
+                      <svg class="relative z-10 h-4 w-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      <div class="absolute inset-0 bg-[linear-gradient(60deg,transparent,rgba(255,255,255,0.15),transparent)] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"></div>
+                    </a>
+
+                    <div class="flex items-center justify-center gap-2 mt-5">
+                      <svg class="w-3 h-3 text-[#25D366]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                      <span class="text-[10px] text-gray-600">Garantía 30 días</span>
+                      <span class="w-1 h-1 rounded-full bg-gray-700"></span>
+                      <span class="text-[10px] text-gray-600">Sin compromiso</span>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-1.5 text-[9px] text-gray-600 uppercase tracking-wider mt-3">
+                      <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                      Datos protegidos
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* DESCRIPTION */}
-            <div class="mt-8 max-w-3xl">
-              <p class="text-sm md:text-base text-gray-400 leading-relaxed">
-                {plan.description}
-              </p>
+              {/* FEATURES - more aggressive */}
+              <div class="mt-14 pt-10 border-t border-yellow-500/10">
 
-              <a
-                href="/plans/titan"
-                class="inline-flex items-center gap-1.5 text-yellow-400/60 hover:text-yellow-400 text-[11px] font-bold uppercase tracking-wider mt-5 transition-colors group/link"
-              >
-                Ver spec completo
-
-                <svg
-                  class="w-3 h-3 group-hover/link:translate-x-1 transition-transform"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="3"
-                >
-                  <path d="M5 12h14"/>
-                  <path d="m12 5 7 7-7 7"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          {/* CTA PANEL - more aggressive */}
-          <div class="xl:w-[320px] shrink-0">
-
-            <div class="rounded-2xl border border-yellow-500/20 bg-gradient-to-b from-yellow-500/[0.08] to-yellow-900/10 backdrop-blur-sm p-6 xl:sticky xl:top-24 shadow-[0_0_30px_rgba(212,160,23,0.06)]">
-
-              {/* Small corner accent */}
-              <div class="absolute top-0 right-0 w-12 h-12 pointer-events-none overflow-hidden">
-                <div class="absolute top-0 right-0 w-[70px] h-[1.5px] origin-top-right rotate-45 translate-x-1/2 bg-yellow-500/40"></div>
-              </div>
-
-              <div class="text-center mb-5">
-                <div class="text-[9px] text-yellow-500/80 uppercase tracking-widest font-mono mb-3 font-bold">
-                  ¿Listo para el siguiente nivel?
+                <div class="flex items-center gap-3 mb-8">
+                  <div class="h-px flex-1 bg-gradient-to-r from-yellow-500/30 to-transparent"></div>
+                  <span class="text-[9px] text-yellow-500/60 uppercase tracking-[0.3em] font-bold font-mono shrink-0">/ capabilities</span>
                 </div>
 
-                <p class="text-[12px] text-gray-400 leading-relaxed">
-                  Agendá una consultoría sin cargo y descubrí cómo Titan puede transformar tu operación.
-                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-5">
+
+                  {plan.features.map((feature) => (
+                    <div class="flex items-start gap-3 group/feat transition-all duration-300 hover:translate-x-1.5">
+
+                      <span class="inline-flex items-center justify-center w-5 h-5 shrink-0 mt-0.5 rounded-sm bg-yellow-500/15 text-yellow-400 group-hover/feat:bg-yellow-500/25 group-hover/feat:shadow-[0_0_10px_rgba(212,160,23,0.3)] transition-all duration-300">
+                        <svg
+                          class="w-2.5 h-2.5"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="4"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                      </span>
+
+                      <span class="text-xs md:text-sm text-gray-300 leading-relaxed group-hover/feat:text-white transition-colors duration-300">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+
+                </div>
               </div>
 
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola! Me interesa potenciar mi negocio con el Plan ${plan.name}.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onclick="event.stopPropagation()"
-                class="plan-cta w-full flex items-center justify-center gap-2.5 py-5 px-6 rounded-xl font-black text-sm uppercase tracking-wider bg-gradient-to-r from-yellow-500 via-yellow-400 to-amber-400 text-black shadow-lg shadow-yellow-500/25 hover:shadow-yellow-500/50 hover:scale-[1.04] active:scale-95 transition-all duration-300 border border-yellow-300/20 group/btn relative overflow-hidden"
-              >
-                <span class="relative z-10">Solicitar Consultoría</span>
-                <svg class="relative z-10 h-4 w-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                <div class="absolute inset-0 bg-[linear-gradient(60deg,transparent,rgba(255,255,255,0.15),transparent)] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"></div>
-              </a>
+              {/* FOOTER TRUST BAR - more aggressive */}
+              <div class="mt-12 pt-6 border-t border-yellow-500/10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
 
-              <div class="flex items-center justify-center gap-2 mt-5">
-                <svg class="w-3 h-3 text-[#25D366]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                <span class="text-[10px] text-gray-600">Garantía 30 días</span>
-                <span class="w-1 h-1 rounded-full bg-gray-700"></span>
-                <span class="text-[10px] text-gray-600">Sin compromiso</span>
-              </div>
+                <div class="flex flex-wrap gap-2">
+                  {['IA Autónoma', 'Zero Trust', 'SLA Enterprise'].map(tag => (
+                    <span class="text-[9px] text-yellow-400/50 border border-yellow-500/15 bg-yellow-500/[0.04] rounded-full px-3 py-1 uppercase tracking-wider hover:bg-yellow-500/10 hover:border-yellow-500/30 hover:text-yellow-400/70 transition-all duration-300 cursor-default">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-              <div class="flex items-center justify-center gap-1.5 text-[9px] text-gray-600 uppercase tracking-wider mt-3">
-                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                Datos protegidos
+                <div class="flex items-center gap-3 text-[10px] text-gray-600 uppercase tracking-wider">
+                  <span class="hover:text-gray-400 transition-colors">Infraestructura Escalable</span>
+                  <span class="w-1 h-1 rounded-full bg-gray-700"></span>
+                  <span class="hover:text-gray-400 transition-colors">Enterprise Ready</span>
+                  <span class="w-1 h-1 rounded-full bg-gray-700"></span>
+                  <span class="hover:text-gray-400 transition-colors">Automatización Inteligente</span>
+                </div>
+
               </div>
             </div>
-          </div>
+          </article>
         </div>
-
-        {/* FEATURES - more aggressive */}
-        <div class="mt-14 pt-10 border-t border-yellow-500/10">
-
-          <div class="flex items-center gap-3 mb-8">
-            <div class="h-px flex-1 bg-gradient-to-r from-yellow-500/30 to-transparent"></div>
-            <span class="text-[9px] text-yellow-500/60 uppercase tracking-[0.3em] font-bold font-mono shrink-0">/ capabilities</span>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-5">
-
-            {plan.features.map((feature) => (
-              <div class="flex items-start gap-3 group/feat transition-all duration-300 hover:translate-x-1.5">
-
-                <span class="inline-flex items-center justify-center w-5 h-5 shrink-0 mt-0.5 rounded-sm bg-yellow-500/15 text-yellow-400 group-hover/feat:bg-yellow-500/25 group-hover/feat:shadow-[0_0_10px_rgba(212,160,23,0.3)] transition-all duration-300">
-                  <svg
-                    class="w-2.5 h-2.5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </span>
-
-                <span class="text-xs md:text-sm text-gray-300 leading-relaxed group-hover/feat:text-white transition-colors duration-300">
-                  {feature}
-                </span>
-              </div>
-            ))}
-
-          </div>
-        </div>
-
-        {/* FOOTER TRUST BAR - more aggressive */}
-        <div class="mt-12 pt-6 border-t border-yellow-500/10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
-
-          <div class="flex flex-wrap gap-2">
-            {['IA Autónoma', 'Zero Trust', 'SLA Enterprise'].map(tag => (
-              <span class="text-[9px] text-yellow-400/50 border border-yellow-500/15 bg-yellow-500/[0.04] rounded-full px-3 py-1 uppercase tracking-wider hover:bg-yellow-500/10 hover:border-yellow-500/30 hover:text-yellow-400/70 transition-all duration-300 cursor-default">
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div class="flex items-center gap-3 text-[10px] text-gray-600 uppercase tracking-wider">
-            <span class="hover:text-gray-400 transition-colors">Infraestructura Escalable</span>
-            <span class="w-1 h-1 rounded-full bg-gray-700"></span>
-            <span class="hover:text-gray-400 transition-colors">Enterprise Ready</span>
-            <span class="w-1 h-1 rounded-full bg-gray-700"></span>
-            <span class="hover:text-gray-400 transition-colors">Automatización Inteligente</span>
-          </div>
-
-        </div>
-      </div>
-    </article>
-  </div>
-))}
+      ))}
     </div>
   </section>
 
