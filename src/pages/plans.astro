@@ -162,15 +162,7 @@ const pricingSchema = {
               plan.id === 'enterprise' ? 'border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.08)]' :
               'border-white/10'
             }`}>
-              {/* Heavier background gradient */}
-              {/* <div class={`absolute inset-0 transition-opacity duration-500 ${
-                plan.popular ? 'bg-gradient-to-br from-purple-900/25 via-[#08080c] to-[#08080c]' : 
-                plan.id === 'enterprise' ? 'bg-gradient-to-br from-amber-900/15 via-[#08080c] to-[#08080c]' :
-                'bg-gradient-to-br from-cyan-900/10 via-[#08080c] to-[#08080c]'
-              }`}
-              aria-hidden="true"></div> */}
 
-              {/* Diagonal tech pattern overlay */}
               <div class="absolute inset-0 opacity-[0.03] pointer-events-none" 
                    style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 21px)" aria-hidden="true"></div>
 
@@ -181,14 +173,6 @@ const pricingSchema = {
                 }`}></div>
               </div>
 
-              {/* <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" 
-                   style={`background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${plan.accentColor}20, transparent 60%)`} arial-hidden="true"></div> */}
-
-              {/* <div class="absolute -top-32 -right-32 w-64 h-64 opacity-[0.08] blur-[100px] rounded-full pointer-events-none transition-all duration-700 group-hover:opacity-30 group-hover:scale-150" 
-                   style={{backgroundColor: plan.accentColor}} aria-hidden="true"></div>
-
-              <div class="absolute -bottom-32 -left-32 w-48 h-48 opacity-[0.04] blur-[80px] rounded-full pointer-events-none group-hover:opacity-15 transition-all duration-700" 
-                   style={{backgroundColor: plan.accentColor}} aria-hidden="true"></div> */}
 
               <div class="relative z-10 flex flex-col h-full p-5 md:p-6 lg:p-7">
                 
@@ -558,19 +542,12 @@ const pricingSchema = {
     </div>
   </section>
 
-  <section class="relative py-16 md:py-20 z-[50] border-t border-white/5" data-animate-section>
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[120px]"></div>
-    </div>
+  <section class="relative pb-16 pt-6 md:py-20 z-[50] border-t border-white/5" data-animate-section>
+
     <div class="container mx-auto px-4 md:px-6 relative">
-      <div class="text-center mb-12">
-        <span class="text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-4 block animate-on-scroll" data-animation="fade-in-down">
-          RESULTADOS REALES
-        </span>
-        <h2 class="text-4xl md:text-6xl font-black text-white animate-on-scroll leading-tight" data-animation="fade-in-up" data-delay="100">
+        <h2 class="text-center mb-10 text-4xl md:text-6xl font-black text-white animate-on-scroll leading-tight" data-animation="fade-in-up" data-delay="100">
           Lo que dicen <span class="text-gradient">nuestros clientes</span>
         </h2>
-      </div>
       <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         <div class="animate-on-scroll group relative rounded-2xl bg-[#0a0a0f] border border-white/5 p-6 md:p-8 hover:border-cyan-500/30 hover:shadow-[0_0_30px_rgba(0,255,255,0.05)] transition-all duration-500" data-animation="fade-in-up" data-delay="200">
           <div class="absolute -top-px left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
